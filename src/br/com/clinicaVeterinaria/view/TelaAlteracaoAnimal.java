@@ -49,7 +49,7 @@ public class TelaAlteracaoAnimal extends javax.swing.JFrame {
         jtMesVacinacao = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jtAnoVacinacao = new javax.swing.JTextField();
-        jbAlterarAnimal = new javax.swing.JButton();
+        jbConfirmar = new javax.swing.JButton();
         jbCancelar = new javax.swing.JButton();
         jbExcluirAnimal = new javax.swing.JButton();
         jlNomeCliente = new javax.swing.JLabel();
@@ -59,7 +59,7 @@ public class TelaAlteracaoAnimal extends javax.swing.JFrame {
         setTitle("Alteração Animal");
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
         jlNome.setText("Nome Animal");
 
@@ -102,10 +102,10 @@ public class TelaAlteracaoAnimal extends javax.swing.JFrame {
             }
         });
 
-        jbAlterarAnimal.setText("Alterar Animal");
-        jbAlterarAnimal.addActionListener(new java.awt.event.ActionListener() {
+        jbConfirmar.setText("Confirmar");
+        jbConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbAlterarAnimalActionPerformed(evt);
+                jbConfirmarActionPerformed(evt);
             }
         });
 
@@ -156,7 +156,7 @@ public class TelaAlteracaoAnimal extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jtAnoVacinacao, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jbAlterarAnimal)
+                        .addComponent(jbConfirmar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jbExcluirAnimal)
                         .addGap(119, 119, 119)
@@ -169,12 +169,9 @@ public class TelaAlteracaoAnimal extends javax.swing.JFrame {
                             .addGap(2, 2, 2))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jlRaca)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jlTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(50, 50, 50)))
+                                .addComponent(jlRaca)
+                                .addComponent(jlTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jcCachorro)
@@ -233,7 +230,7 @@ public class TelaAlteracaoAnimal extends javax.swing.JFrame {
                     .addComponent(jtAnoVacinacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbAlterarAnimal)
+                    .addComponent(jbConfirmar)
                     .addComponent(jbExcluirAnimal)
                     .addComponent(jbCancelar))
                 .addGap(37, 37, 37))
@@ -271,9 +268,9 @@ public class TelaAlteracaoAnimal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtDataDiaActionPerformed
 
-    private void jbAlterarAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAlterarAnimalActionPerformed
+    private void jbConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jbAlterarAnimalActionPerformed
+    }//GEN-LAST:event_jbConfirmarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -316,8 +313,8 @@ public class TelaAlteracaoAnimal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton jbAlterarAnimal;
     private javax.swing.JButton jbCancelar;
+    private javax.swing.JButton jbConfirmar;
     private javax.swing.JButton jbExcluirAnimal;
     private javax.swing.JCheckBox jcCachorro;
     private javax.swing.JCheckBox jcGato;

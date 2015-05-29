@@ -64,7 +64,7 @@ public class TelaCadastroVeterinario extends javax.swing.JFrame {
         setTitle("Cadastro Veterinário");
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
         jlNome.setText("Nome");
 

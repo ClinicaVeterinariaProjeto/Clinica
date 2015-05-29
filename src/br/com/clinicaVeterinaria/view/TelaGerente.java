@@ -70,7 +70,6 @@ public class TelaGerente extends javax.swing.JFrame {
 
         jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jbCadastrarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/clinicaVeterinaria/view/Imagens/Users.png"))); // NOI18N
         jbCadastrarCliente.setText("Cadastrar Cliente");
         jbCadastrarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,10 +114,8 @@ public class TelaGerente extends javax.swing.JFrame {
 
         jbPesquisarAnimal.setText("Pesquisar Animal");
 
-        jbCadastrarFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/clinicaVeterinaria/view/Imagens/Users.png"))); // NOI18N
         jbCadastrarFuncionario.setText("Cadastrar Funcionário");
 
-        jbCadastrarVeterinario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/clinicaVeterinaria/view/Imagens/Users.png"))); // NOI18N
         jbCadastrarVeterinario.setText("Cadastrar Veterinário");
 
         jbPesquisarFuncionario.setText("Pesquisar Funcionário");
@@ -130,29 +127,25 @@ public class TelaGerente extends javax.swing.JFrame {
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
                         .addComponent(jbCadastrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(210, 210, 210)
                         .addComponent(jbPesquisarVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
                         .addComponent(jbCadastrarAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(210, 210, 210)
                         .addComponent(jbPesquisarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
                         .addComponent(jbCadastrarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(210, 210, 210)
                         .addComponent(jbPesquisarAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
                         .addComponent(jbCadastrarVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(210, 210, 210)
                         .addComponent(jbGerenciarEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
                         .addComponent(jbPesquisarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(210, 210, 210)
                         .addComponent(jbMarcarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))

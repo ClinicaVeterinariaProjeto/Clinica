@@ -40,8 +40,12 @@ public class TelaVeterinario extends javax.swing.JFrame {
         jmRelatorioAlterar = new javax.swing.JMenuItem();
         jmRelatorioVisualizar = new javax.swing.JMenuItem();
         jmVerConsulta = new javax.swing.JMenu();
+        jmSobre = new javax.swing.JMenu();
+        jmAjuda = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Tela Veterinário");
+        setResizable(false);
 
         jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -61,7 +65,7 @@ public class TelaVeterinario extends javax.swing.JFrame {
             }
         });
         jDesktopPane1.add(jbVerRelatório);
-        jbVerRelatório.setBounds(10, 174, 190, 40);
+        jbVerRelatório.setBounds(320, 110, 190, 40);
 
         jbAtenderAnimal.setText("Atender Animal");
         jbAtenderAnimal.addActionListener(new java.awt.event.ActionListener() {
@@ -108,6 +112,12 @@ public class TelaVeterinario extends javax.swing.JFrame {
         jmVerConsulta.setText("Ver Consultas");
         jMenuBar1.add(jmVerConsulta);
 
+        jmSobre.setText("Sobre");
+        jMenuBar1.add(jmSobre);
+
+        jmAjuda.setText("Ajuda");
+        jMenuBar1.add(jmAjuda);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -122,6 +132,7 @@ public class TelaVeterinario extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmRelatorioAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmRelatorioAlterarActionPerformed
@@ -195,10 +206,12 @@ public class TelaVeterinario extends javax.swing.JFrame {
     private javax.swing.JButton jbPesquisarAnimal;
     private javax.swing.JButton jbVerConsulta;
     private javax.swing.JButton jbVerRelatório;
+    private javax.swing.JMenu jmAjuda;
     private javax.swing.JMenu jmRelatorio;
     private javax.swing.JMenuItem jmRelatorioAlterar;
     private javax.swing.JMenuItem jmRelatorioCriar;
     private javax.swing.JMenuItem jmRelatorioVisualizar;
+    private javax.swing.JMenu jmSobre;
     private javax.swing.JMenu jmVerConsulta;
     // End of variables declaration//GEN-END:variables
 }

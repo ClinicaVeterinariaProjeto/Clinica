@@ -55,6 +55,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
         jmConsultaExcluir = new javax.swing.JMenuItem();
         jmConsultaVisualizar = new javax.swing.JMenuItem();
         jmSobre = new javax.swing.JMenu();
+        jmAjuda = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela Funcionário");
@@ -62,7 +63,6 @@ public class TelaFuncionario extends javax.swing.JFrame {
 
         jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jbCadastrarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/clinicaVeterinaria/view/Imagens/Users.png"))); // NOI18N
         jbCadastrarCliente.setText("Cadastrar Cliente");
         jbCadastrarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,6 +194,9 @@ public class TelaFuncionario extends javax.swing.JFrame {
         jmSobre.setText("Sobre");
         jMenuBar1.add(jmSobre);
 
+        jmAjuda.setText("Ajuda");
+        jMenuBar1.add(jmAjuda);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -309,6 +312,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
     private javax.swing.JButton jbMarcarConsulta;
     private javax.swing.JButton jbPesquisarAnimal;
     private javax.swing.JButton jbPesquisarCliente;
+    private javax.swing.JMenu jmAjuda;
     private javax.swing.JMenu jmAnimal;
     private javax.swing.JMenuItem jmAnimalAlterar;
     private javax.swing.JMenuItem jmAnimalCadastrar;

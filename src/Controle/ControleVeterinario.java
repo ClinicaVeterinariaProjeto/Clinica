@@ -9,6 +9,14 @@ package Controle;
  *
  * @author Alessandro
  */
+import DAO.VeterinarioDAO;
+import Modelo.ModeloVeterinario;
 public class ControleVeterinario {
+    public void inserirVeterinario(ModeloVeterinario veterinario){}
     
+    public void alterarVeterinario(ModeloVeterinario veterinario){}
+    
+    public void consultarVeterinario(ModeloVeterinario veterinario){}
+    
+    public void excluirVeterinario(ModeloVeterinario veterinario){}
 }

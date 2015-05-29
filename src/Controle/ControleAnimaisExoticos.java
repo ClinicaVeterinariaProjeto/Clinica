@@ -9,6 +9,15 @@ package Controle;
  *
  * @author Alessandro
  */
+import Modelo.ModeloAnimalExotico;
+import DAO.AnimalExoticoDAO;
 public class ControleAnimaisExoticos {
     
+    public void inserirAnimalExotico(ModeloAnimalExotico animalexotico){}
+    
+    public void alterarAnimalExotico(ModeloAnimalExotico animalexotico){}
+    
+    public void consultarAnimalExotico(ModeloAnimalExotico animalexotico){}
+    
+    public void excluirAnimalExotico(ModeloAnimalExotico animalexotico){}
 }

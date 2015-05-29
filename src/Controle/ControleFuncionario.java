@@ -9,6 +9,17 @@ package Controle;
  *
  * @author Alessandro
  */
+
+import DAO.FuncionarioDAO;
+import Modelo.ModeloFuncionario;
 public class ControleFuncionario {
+    
+    public void inserirFuncionario(ModeloFuncionario funcionario){}
+    
+    public void alterarFuncionario(ModeloFuncionario funcionario){}
+    
+    public void consultarFuncionario(ModeloFuncionario funcionario){}
+    
+    public void excluirFuncionario(ModeloFuncionario funcionario){}
     
 }

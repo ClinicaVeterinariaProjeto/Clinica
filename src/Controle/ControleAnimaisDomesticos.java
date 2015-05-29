@@ -9,7 +9,14 @@ package Controle;
  *
  * @author Alessandro
  */
+import Modelo.ModeloAnimalDomestico;
+import DAO.AnimalDomesticoDAO;
 public class ControleAnimaisDomesticos {
-    // teste william
+    public void inserirAnimalDomestico(ModeloAnimalDomestico animaldomestico){}
     
+    public void alterarAnimalDomestico(ModeloAnimalDomestico animaldomestico){}
+    
+    public void consultarAnimalDomestico(ModeloAnimalDomestico animaldomestico){}
+    
+    public void excluirAnimalDomestico(ModeloAnimalDomestico animaldomestico){}
 }

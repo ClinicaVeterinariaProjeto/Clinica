@@ -10,5 +10,5 @@ package Modelo;
  * @author Alessandro
  */
 public class ModeloCliente extends ModeloPessoa implements InterfaceControleDados{
-    
+    //ale
 }

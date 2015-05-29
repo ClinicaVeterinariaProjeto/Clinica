@@ -5,10 +5,43 @@
  */
 package Modelo;
 
+import java.util.Date;
+
 /**
  *
  * @author Alessandro
  */
 public class ModeloFuncionario extends ModeloPessoa implements InterfaceControleDados{
+    private int idFuncionario;
+    private int senhaFuncionario;
+
+    public ModeloFuncionario() {
+    }
+
+    public ModeloFuncionario(int idFuncionario, int senhaFuncionario, String nome, String sobrenome, String cpf, String email, String telefone, String sexo, Date dataNascimento) {
+        super(nome, sobrenome, cpf, email, telefone, sexo, dataNascimento);
+        this.idFuncionario = idFuncionario;
+        this.senhaFuncionario = senhaFuncionario;
+    }
+
+   
+    
+    
+    public int getIdFuncionario() {
+        return idFuncionario;
+    }
+
+    public int getSenhaFuncionario() {
+        return senhaFuncionario;
+    }
+
+    public void setIdFuncionario(int idFuncionario) {
+        this.idFuncionario = idFuncionario;
+    }
+
+    public void setSenhaFuncionario(int senhaFuncionario) {
+        this.senhaFuncionario = senhaFuncionario;
+    }
+    
     
 }

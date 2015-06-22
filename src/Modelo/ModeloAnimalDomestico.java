@@ -10,5 +10,13 @@ package Modelo;
  * @author Alessandro
  */
 public class ModeloAnimalDomestico extends ModeloAnimal{
-    
+
+    public ModeloAnimalDomestico() {
+    }
+
+    public ModeloAnimalDomestico(String nome, String raca, String tipo, float peso, String ultimaVascina, int anoNascimento, int idAnimal, int idDono, int idVeterinario) {
+        super(nome, raca, tipo, peso, ultimaVascina, anoNascimento, idAnimal, idDono, idVeterinario);
+    }
+
+   
 }

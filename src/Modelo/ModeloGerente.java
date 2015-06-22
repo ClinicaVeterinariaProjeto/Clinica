@@ -13,17 +13,32 @@ import java.util.Date;
  */
 public class ModeloGerente extends ModeloPessoa {
     
-
+    private int idGerente;
+    private int senhaGerente;
 
     public ModeloGerente() {
     }
 
-    public ModeloGerente(String nome, String sobrenome, String cpf, String email, String telefone, String sexo, Date dataNascimento) {
-        super(nome, sobrenome, cpf, email, telefone, sexo, dataNascimento);
+    public ModeloGerente(int idGerente, int senhaGerente, String nome, String sobrenome, String cpf, String email, String telefone, String sexo, String dataNascimento, String rua, String cidade, String bairro, int numeroCasa) {
+        super(nome, sobrenome, cpf, email, telefone, sexo, dataNascimento, rua, cidade, bairro, numeroCasa);
+        this.idGerente = idGerente;
+        this.senhaGerente = senhaGerente;
     }
 
+    public int getIdGerente() {
+        return idGerente;
+    }
 
-    
-    
-    
+    public int getSenhaGerente() {
+        return senhaGerente;
+    }
+
+    public void setIdGerente(int idGerente) {
+        this.idGerente = idGerente;
+    }
+
+    public void setSenhaGerente(int senhaGerente) {
+        this.senhaGerente = senhaGerente;
+    }
+ 
 }

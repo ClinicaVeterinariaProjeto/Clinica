@@ -18,15 +18,12 @@ public class ModeloFuncionario extends ModeloPessoa implements InterfaceControle
     public ModeloFuncionario() {
     }
 
-    public ModeloFuncionario(int idFuncionario, int senhaFuncionario, String nome, String sobrenome, String cpf, String email, String telefone, String sexo, Date dataNascimento) {
-        super(nome, sobrenome, cpf, email, telefone, sexo, dataNascimento);
+    public ModeloFuncionario(int idFuncionario, int senhaFuncionario, String nome, String sobrenome, String cpf, String email, String telefone, String sexo, String dataNascimento, String rua, String cidade, String bairro, int numeroCasa) {
+        super(nome, sobrenome, cpf, email, telefone, sexo, dataNascimento, rua, cidade, bairro, numeroCasa);
         this.idFuncionario = idFuncionario;
         this.senhaFuncionario = senhaFuncionario;
     }
 
-   
-    
-    
     public int getIdFuncionario() {
         return idFuncionario;
     }
@@ -42,6 +39,5 @@ public class ModeloFuncionario extends ModeloPessoa implements InterfaceControle
     public void setSenhaFuncionario(int senhaFuncionario) {
         this.senhaFuncionario = senhaFuncionario;
     }
-    
     
 }

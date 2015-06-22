@@ -5,7 +5,6 @@
  */
 package Modelo;
 
-import java.util.Date;
 
 /**
  *
@@ -19,15 +18,18 @@ public abstract class ModeloPessoa {
     private String email;
     private String telefone;
     private String sexo;
-    private Date dataNascimento; 
-
-
+    private String dataNascimento;
+    // endereço 
+    private String rua;
+    private String cidade;
+    private String bairro;
+    private int numeroCasa;
 
     
     public ModeloPessoa() {
     }
-
-    public ModeloPessoa(String nome, String sobrenome, String cpf, String email, String telefone, String sexo, Date dataNascimento) {
+ 
+    public ModeloPessoa(String nome, String sobrenome, String cpf, String email, String telefone, String sexo, String dataNascimento, String rua, String cidade, String bairro, int numeroCasa) {
         this.setNome(nome);
         this.setSobrenome(sobrenome);
         this.setCpf(cpf);
@@ -35,21 +37,15 @@ public abstract class ModeloPessoa {
         this.setTelefone(telefone);
         this.setSexo(sexo);
         this.setDataNascimento(dataNascimento);
-      //  this.setIdCliente(idCliente);
+        this.setRua(rua);
+        this.setCidade(cidade);
+        this.setBairro(bairro);
+        this.setNumeroCasa(numeroCasa);
     }
 
-  
     public String getNome() {
         return nome;
     }
-
-    /*public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
-    }
-
-    public int getIdCliente() {
-        return idCliente;
-    }*/
 
     public String getSobrenome() {
         return sobrenome;
@@ -63,12 +59,32 @@ public abstract class ModeloPessoa {
         return email;
     }
 
+    public String getTelefone() {
+        return telefone;
+    }
+
     public String getSexo() {
         return sexo;
     }
 
-    public Date getDataNascimento() {
+    public String getDataNascimento() {
         return dataNascimento;
+    }
+
+    public String getRua() {
+        return rua;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public int getNumeroCasa() {
+        return numeroCasa;
     }
 
     public void setNome(String nome) {
@@ -87,25 +103,42 @@ public abstract class ModeloPessoa {
         this.email = email;
     }
 
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
     public void setSexo(String sexo) {
         this.sexo = sexo;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
-    
-    
+
+    public void setRua(String rua) {
+        this.rua = rua;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public void setNumeroCasa(int numeroCasa) {
+        this.numeroCasa = numeroCasa;
+    }
+
     @Override
     public String toString() {
-        return "ModeloPessoa{" + "nome=" + this.getNome() + ", sobrenome=" + this.getSobrenome() + ", cpf=" + this.getCpf() + ", email=" + this.getEmail() + ", sexo=" + this.getSexo() + ", dataNascimento=" + this.getDataNascimento() + '}';
+        return "ModeloPessoa{" + "nome=" + this.getNome() + ", sobrenome=" 
+                + this.getSobrenome() + ", cpf=" + this.getCpf() + ", email=" 
+                + this.getEmail() + ", sexo=" + this.getSexo() + ", dataNascimento="
+                + this.getDataNascimento() + ", rua=" 
+                + this.getRua() + ", cidade=" + this.getCidade() + ", bairro=" 
+                + this.getBairro() + ", numeroCasa=" + this.getNumeroCasa() + '}';
     }
 
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
 }

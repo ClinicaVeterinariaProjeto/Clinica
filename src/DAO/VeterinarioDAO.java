@@ -6,7 +6,7 @@
 package DAO;
 
 import Modelo.ModeloVeterinario;
-import Persistencia.Banco;
+import Persistencia.Conexao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -20,7 +20,7 @@ import java.sql.Statement;
 
 public class VeterinarioDAO {
     public void inserirVeterinarioNoBanco(ModeloVeterinario funcionario) throws ClassNotFoundException, SQLException{
-        Banco con = new Banco();
+        Conexao con = new Conexao();
         try{
             con.Conecta();
             String sql = "INSERT INTO veterinario(Nome, Sobrenome, email, Telefone, CPF, DataNascimento, Sexo, idVeterinario, senhaVeterinario) VALUES (?,?,?,?,?,?,?,?,?)";
@@ -49,7 +49,7 @@ public class VeterinarioDAO {
     }
     
     public void pesquisarVeterinarioNoBanco (String cpf) throws ClassNotFoundException, SQLException{
-        Banco con = new Banco();
+        Conexao con = new Conexao();
         con.Conecta();
         Statement stmt = null;
         ResultSet rs = null;
@@ -65,7 +65,7 @@ public class VeterinarioDAO {
     }
     
     public void alterarVeterinarioNoBanco (String cpf,ModeloVeterinario veterinario) throws ClassNotFoundException, SQLException{
-        Banco con = new Banco();
+        Conexao con = new Conexao();
         try{
             con.Conecta();
             String sql ="UPDATE Veterinario SET Nome = ?, Sobrenome = ?, email = ?, Telefone = ?,"
@@ -93,7 +93,7 @@ public class VeterinarioDAO {
     }
     
     public void excluirVeterinarioNoBanco (String cpf) throws ClassNotFoundException, SQLException{
-        Banco con = new Banco();
+        Conexao con = new Conexao();
     
         try{
             con.Conecta();

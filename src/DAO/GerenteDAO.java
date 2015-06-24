@@ -6,7 +6,7 @@
 package DAO;
 
 import Modelo.ModeloGerente;
-import Persistencia.Banco;
+import Persistencia.Conexao;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -19,7 +19,7 @@ public class GerenteDAO {
         
     
     public void inserirGerenteNoBanco(ModeloGerente gerente) throws ClassNotFoundException, SQLException{
-    Banco con = new Banco();
+    Conexao con = new Conexao();
         try{
             con.Conecta();
             String sql = "INSERT INTO Gerente() VALUES (?,?,?,?,?,?,?,?,?)";
@@ -48,7 +48,7 @@ public class GerenteDAO {
     }
     
     public void alterarGerenteNoBanco (String cpf,ModeloGerente gerente) throws ClassNotFoundException, SQLException{
-        Banco con = new Banco();
+        Conexao con = new Conexao();
         try{
             con.Conecta();
             String sql ="UPDATE Gerente SET Nome = ?, Sobrenome = ?, email = ?, Telefone = ?,"
@@ -76,7 +76,7 @@ public class GerenteDAO {
     }
     
     public void excluirGerenteNoBanco (String cpf) throws ClassNotFoundException, SQLException{
-        Banco con = new Banco();
+        Conexao con = new Conexao();
     
         try{
             con.Conecta();

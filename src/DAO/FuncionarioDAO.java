@@ -6,7 +6,7 @@
 package DAO;
 
 import Modelo.ModeloFuncionario;
-import Persistencia.Banco;
+import Persistencia.Conexao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -21,7 +21,7 @@ public class FuncionarioDAO {
     
     
     public void inserirFuncionarioNoBanco(ModeloFuncionario funcionario) throws ClassNotFoundException, SQLException{
-    Banco con = new Banco();
+    Conexao con = new Conexao();
         try{
             con.Conecta();
             String sql = "INSERT INTO funcionario(Nome, Sobrenome, email, Telefone, CPF, DataNascimento, Sexo, idFuncionario, senhaFuncionario) VALUES (?,?,?,?,?,?,?,?,?)";
@@ -50,7 +50,7 @@ public class FuncionarioDAO {
     }
     
     public void pesquisaFuncionarioNoBanco (String cpf) throws ClassNotFoundException, SQLException{
-        Banco con = new Banco();
+        Conexao con = new Conexao();
         con.Conecta();
         Statement stmt = null;
         ResultSet rs = null;
@@ -66,7 +66,7 @@ public class FuncionarioDAO {
     }
     
     public void alterarFuncionarioNoBanco (String cpf,ModeloFuncionario funcionario) throws ClassNotFoundException, SQLException{
-        Banco con = new Banco();
+        Conexao con = new Conexao();
         try{
             con.Conecta();
             String sql ="UPDATE FUNCIONARIO SET Nome = ?, Sobrenome = ?, email = ?, Telefone = ?,"
@@ -94,7 +94,7 @@ public class FuncionarioDAO {
     }
     
     public void excluirFuncionarioNoBanco (String cpf) throws ClassNotFoundException, SQLException{
-        Banco con = new Banco();
+        Conexao con = new Conexao();
     
         try{
             con.Conecta();

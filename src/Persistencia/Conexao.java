@@ -14,38 +14,27 @@ import java.sql.DriverManager;
  *
  * @author Alex
  */
-public class Banco {
-    private String host;
-    private String nomeBanco;
-    private String url;
-    private String login;
-    private String senha;
-    private Connection conexao;
+public class Conexao {
+    private String url = "jdbc:mysql://localhost:3306/clinica";
+    private String login = "root";
+    private String senha = "alex123";
+    private com.mysql.jdbc.Connection conexao;
     private Statement stmt;
 
-
-
-    public void setHost(String host) {
-        this.host = host;
-    }
-
-    public void setNomebanco(String nomebanco) {
-        this.nomeBanco = nomebanco;
-    }
 
     public void setUrl(String url) {
         this.url = url;
     }
-
-    public void setLogin(String login) {
+    
+    public void setLogin(String login){
         this.login = login;
     }
-
-    public void setSenha(String senha) {
+    
+    public void setSenha(String senha){
         this.senha = senha;
     }
-
-    public void setConexao(Connection conexao) {
+    
+    public void setConexao(com.mysql.jdbc.Connection conexao) {
         this.conexao = conexao;
     }
 
@@ -53,49 +42,32 @@ public class Banco {
         this.stmt = stmt;
     }
 
-    public String getHost() {
-        return host;
-    }
-
-    public String getNomebanco() {
-        return nomeBanco;
-    }
-
     public String getUrl() {
-        return url;
+        return this.url;
     }
-
-    public String getLogin() {
+    
+    public String getLogin(){
         return login;
     }
-
+    
     public String getSenha() {
-        return senha;
+        return this.senha;
     }
 
-    public Connection getConexao() {
-        return conexao;
+    public com.mysql.jdbc.Connection getConexao() {
+        return this.conexao;
     }
 
     public Statement getStmt() {
-        return stmt;
+        return this.stmt;
     }
 
-public Banco(){
-        host = "localhost";
-        nomeBanco = "clinica";
-        url = "jdbc:mysql://localhost/clinica";
-        login = "root";
-        senha = "alex123";
-        conexao = null;
-        stmt = null;
-    }
 
-    public void Conecta() throws ClassNotFoundException{
+    public Conexao() throws ClassNotFoundException{
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            conexao = (Connection) DriverManager.getConnection(url,login,senha);
-            
+           this.conexao = (com.mysql.jdbc.Connection) DriverManager.getConnection(this.url, this.login, this.senha);
+            this.stmt = (Statement) this.conexao.createStatement();
+           
         }
         catch (SQLException sqlException)
         {
@@ -107,6 +79,7 @@ public Banco(){
     public void Desconecta(){
         try
         {
+        stmt.close();
         conexao.close();
         }
         catch(Exception exception)

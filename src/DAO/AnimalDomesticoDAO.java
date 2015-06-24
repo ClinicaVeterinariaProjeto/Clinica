@@ -6,7 +6,7 @@
 package DAO;
 
 import Modelo.ModeloAnimalDomestico;
-import Persistencia.Banco;
+import Persistencia.Conexao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -24,7 +24,7 @@ public class AnimalDomesticoDAO {
     // formato de data dia/mes/ano
             DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy"); 
     public void inserirAnimalNoBanco(ModeloAnimalDomestico animalDomestico) throws ClassNotFoundException, SQLException, ParseException{
-        Banco con = new Banco();
+        Conexao con = new Conexao();
         try{
             con.Conecta();
             String sql1 = "INSERT INTO Animal(idAnimal, idCliente) VALUES (?,?)";
@@ -54,7 +54,7 @@ public class AnimalDomesticoDAO {
     
     }
     public void alterarAnimalNoBanco(ModeloAnimalDomestico animalDomestico) throws ClassNotFoundException, SQLException, ParseException{
-        Banco con = new Banco();
+        Conexao con = new Conexao();
         try{
             con.Conecta();
             String sql ="UPDATE Domestico SET Raca = ?, Nome = ?, AnoNascimento = ?, Peso = ?,"
@@ -75,7 +75,7 @@ public class AnimalDomesticoDAO {
         }
     }
     public void pesquisarAnimalNoBanco(String cpf) throws ClassNotFoundException, SQLException{
-        Banco con = new Banco();
+        Conexao con = new Conexao();
         con.Conecta();
         Statement stmt = null;
         ResultSet rs = null;     
@@ -90,7 +90,7 @@ public class AnimalDomesticoDAO {
     
     }
     public void excluirAnimalNoBanco () throws ClassNotFoundException, SQLException{
-        Banco con = new Banco();
+        Conexao con = new Conexao();
     
         try{
             con.Conecta();

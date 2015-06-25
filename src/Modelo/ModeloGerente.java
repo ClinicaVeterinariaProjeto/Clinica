@@ -14,12 +14,12 @@ import java.util.Date;
 public class ModeloGerente extends ModeloPessoa {
     
     private int idGerente;
-    private int senhaGerente;
+    private String senhaGerente;
 
     public ModeloGerente() {
     }
 
-    public ModeloGerente(int idGerente, int senhaGerente, String nome, String sobrenome, String cpf, String email, String telefone, String sexo, String dataNascimento, String rua, String cidade, String bairro, int numeroCasa) {
+    public ModeloGerente(int idGerente, String senhaGerente, String nome, String sobrenome, String cpf, String email, String telefone, String sexo, String dataNascimento, String rua, String cidade, String bairro, int numeroCasa) {
         super(nome, sobrenome, cpf, email, telefone, sexo, dataNascimento, rua, cidade, bairro, numeroCasa);
         this.idGerente = idGerente;
         this.senhaGerente = senhaGerente;
@@ -29,7 +29,7 @@ public class ModeloGerente extends ModeloPessoa {
         return idGerente;
     }
 
-    public int getSenhaGerente() {
+    public String getSenhaGerente() {
         return senhaGerente;
     }
 
@@ -37,7 +37,7 @@ public class ModeloGerente extends ModeloPessoa {
         this.idGerente = idGerente;
     }
 
-    public void setSenhaGerente(int senhaGerente) {
+    public void setSenhaGerente(String senhaGerente) {
         this.senhaGerente = senhaGerente;
     }
  

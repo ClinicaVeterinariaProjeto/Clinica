@@ -17,9 +17,10 @@ import java.sql.ResultSetMetaData;
  * @author Alex
  */
 public class ClienteDAO {
+     private Connection conexao;
     
  public void inserirClienteNoBanco(ModeloCliente cliente) throws ClassNotFoundException, SQLException, Exception  {  
-        try {     
+      /* try {     
         Conexao con = new Conexao();
            com.mysql.jdbc.Statement stmt = con.getStmt();
            
@@ -33,18 +34,17 @@ public class ClienteDAO {
             throw new Exception("Erro ao Salvar Dados!");
         }
            
- }
+ }*/
         
         
-       /*Conexao con = new Conexao();
+       this.conexao = new Conexao().getConexao();
 
         
         try{
               
-            //com.mysql.jdbc.Statement st = con.getStmt();
             String query = "INSERT INTO cliente(Nome, Sobrenome, email, Telefone, CPF, DataNascimento, Sexo, idCliente, Rua, NumeroCasa, Bairro, Cidade) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
  
-            PreparedStatement pstmt = con.prepareStatement(query);
+            PreparedStatement pstmt = conexao.prepareStatement(query);
             pstmt.setString(1, cliente.getNome());
             pstmt.setString(2, cliente.getSobrenome());
             pstmt.setString(3, cliente.getEmail());
@@ -58,37 +58,48 @@ public class ClienteDAO {
             pstmt.setString(11, cliente.getBairro());
             pstmt.setString(12,cliente.getCidade());
             pstmt.executeUpdate();
-            con.Desconecta();
+            pstmt.close();
+            conexao.close();
         } 
         catch (SQLException sqlException) {
             sqlException.printStackTrace();
         }
-    }*/
+    }
     
     
     public ModeloCliente pesquisaClienteNoBanco (String cpf) throws ClassNotFoundException, SQLException{
-        Conexao con = new Conexao();
+        this.conexao = new Conexao().getConexao();
         ModeloCliente dadosCliente = new ModeloCliente(); 
-        com.mysql.jdbc.Statement stmt = con.getStmt();
+        
         ResultSet rs = null;
       try{
-          rs = stmt.executeQuery("select * from cliente where cpf='" +cpf+"';" );
+          //rs = stmt.executeQuery("select * from cliente where cpf='" +cpf+"';" );
+           //PreparedStatement pstmt = this.conexao.prepareStatement("SELECT * FROM cliente WHERE cpf = ?");
+          String sql ="Select cpf, nome, sobrenome, email, telefone, DataNascimento, sexo, idCliente, rua, numeroCasa, bairro, cidade  FROM CLIENTE WHERE CPF = ?";
+          PreparedStatement pstmt = conexao.prepareStatement(sql); 
+          pstmt.setString(1, cpf);
+           rs = pstmt.executeQuery();
           while (rs.next()){
+             
               ModeloCliente temp = new ModeloCliente();
               temp.setCpf(rs.getString("cpf"));
               temp.setNome(rs.getString("nome"));
               temp.setSobrenome(rs.getString("sobrenome"));
               temp.setEmail(rs.getString("email"));
               temp.setTelefone(rs.getString("telefone"));
-              temp.setDataNascimento(rs.getString("datanasciemnto"));
+              temp.setDataNascimento(rs.getString("datanascimento"));
               temp.setSexo(rs.getString("sexo"));
               temp.setIdCliente(rs.getInt("idCliente"));
               temp.setRua(rs.getString("rua"));
-              temp.setNumeroCasa(rs.getInt("numerocasa"));
+              temp.setNumeroCasa(rs.getInt("numeroCasa"));
               temp.setBairro(rs.getString("bairro"));
               temp.setCidade(rs.getString("cidade"));
               dadosCliente=temp;
+              
               }
+          rs.close();
+          pstmt.close();
+          conexao.close();
          
           return dadosCliente;
       }
@@ -101,24 +112,26 @@ public class ClienteDAO {
             
     
     public void alterarClienteNoBanco (String cpf,ModeloCliente cliente) throws ClassNotFoundException, SQLException{
-    Conexao con = new Conexao();
+    this.conexao = new Conexao().getConexao();
+    
         try{
-            con.Conecta();
+            
             String sql ="UPDATE CLIENTE SET Nome = ?, Sobrenome = ?, email = ?, Telefone = ?,"
             + " Rua = ?, NumeroCasa = ?, Bairro = ?, Cidade = ? WHERE CPF=?" ;
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1,cliente.getNome());
-            stmt.setString(2,cliente.getSobrenome());
-            stmt.setString(3,cliente.getEmail());
-            stmt.setString(4,cliente.getTelefone());            
-            stmt.setString(5,cliente.getRua());
-            stmt.setInt(6,cliente.getNumeroCasa());
-            stmt.setString(7,cliente.getBairro());
-            stmt.setString(8,cliente.getCidade());
-            stmt.setString(9,cpf);
+            PreparedStatement pstmt = conexao.prepareStatement(sql);
+            pstmt.setString(1,cliente.getNome());
+            pstmt.setString(2,cliente.getSobrenome());
+            pstmt.setString(3,cliente.getEmail());
+            pstmt.setString(4,cliente.getTelefone());            
+            pstmt.setString(5,cliente.getRua());
+            pstmt.setInt(6,cliente.getNumeroCasa());
+            pstmt.setString(7,cliente.getBairro());
+            pstmt.setString(8,cliente.getCidade());
+            pstmt.setString(9,cpf);
             
-            stmt.execute();
-            con.Desconecta();
+            pstmt.execute();
+            pstmt.close();
+            conexao.close();
         }
         catch (SQLException sqlException) {
             sqlException.printStackTrace();
@@ -126,15 +139,16 @@ public class ClienteDAO {
     }
     
     public void excluirClienteNoBanco (String cpf) throws ClassNotFoundException, SQLException{
-    Conexao con = new Conexao();
+    this.conexao = new Conexao().getConexao();
     
         try{
-            con.Conecta();
+            
             String sql ="DELETE FROM CLIENTE WHERE CPF = ?";
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1,cpf);  
-            stmt.execute();
-            con.Desconecta();
+            PreparedStatement pstmt = conexao.prepareStatement(sql);
+            pstmt.setString(1,cpf);  
+            pstmt.execute();
+            pstmt.close();
+            conexao.close();
         }
         catch (SQLException sqlException) {
             sqlException.printStackTrace();

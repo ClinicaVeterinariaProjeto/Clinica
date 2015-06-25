@@ -6,7 +6,9 @@
 package DAO;
 
 import Modelo.ModeloFuncionario;
+import Modelo.ModeloGerente;
 import Persistencia.Conexao;
+import com.mysql.jdbc.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -18,31 +20,38 @@ import java.sql.Statement;
  * @author William
  */
 public class FuncionarioDAO {
-    
+    private Connection conexao;
     
     public void inserirFuncionarioNoBanco(ModeloFuncionario funcionario) throws ClassNotFoundException, SQLException{
-    Conexao con = new Conexao();
+     this.conexao = new Conexao().getConexao();
+     int idGerente;
+     ModeloGerente gerente = new ModeloGerente();
+     GerenteDAO gr = new GerenteDAO();
+        idGerente = gr.pesquisaGerenteNoBanco(gerente.getCpf());
         try{
-            con.Conecta();
-            String sql = "INSERT INTO funcionario(Nome, Sobrenome, email, Telefone, CPF, DataNascimento, Sexo, idFuncionario, senhaFuncionario) VALUES (?,?,?,?,?,?,?,?,?)";
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1,funcionario.getNome());
-            stmt.setString(2,funcionario.getSobrenome());
-            stmt.setString(3,funcionario.getEmail());
-            stmt.setString(4,funcionario.getTelefone());
-            stmt.setString(5,funcionario.getCpf());
-            stmt.setString(6,funcionario.getDataNascimento());
-            stmt.setString(7,funcionario.getSexo());
-            stmt.setInt(8,funcionario.getIdFuncionario());
-            stmt.setInt(9,funcionario.getSenhaFuncionario());
-            //endereço
-            stmt.setString(9,funcionario.getRua());
-            stmt.setInt(10,funcionario.getNumeroCasa());
-            stmt.setString(11,funcionario.getBairro());
-            stmt.setString(12,funcionario.getCidade());
+              
             
-            stmt.execute();
-            con.Desconecta();
+            
+            String query = "INSERT INTO funcionario(Nome, Sobrenome, email, Telefone, CPF, DataNascimento, Sexo, idFuncionario, senhaFuncionario, Rua, NumeroCasa, Bairro, Cidade, idGerente) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+ 
+            PreparedStatement pstmt = conexao.prepareStatement(query);
+            pstmt.setString(1, funcionario.getNome());
+            pstmt.setString(2, funcionario.getSobrenome());
+            pstmt.setString(3, funcionario.getEmail());
+            pstmt.setString(4,  funcionario.getTelefone());
+            pstmt.setString(5, funcionario.getCpf());
+            pstmt.setString(6, funcionario.getDataNascimento());
+            pstmt.setString(7, funcionario.getSexo());
+            pstmt.setInt(8, funcionario.getIdFuncionario());
+            pstmt.setString(9, funcionario.getSenhaFuncionario());
+            pstmt.setString(10, funcionario.getRua());
+            pstmt.setInt(11, funcionario.getNumeroCasa());
+            pstmt.setString(12, funcionario.getBairro());
+            pstmt.setString(13,funcionario.getCidade());
+            pstmt.setInt(idGerente, gerente.getIdGerente());
+            pstmt.executeUpdate();
+            pstmt.close();
+            conexao.close();
         } 
         catch (SQLException sqlException) {
             sqlException.printStackTrace();

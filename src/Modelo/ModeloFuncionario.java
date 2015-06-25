@@ -13,12 +13,12 @@ import java.util.Date;
  */
 public class ModeloFuncionario extends ModeloPessoa implements InterfaceControleDados{
     private int idFuncionario;
-    private int senhaFuncionario;
+    private String senhaFuncionario;
 
     public ModeloFuncionario() {
     }
 
-    public ModeloFuncionario(int idFuncionario, int senhaFuncionario, String nome, String sobrenome, String cpf, String email, String telefone, String sexo, String dataNascimento, String rua, String cidade, String bairro, int numeroCasa) {
+    public ModeloFuncionario(int idFuncionario, String senhaFuncionario, String nome, String sobrenome, String cpf, String email, String telefone, String sexo, String dataNascimento, String rua, String cidade, String bairro, int numeroCasa) {
         super(nome, sobrenome, cpf, email, telefone, sexo, dataNascimento, rua, cidade, bairro, numeroCasa);
         this.idFuncionario = idFuncionario;
         this.senhaFuncionario = senhaFuncionario;
@@ -28,7 +28,7 @@ public class ModeloFuncionario extends ModeloPessoa implements InterfaceControle
         return idFuncionario;
     }
 
-    public int getSenhaFuncionario() {
+    public String getSenhaFuncionario() {
         return senhaFuncionario;
     }
 
@@ -36,7 +36,7 @@ public class ModeloFuncionario extends ModeloPessoa implements InterfaceControle
         this.idFuncionario = idFuncionario;
     }
 
-    public void setSenhaFuncionario(int senhaFuncionario) {
+    public void setSenhaFuncionario(String senhaFuncionario) {
         this.senhaFuncionario = senhaFuncionario;
     }
     

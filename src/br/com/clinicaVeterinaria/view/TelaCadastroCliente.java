@@ -508,6 +508,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                 cliente.setRua(jtRua.getText());
                 cliente.setSexo(jtSexo.getText());
                 cliente.setTelefone(jtTelefone.getText());
+                cliente.setDataNascimento(jtDataAno.getText()+jtDataMes.getText()+jtDataDia.getText());
 
             } catch (Exception ex) {
                 Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);

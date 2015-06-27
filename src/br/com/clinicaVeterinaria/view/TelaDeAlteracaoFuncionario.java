@@ -7,6 +7,9 @@ package br.com.clinicaVeterinaria.view;
 
 import Controle.ControleTeclasPermitidasLetras;
 import Controle.ControleTeclasPermitidasNumeros;
+import Modelo.ModeloFuncionario;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -33,6 +36,7 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
         jlCampoObrigatorioCidade.setVisible(false);
         jlCampoObrigatorioCPF.setVisible(false);
         jlCampoObrigatorioBairro.setVisible(false);
+        jlCampoObrigatorioNumerodaCasa.setVisible(false);
         jtBairro.setDocument(new ControleTeclasPermitidasLetras(30));
         jtCidade.setDocument(new ControleTeclasPermitidasLetras(30));
         jtCpf.setDocument(new ControleTeclasPermitidasNumeros(11));
@@ -44,6 +48,7 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
         jtSexo.setDocument(new ControleTeclasPermitidasLetras(10));
         jtTelefone.setDocument(new ControleTeclasPermitidasNumeros(10));
         jtNome.setDocument(new ControleTeclasPermitidasLetras(30));
+        jtNumerodaCasa.setDocument(new ControleTeclasPermitidasNumeros(4));
     }
 
     /**
@@ -80,7 +85,7 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
         jtNovaSenha = new javax.swing.JPasswordField();
         jtSenha = new javax.swing.JPasswordField();
         jtLogin = new javax.swing.JPasswordField();
-        jbAlterar = new javax.swing.JToggleButton();
+        jbAlterarFuncionario = new javax.swing.JToggleButton();
         jbCancelar = new javax.swing.JButton();
         jlCidade = new javax.swing.JLabel();
         jlBairro = new javax.swing.JLabel();
@@ -103,7 +108,10 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
         jlCampoObrigatorioLogin = new javax.swing.JLabel();
         jlCampoObrigatorioSenha = new javax.swing.JLabel();
         jlCampoObrigatorioNovaSenha = new javax.swing.JLabel();
-        jbExcluir = new javax.swing.JButton();
+        jtNumerodaCasa = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jlCampoObrigatorioNumerodaCasa = new javax.swing.JLabel();
+        jbExcluirFuncionario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -140,10 +148,10 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
 
         jlNovaSenha.setText("Nova Senha");
 
-        jbAlterar.setText("Alterar Funcionário");
-        jbAlterar.addActionListener(new java.awt.event.ActionListener() {
+        jbAlterarFuncionario.setText("Cadastrar Funcionário");
+        jbAlterarFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbAlterarActionPerformed(evt);
+                jbAlterarFuncionarioActionPerformed(evt);
             }
         });
 
@@ -201,7 +209,12 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
         jlCampoObrigatorioNovaSenha.setForeground(new java.awt.Color(255, 0, 0));
         jlCampoObrigatorioNovaSenha.setText("Campo Obrigatório *");
 
-        jbExcluir.setText("Excluir Funcionário");
+        jLabel1.setText("Nº");
+
+        jlCampoObrigatorioNumerodaCasa.setForeground(new java.awt.Color(255, 0, 0));
+        jlCampoObrigatorioNumerodaCasa.setText("Campo Obrigatório *");
+
+        jbExcluirFuncionario.setText("Excluir Funcionário");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -226,93 +239,91 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
                         .addComponent(jlCampoObrigatorioDataNascimento)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel11))
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 672, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 672, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jlNovaSenha)
-                                            .addComponent(jlSenha)
-                                            .addComponent(jlLogin))
-                                        .addGap(55, 55, 55)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jtNovaSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                            .addComponent(jtLogin)
-                                            .addComponent(jtSenha))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jlCampoObrigatorioLogin)
-                                            .addComponent(jlCampoObrigatorioSenha)
-                                            .addComponent(jlCampoObrigatorioNovaSenha)))
-                                    .addComponent(jbExcluir)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jlNome, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jlCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jlTelefone))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jtCpf, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                                            .addComponent(jtTelefone)))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jlRua)
-                                                        .addComponent(jlCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                    .addComponent(jlBairro)
-                                                    .addGap(51, 51, 51)))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jlEstado)
-                                                .addGap(46, 46, 46)))
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jtRua, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                                            .addComponent(jtCidade)
-                                            .addComponent(jtBairro)
-                                            .addComponent(jtEstado))))
+                                    .addComponent(jlNovaSenha)
+                                    .addComponent(jlSenha)
+                                    .addComponent(jlLogin))
+                                .addGap(55, 55, 55)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jtNovaSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                    .addComponent(jtLogin)
+                                    .addComponent(jtSenha))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jlCampoObrigatorioNome, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jlCampoObrigatorioRua)
-                                    .addComponent(jlCampoObrigatorioCidade)
-                                    .addComponent(jlCampoObrigatorioBairro)
-                                    .addComponent(jlCampoObrigatorioEstado)
-                                    .addComponent(jlCampoObrigatorioCPF)
-                                    .addComponent(jlCampoObrigatorioTelefone)))
+                                    .addComponent(jlCampoObrigatorioLogin)
+                                    .addComponent(jlCampoObrigatorioSenha)
+                                    .addComponent(jlCampoObrigatorioNovaSenha)))
+                            .addComponent(jbExcluirFuncionario)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jlCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jlTelefone))
+                                .addGap(37, 37, 37)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jtCpf, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                                    .addComponent(jtTelefone))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jlSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jlEmail))
-                                .addGap(39, 39, 39)
+                                    .addComponent(jlRua)
+                                    .addComponent(jlCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jlEstado)
+                                    .addComponent(jlBairro)
+                                    .addComponent(jlNome, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(34, 34, 34)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jtSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jlCampoObrigatorioSexo))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jlCampoObrigatorioEmail)))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                    .addComponent(jtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jtEstado, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                                        .addComponent(jtBairro, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jtCidade, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jtRua, javax.swing.GroupLayout.Alignment.LEADING)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jlCampoObrigatorioRua)
+                                .addGap(16, 16, 16)
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtNumerodaCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jlCampoObrigatorioNumerodaCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jlCampoObrigatorioCidade)
+                            .addComponent(jlCampoObrigatorioBairro)
+                            .addComponent(jlCampoObrigatorioEstado)
+                            .addComponent(jlCampoObrigatorioCPF)
+                            .addComponent(jlCampoObrigatorioTelefone)
+                            .addComponent(jlCampoObrigatorioNome, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(85, 85, 85))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlEmail))
+                        .addGap(39, 39, 39)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jtSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jlCampoObrigatorioSexo))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jlCampoObrigatorioEmail)))))
                 .addGap(159, 159, 159))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jbCancelar)
                 .addGap(18, 18, 18)
-                .addComponent(jbAlterar)
+                .addComponent(jbAlterarFuncionario)
                 .addGap(256, 256, 256))
         );
         jPanel1Layout.setVerticalGroup(
@@ -327,7 +338,10 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlRua, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtRua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlCampoObrigatorioRua))
+                    .addComponent(jlCampoObrigatorioRua)
+                    .addComponent(jtNumerodaCasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(jlCampoObrigatorioNumerodaCasa))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlCidade)
@@ -343,11 +357,15 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
                     .addComponent(jlEstado)
                     .addComponent(jtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlCampoObrigatorioEstado))
-                .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlCampoObrigatorioCPF))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jlCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlCampoObrigatorioCPF))))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -390,11 +408,11 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
                     .addComponent(jlNovaSenha)
                     .addComponent(jtNovaSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlCampoObrigatorioNovaSenha))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbAlterar)
+                    .addComponent(jbAlterarFuncionario)
                     .addComponent(jbCancelar)
-                    .addComponent(jbExcluir))
+                    .addComponent(jbExcluirFuncionario))
                 .addContainerGap())
         );
 
@@ -406,7 +424,7 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -417,7 +435,7 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtDataDiaActionPerformed
 
-    private void jbAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAlterarActionPerformed
+    private void jbAlterarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAlterarFuncionarioActionPerformed
         // TODO add your handling code here:
         int correto = 0;
         int mes, ano, dia;
@@ -463,6 +481,15 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
             jlCampoObrigatorioCPF.setVisible(true);
             //correto = false;
         }
+
+        if (jtNumerodaCasa.getText().length() > 0) {
+            jlCampoObrigatorioNumerodaCasa.setVisible(false);
+            correto++;
+        } else {
+            jlCampoObrigatorioNumerodaCasa.setVisible(true);
+            //correto = false;
+        }
+
         if (jtTelefone.getText().length() > 0) {
             jlCampoObrigatorioTelefone.setVisible(false);
             correto++;
@@ -492,19 +519,18 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
             jlCampoObrigatorioDataNascimento.setVisible(true);
         }
 
-        
         if (jtSexo.getText().length() > 0) {
             if(jtSexo.getText().equals("MASCULINO") || jtSexo.getText().equals("FEMININO")){
-            jlCampoObrigatorioSexo.setVisible(false);
-            correto++;
+                jlCampoObrigatorioSexo.setVisible(false);
+                correto++;
             }
             else {
-            jlCampoObrigatorioSexo.setVisible(true);
-        }
+                jlCampoObrigatorioSexo.setVisible(true);
+            }
         } else {
             jlCampoObrigatorioSexo.setVisible(true);
         }
-        
+
         if (jtEmail.getText().length() > 0) {
             jlCampoObrigatorioEmail.setVisible(false);
             correto++;
@@ -534,12 +560,28 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "As senhas não correspondem!");
             //correto = false;
         }
-        if (correto == 13) {
+        if (correto == 14) {
+            try {
+                ModeloFuncionario funcionario = new ModeloFuncionario();
+                funcionario.setNome(jtNome.getText());
+                funcionario.setBairro(jtBairro.getText());
+                funcionario.setCidade(jtCidade.getText());
+                funcionario.setCpf(jtCpf.getText());
+                funcionario.setEmail(jtEmail.getText());
+                funcionario.setNumeroCasa(Integer.parseInt(jtNumerodaCasa.getText()));
+                funcionario.setRua(jtRua.getText());
+                funcionario.setSexo(jtSexo.getText());
+                funcionario.setTelefone(jtTelefone.getText());
+                funcionario.setDataNascimento(jtDataAno.getText()+jtDataMes.getText()+jtDataDia.getText());
+
+            } catch (Exception ex) {
+                Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
             JOptionPane.showMessageDialog(this, "informaçoes corretas");
         } else {
             JOptionPane.showMessageDialog(this, "informações invalidas");
-        }   
-    }//GEN-LAST:event_jbAlterarActionPerformed
+        }
+    }//GEN-LAST:event_jbAlterarFuncionarioActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
         // TODO add your handling code here:
@@ -582,14 +624,15 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JToggleButton jbAlterar;
+    private javax.swing.JToggleButton jbAlterarFuncionario;
     private javax.swing.JButton jbCancelar;
-    private javax.swing.JButton jbExcluir;
+    private javax.swing.JButton jbExcluirFuncionario;
     private javax.swing.JLabel jlBairro;
     private javax.swing.JLabel jlCampoObrigatorioBairro;
     private javax.swing.JLabel jlCampoObrigatorioCPF;
@@ -600,6 +643,7 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
     private javax.swing.JLabel jlCampoObrigatorioLogin;
     private javax.swing.JLabel jlCampoObrigatorioNome;
     private javax.swing.JLabel jlCampoObrigatorioNovaSenha;
+    private javax.swing.JLabel jlCampoObrigatorioNumerodaCasa;
     private javax.swing.JLabel jlCampoObrigatorioRua;
     private javax.swing.JLabel jlCampoObrigatorioSenha;
     private javax.swing.JLabel jlCampoObrigatorioSexo;
@@ -627,6 +671,7 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
     private javax.swing.JPasswordField jtLogin;
     private javax.swing.JTextField jtNome;
     private javax.swing.JPasswordField jtNovaSenha;
+    private javax.swing.JTextField jtNumerodaCasa;
     private javax.swing.JTextField jtRua;
     private javax.swing.JPasswordField jtSenha;
     private javax.swing.JTextField jtSexo;

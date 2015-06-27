@@ -72,10 +72,8 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
         jbCancelar = new javax.swing.JButton();
         jlNomeCliente = new javax.swing.JLabel();
         jlCpfCliente = new javax.swing.JLabel();
-        jlEndereco = new javax.swing.JLabel();
         jtNomeCliente = new javax.swing.JTextField();
         jtCpfCliente = new javax.swing.JTextField();
-        jtEnderecoCliente = new javax.swing.JTextField();
         jlIdCliente = new javax.swing.JLabel();
         jtIdCliente = new javax.swing.JTextField();
         jlIdAnimal = new javax.swing.JLabel();
@@ -151,8 +149,6 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
         jlNomeCliente.setText("Nome Cliente");
 
         jlCpfCliente.setText("CPF");
-
-        jlEndereco.setText("Endereço");
 
         jlIdCliente.setText("ID");
 
@@ -230,13 +226,11 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jlNomeCliente)
-                                    .addComponent(jlCpfCliente)
-                                    .addComponent(jlEndereco))
-                                .addGap(18, 18, 18)
+                                    .addComponent(jlCpfCliente))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jtCpfCliente)
-                                    .addComponent(jtNomeCliente)
-                                    .addComponent(jtEnderecoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE))
+                                    .addComponent(jtNomeCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
+                                    .addComponent(jtCpfCliente))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jlIdCliente)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -297,15 +291,11 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jlIdCliente)
                             .addComponent(jtIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlCpfCliente)
                     .addComponent(jtCpfCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlEndereco)
-                    .addComponent(jtEnderecoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -509,7 +499,6 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
     private javax.swing.JLabel jlCampoObrigatorioUltimaVacinacaoAnimal;
     private javax.swing.JLabel jlCpfCliente;
     private javax.swing.JLabel jlDataNascimento;
-    private javax.swing.JLabel jlEndereco;
     private javax.swing.JLabel jlIdAnimal;
     private javax.swing.JLabel jlIdCliente;
     private javax.swing.JLabel jlNome;
@@ -524,7 +513,6 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
     private javax.swing.JTextField jtDataDia;
     private javax.swing.JTextField jtDataMes;
     private javax.swing.JTextField jtDiaVacinacao;
-    private javax.swing.JTextField jtEnderecoCliente;
     private javax.swing.JTextField jtIdAnimal;
     private javax.swing.JTextField jtIdCliente;
     private javax.swing.JTextField jtMesVacinacao;

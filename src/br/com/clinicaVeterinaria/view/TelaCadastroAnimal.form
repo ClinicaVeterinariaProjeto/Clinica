@@ -108,13 +108,11 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jlNomeCliente" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jlCpfCliente" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jlEndereco" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jtCpfCliente" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jtNomeCliente" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jtEnderecoCliente" alignment="0" pref="241" max="32767" attributes="0"/>
+                                      <Component id="jtNomeCliente" pref="223" max="32767" attributes="0"/>
+                                      <Component id="jtCpfCliente" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="jlIdCliente" min="-2" max="-2" attributes="0"/>
@@ -201,17 +199,12 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jlCpfCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jtCpfCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jlEndereco" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jtEnderecoCliente" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -386,16 +379,9 @@
             <Property name="text" type="java.lang.String" value="CPF"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jlEndereco">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Endere&#xe7;o"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JTextField" name="jtNomeCliente">
         </Component>
         <Component class="javax.swing.JTextField" name="jtCpfCliente">
-        </Component>
-        <Component class="javax.swing.JTextField" name="jtEnderecoCliente">
         </Component>
         <Component class="javax.swing.JLabel" name="jlIdCliente">
           <Properties>

@@ -486,21 +486,6 @@ public class TelaAlteracaoCliente extends javax.swing.JFrame {
         }
 
         if (correto == 11) {
-            try {
-                ModeloCliente cliente = new ModeloCliente();
-                cliente.setNome(jtNome.getText());
-                cliente.setBairro(jtBairro.getText());
-                cliente.setCidade(jtCidade.getText());
-                cliente.setCpf(jtCpf.getText());
-                cliente.setEmail(jtEmail.getText());
-                cliente.setNumeroCasa(Integer.parseInt(jtNumeroCasa.getText()));
-                cliente.setRua(jtRua.getText());
-                cliente.setSexo(jtSexo.getText());
-                cliente.setTelefone(jtTelefone.getText());
-
-            } catch (Exception ex) {
-                Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
-            }
             JOptionPane.showMessageDialog(this, "informaçoes corretas");
         } else {
             JOptionPane.showMessageDialog(this, "informações invalidas");

@@ -414,7 +414,8 @@ public class TelaCadastroVeterinario extends javax.swing.JFrame {
 
     private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
         // TODO add your handling code here:
-        int correto=0;
+        int correto = 0;
+        int dia, mes , ano;
         if (jtNome.getText().length() > 0) {
             jlCampoObrigatorioNome.setVisible(false);
             correto++;
@@ -450,7 +451,7 @@ public class TelaCadastroVeterinario extends javax.swing.JFrame {
             jlCampoObrigatorioEstado.setVisible(true);
             //correto = false;
         }
-        if (jtCpf.getText().length() > 0) {
+        if (jtCpf.getText().length() > 0 && jtCpf.getText().length() == 11) {
             jlCampoObrigatorioCPF.setVisible(false);
             correto++;
         } else {
@@ -464,34 +465,42 @@ public class TelaCadastroVeterinario extends javax.swing.JFrame {
             jlCampoObrigatorioTelefone.setVisible(true);
             //correto = false;
         }
-        if (jtDataAno.getText().length() > 0) {
-            jlCampoObrigatorioDataNascimento.setVisible(false);
-            correto++;
+        
+        if (jtDataAno.getText().length() > 0 && jtDataMes.getText().length() > 0 && jtDataDia.getText().length() > 0) {
+            ano = (Integer.parseInt(jtDataAno.getText()));
+            mes = (Integer.parseInt(jtDataMes.getText()));
+            dia = (Integer.parseInt(jtDataDia.getText()));
+            if (ano <= 2015 && ano > 1965) {
+                if (mes > 0 && mes <= 12) {
+                    if (dia > 0 && dia <= 30) {
+                        jlCampoObrigatorioDataNascimento.setVisible(false);
+                        correto++;
+                    } else {
+                        jlCampoObrigatorioDataNascimento.setVisible(true);
+                    }
+                } else {
+                    jlCampoObrigatorioDataNascimento.setVisible(true);
+                }
+            } else {
+                jlCampoObrigatorioDataNascimento.setVisible(true);
+            }
         } else {
             jlCampoObrigatorioDataNascimento.setVisible(true);
-            //correto = false;
         }
-        if (jtDataMes.getText().length() > 0) {
-            jlCampoObrigatorioDataNascimento.setVisible(false);
-            correto++;
-        } else {
-            jlCampoObrigatorioDataNascimento.setVisible(true);
-            //correto = false;
-        }
-        if (jtDataDia.getText().length() > 0 ) {
-            jlCampoObrigatorioDataNascimento.setVisible(false);
-            correto++;
-        } else {
-            jlCampoObrigatorioDataNascimento.setVisible(true);
-            //correto = false;
-        }
+
+        
         if (jtSexo.getText().length() > 0) {
+            if(jtSexo.getText().equals("MASCULINO") || jtSexo.getText().equals("FEMININO")){
             jlCampoObrigatorioSexo.setVisible(false);
             correto++;
+            }
+            else {
+            jlCampoObrigatorioSexo.setVisible(true);
+        }
         } else {
             jlCampoObrigatorioSexo.setVisible(true);
-            //correto = false;
         }
+        
         if (jtEmail.getText().length() > 0) {
             jlCampoObrigatorioEmail.setVisible(false);
             correto++;
@@ -521,10 +530,11 @@ public class TelaCadastroVeterinario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "As senhas não correspondem!");
             //correto = false;
         }
-        if(correto==15)
-        JOptionPane.showMessageDialog(this, "informaçoes corretas");
-        else
-        JOptionPane.showMessageDialog(this, "informações invalidas");
+        if (correto == 15) {
+            JOptionPane.showMessageDialog(this, "informaçoes corretas");
+        } else {
+            JOptionPane.showMessageDialog(this, "informações invalidas");
+        }
     }//GEN-LAST:event_jbCadastrarActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed

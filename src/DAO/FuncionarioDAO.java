@@ -21,13 +21,13 @@ import java.sql.Statement;
  */
 public class FuncionarioDAO {
     private Connection conexao;
-    
-    public void inserirFuncionarioNoBanco(ModeloFuncionario funcionario) throws ClassNotFoundException, SQLException{
+    //funcionando
+    public void inserirFuncionarioNoBanco(ModeloFuncionario funcionario,int idGerente) throws ClassNotFoundException, SQLException{
      this.conexao = new Conexao().getConexao();
-     int idGerente;
-     ModeloGerente gerente = new ModeloGerente();
-     GerenteDAO gr = new GerenteDAO();
-        idGerente = gr.pesquisaGerenteNoBanco(gerente.getCpf());
+     
+    // ModeloGerente gerente = new ModeloGerente();
+    // GerenteDAO gr = new GerenteDAO();
+       // idGerente = gr.pesquisaGerenteNoBanco(gerente.getCpf());
         try{
               
             
@@ -48,7 +48,7 @@ public class FuncionarioDAO {
             pstmt.setInt(11, funcionario.getNumeroCasa());
             pstmt.setString(12, funcionario.getBairro());
             pstmt.setString(13,funcionario.getCidade());
-            pstmt.setInt(idGerente, gerente.getIdGerente());
+            pstmt.setInt(14, idGerente);
             pstmt.executeUpdate();
             pstmt.close();
             conexao.close();
@@ -57,45 +57,68 @@ public class FuncionarioDAO {
             sqlException.printStackTrace();
         }
     }
-    
-    public void pesquisaFuncionarioNoBanco (String cpf) throws ClassNotFoundException, SQLException{
-        Conexao con = new Conexao();
-        con.Conecta();
-        Statement stmt = null;
+    // funcionando
+    public ModeloFuncionario pesquisarFuncionarioNoBanco (String cpf) throws ClassNotFoundException, SQLException{
+        this.conexao = new Conexao().getConexao();
+        ModeloFuncionario dadosFuncionario = new ModeloFuncionario();
         ResultSet rs = null;
-      
-        
-        rs = stmt.executeQuery("SELECT * FROM Funcionario ");
-        ResultSetMetaData metaData = rs.getMetaData();
-        
-        while((rs.next())) {
-            if(metaData.getColumnName(5).equals(cpf))
-                break; 
+        try{
+          //rs = stmt.executeQuery("select * from cliente where cpf='" +cpf+"';" );
+           //PreparedStatement pstmt = this.conexao.prepareStatement("SELECT * FROM cliente WHERE cpf = ?");
+          String sql ="Select cpf, nome, sobrenome, email, telefone, DataNascimento, sexo, idFuncionario,senhaFuncionario, rua, numeroCasa, bairro, cidade  FROM FUNCIONARIO WHERE CPF = ?";
+          PreparedStatement pstmt = conexao.prepareStatement(sql); 
+          pstmt.setString(1, cpf);
+          rs = pstmt.executeQuery();
+          while (rs.next()){
+             
+              ModeloFuncionario temp = new ModeloFuncionario();
+              temp.setCpf(rs.getString("cpf"));
+              temp.setNome(rs.getString("nome"));
+              temp.setSobrenome(rs.getString("sobrenome"));
+              temp.setEmail(rs.getString("email"));
+              temp.setTelefone(rs.getString("telefone"));
+              temp.setDataNascimento(rs.getString("datanascimento"));
+              temp.setSexo(rs.getString("sexo"));
+              temp.setIdFuncionario(rs.getInt("idFuncionario"));
+              temp.setSenhaFuncionario(rs.getString("senhaFuncionario"));
+              temp.setRua(rs.getString("rua"));
+              temp.setNumeroCasa(rs.getInt("numeroCasa"));
+              temp.setBairro(rs.getString("bairro"));
+              temp.setCidade(rs.getString("cidade"));
+              dadosFuncionario=temp;              
+            }
+          rs.close();
+          pstmt.close();
+          conexao.close();
+         
+          return dadosFuncionario;
+        }
+        catch (SQLException e) { 
+          System.out.println("Erro ao buscar pessoa");
+          return null;
         }       
     }
-    
+    //funcionando
     public void alterarFuncionarioNoBanco (String cpf,ModeloFuncionario funcionario) throws ClassNotFoundException, SQLException{
-        Conexao con = new Conexao();
+        this.conexao = new Conexao().getConexao();
+    
         try{
-            con.Conecta();
-            String sql ="UPDATE FUNCIONARIO SET Nome = ?, Sobrenome = ?, email = ?, Telefone = ?,"
-            + " DataNascimento = ?, Sexo = ? WHERE CPF=?" ;
-            PreparedStatement stmt = con.prepareStatement(sql);
+            
+            String sql ="UPDATE Funcionario SET Nome = ?, Sobrenome = ?, email = ?, Telefone = ?,"
+            + " Rua = ?, NumeroCasa = ?, Bairro = ?, Cidade = ? WHERE CPF=?" ;
+            PreparedStatement stmt = conexao.prepareStatement(sql);
             stmt.setString(1,funcionario.getNome());
             stmt.setString(2,funcionario.getSobrenome());
             stmt.setString(3,funcionario.getEmail());
             stmt.setString(4,funcionario.getTelefone());            
-            stmt.setString(5,funcionario.getDataNascimento());
-            stmt.setString(6,funcionario.getSexo());
-            stmt.setString(7,cpf);
-            //endereço
-            stmt.setString(9,funcionario.getRua());
-            stmt.setInt(10,funcionario.getNumeroCasa());
-            stmt.setString(11,funcionario.getBairro());
-            stmt.setString(12,funcionario.getCidade());
-            
+            stmt.setString(5,funcionario.getRua());
+            stmt.setInt(6,funcionario.getNumeroCasa());
+            stmt.setString(7,funcionario.getBairro());
+            stmt.setString(8,funcionario.getCidade());
+            stmt.setString(9,cpf);
             stmt.execute();
-            con.Desconecta();
+            stmt.close();
+            conexao.close();
         }
         catch (SQLException sqlException) {
             sqlException.printStackTrace();
@@ -103,15 +126,16 @@ public class FuncionarioDAO {
     }
     
     public void excluirFuncionarioNoBanco (String cpf) throws ClassNotFoundException, SQLException{
-        Conexao con = new Conexao();
+       this.conexao = new Conexao().getConexao();
     
         try{
-            con.Conecta();
+            
             String sql ="DELETE FROM Funcionario WHERE CPF = ?";
-            PreparedStatement stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = conexao.prepareStatement(sql);
             stmt.setString(1,cpf);  
             stmt.execute();
-            con.Desconecta();
+            stmt.close();
+            conexao.close();
         }
         catch (SQLException sqlException) {
             sqlException.printStackTrace();

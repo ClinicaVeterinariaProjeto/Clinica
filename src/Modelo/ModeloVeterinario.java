@@ -11,11 +11,11 @@ package Modelo;
  */
 public class ModeloVeterinario extends ModeloPessoa implements InterfaceSalario{
     private int idVeterinario;
-    private int senhaVeterinario;
+    private String senhaVeterinario;
     
     public ModeloVeterinario(){}
     
-    public ModeloVeterinario(int idVeterinario, int senhaVeterinario, String nome, String sobrenome, String cpf, String email, String telefone, String sexo, String dataNascimento, String rua, String cidade, String bairro, int numeroCasa) {
+    public ModeloVeterinario(int idVeterinario, String senhaVeterinario, String nome, String sobrenome, String cpf, String email, String telefone, String sexo, String dataNascimento, String rua, String cidade, String bairro, int numeroCasa) {
         super(nome, sobrenome, cpf, email, telefone, sexo, dataNascimento, rua, cidade, bairro, numeroCasa);
         this.idVeterinario = idVeterinario;
         this.senhaVeterinario = senhaVeterinario;
@@ -25,7 +25,7 @@ public class ModeloVeterinario extends ModeloPessoa implements InterfaceSalario{
         return idVeterinario;
     }
 
-    public int getSenhaVeterinario() {
+    public String getSenhaVeterinario() {
         return senhaVeterinario;
     }
 
@@ -33,7 +33,7 @@ public class ModeloVeterinario extends ModeloPessoa implements InterfaceSalario{
         this.idVeterinario = idVeterinario;
     }
 
-    public void setSenhaVeterinario(int senhaVeterinario) {
+    public void setSenhaVeterinario(String senhaVeterinario) {
         this.senhaVeterinario = senhaVeterinario;
     }
     

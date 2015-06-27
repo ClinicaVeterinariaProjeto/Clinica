@@ -83,16 +83,16 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jlDadosAnimal" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jlNome" min="-2" pref="39" max="-2" attributes="0"/>
+                                  <Component id="jlDadosAnimal" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jlNome" alignment="0" min="-2" pref="39" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="jtNome" min="-2" pref="238" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jlQuantidade" min="-2" pref="73" max="-2" attributes="0"/>
-                                  <Group type="102" attributes="0">
+                                  <Component id="jlQuantidade" alignment="1" min="-2" pref="73" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
                                       <Component id="jlPeso" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
                                       <Component id="jtPeso" min="-2" pref="236" max="-2" attributes="0"/>
@@ -106,7 +106,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jtValor" min="-2" pref="54" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jlDataNascimento" alignment="0" min="-2" pref="118" max="-2" attributes="0"/>
                               <Component id="jlUltimaVacinacao" alignment="0" min="-2" pref="102" max="-2" attributes="0"/>

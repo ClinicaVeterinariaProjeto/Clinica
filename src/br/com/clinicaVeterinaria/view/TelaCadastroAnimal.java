@@ -5,6 +5,9 @@
  */
 package br.com.clinicaVeterinaria.view;
 
+import Controle.ControleTeclasPermitidasLetras;
+import Controle.ControleTeclasPermitidasNumeros;
+
 /**
  *
  * @author Alessandro
@@ -16,6 +19,21 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
      */
     public TelaCadastroAnimal() {
         initComponents();
+        jlCampoObrigatorioDataNascimentoAnimal.setVisible(false);
+        jlCampoObrigatorioNomeAnimal.setVisible(false);
+        jlCampoObrigatorioPesoAnimal.setVisible(false);
+        jlCampoObrigatorioRacaAnimal.setVisible(false);
+        jlCampoObrigatorioTipoAnimal.setVisible(false);
+        jlCampoObrigatorioUltimaVacinacaoAnimal.setVisible(false);
+        jtNome.setDocument(new ControleTeclasPermitidasLetras(30));
+        jtAnoVacinacao.setDocument(new ControleTeclasPermitidasNumeros(4));
+        jtMesVacinacao.setDocument(new ControleTeclasPermitidasNumeros(2));
+        jtDiaVacinacao.setDocument(new ControleTeclasPermitidasNumeros(2));
+        jtDataAno.setDocument(new ControleTeclasPermitidasNumeros(4));
+        jtDataMes.setDocument(new ControleTeclasPermitidasNumeros(2));
+        jtDataDia.setDocument(new ControleTeclasPermitidasNumeros(2));
+        jtPeso.setDocument(new ControleTeclasPermitidasNumeros(2));
+        jtRaca.setDocument(new ControleTeclasPermitidasLetras(20));
     }
 
     /**
@@ -62,6 +80,12 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
         jtIdCliente = new javax.swing.JTextField();
         jlIdAnimal = new javax.swing.JLabel();
         jtIdAnimal = new javax.swing.JTextField();
+        jlCampoObrigatorioNomeAnimal = new javax.swing.JLabel();
+        jlCampoObrigatorioRacaAnimal = new javax.swing.JLabel();
+        jlCampoObrigatorioTipoAnimal = new javax.swing.JLabel();
+        jlCampoObrigatorioPesoAnimal = new javax.swing.JLabel();
+        jlCampoObrigatorioDataNascimentoAnimal = new javax.swing.JLabel();
+        jlCampoObrigatorioUltimaVacinacaoAnimal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro Animal");
@@ -111,6 +135,11 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
         });
 
         jbCadastrar.setText("Cadastrar");
+        jbCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCadastrarActionPerformed(evt);
+            }
+        });
 
         jbCancelar.setText("Cancelar");
         jbCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -128,6 +157,24 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
         jlIdCliente.setText("ID");
 
         jlIdAnimal.setText("ID");
+
+        jlCampoObrigatorioNomeAnimal.setForeground(new java.awt.Color(255, 0, 0));
+        jlCampoObrigatorioNomeAnimal.setText("Campo Obrigatório *");
+
+        jlCampoObrigatorioRacaAnimal.setForeground(new java.awt.Color(255, 0, 0));
+        jlCampoObrigatorioRacaAnimal.setText("Campo Obrigatório *");
+
+        jlCampoObrigatorioTipoAnimal.setForeground(new java.awt.Color(255, 0, 0));
+        jlCampoObrigatorioTipoAnimal.setText("Campo Obrigatório *");
+
+        jlCampoObrigatorioPesoAnimal.setForeground(new java.awt.Color(255, 0, 0));
+        jlCampoObrigatorioPesoAnimal.setText("Campo Obrigatório *");
+
+        jlCampoObrigatorioDataNascimentoAnimal.setForeground(new java.awt.Color(255, 0, 0));
+        jlCampoObrigatorioDataNascimentoAnimal.setText("Campo Obrigatório *");
+
+        jlCampoObrigatorioUltimaVacinacaoAnimal.setForeground(new java.awt.Color(255, 0, 0));
+        jlCampoObrigatorioUltimaVacinacaoAnimal.setText("Campo Obrigatório *");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -173,6 +220,10 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jtAnoVacinacao, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlCampoObrigatorioDataNascimentoAnimal)
+                            .addComponent(jlCampoObrigatorioUltimaVacinacaoAnimal))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,12 +264,23 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addComponent(jcTipo1)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(jcTipo2))
+                                                .addComponent(jcTipo2)
+                                                .addGap(19, 19, 19)
+                                                .addComponent(jlCampoObrigatorioTipoAnimal))
                                             .addComponent(jtRaca, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jlIdAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jtIdAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jlCampoObrigatorioNomeAnimal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jlCampoObrigatorioRacaAnimal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jlIdAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jtIdAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jlCampoObrigatorioPesoAnimal)
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
                         .addGap(99, 99, 99))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -250,20 +312,24 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
                     .addComponent(jlNome, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlIdAnimal)
-                    .addComponent(jtIdAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtIdAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlCampoObrigatorioNomeAnimal))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlRaca, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtRaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtRaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlCampoObrigatorioRacaAnimal))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jcTipo1)
-                    .addComponent(jcTipo2))
+                    .addComponent(jcTipo2)
+                    .addComponent(jlCampoObrigatorioTipoAnimal))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlCampoObrigatorioPesoAnimal))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -271,7 +337,8 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(jtDataMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
-                    .addComponent(jtDataAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtDataAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlCampoObrigatorioDataNascimentoAnimal))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlUltimaVacinacao, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -279,7 +346,8 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jtMesVacinacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jtAnoVacinacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtAnoVacinacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlCampoObrigatorioUltimaVacinacaoAnimal))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbCadastrar)
@@ -302,22 +370,90 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jtDataDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtDataDiaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtDataDiaActionPerformed
+
     private void jcTipo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcTipo2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcTipo2ActionPerformed
 
-    private void jtDataDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtDataDiaActionPerformed
+    private void jtAnoVacinacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtAnoVacinacaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtDataDiaActionPerformed
+    }//GEN-LAST:event_jtAnoVacinacaoActionPerformed
+
+    private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
+        // TODO add your handling code here:
+        int correto=0;
+        if (jtNome.getText().length() > 0 ) {
+            jlCampoObrigatorioNomeAnimal.setVisible(false);
+            correto++;
+        } else {
+            jlCampoObrigatorioNomeAnimal.setVisible(true);
+            //correto = false;
+        }
+        if (jtRaca.getText().length() > 0 ) {
+            jlCampoObrigatorioRacaAnimal.setVisible(false);
+            correto++;
+        } else {
+            jlCampoObrigatorioRacaAnimal.setVisible(true);
+            //correto = false;
+        }
+        if (jtPeso.getText().length() > 0 ) {
+            jlCampoObrigatorioPesoAnimal.setVisible(false);
+            correto++;
+        } else {
+            jlCampoObrigatorioPesoAnimal.setVisible(true);
+            //correto = false;
+        }
+        if (jtDataDia.getText().length() > 0 ) {
+            jlCampoObrigatorioDataNascimentoAnimal.setVisible(false);
+            correto++;
+        } else {
+            jlCampoObrigatorioDataNascimentoAnimal.setVisible(true);
+            //correto = false;
+        }
+        if (jtDataMes.getText().length() > 0 ) {
+            jlCampoObrigatorioDataNascimentoAnimal.setVisible(false);
+            correto++;
+        } else {
+            jlCampoObrigatorioDataNascimentoAnimal.setVisible(true);
+            //correto = false;
+        }
+        if (jtDataAno.getText().length() > 0 ) {
+            jlCampoObrigatorioDataNascimentoAnimal.setVisible(false);
+            correto++;
+        } else {
+            jlCampoObrigatorioDataNascimentoAnimal.setVisible(true);
+            //correto = false;
+        }
+        if (jtAnoVacinacao.getText().length() > 0 ) {
+            jlCampoObrigatorioUltimaVacinacaoAnimal.setVisible(false);
+            correto++;
+        } else {
+            jlCampoObrigatorioUltimaVacinacaoAnimal.setVisible(true);
+            //correto = false;
+        }
+        if (jtMesVacinacao.getText().length() > 0 ) {
+            jlCampoObrigatorioUltimaVacinacaoAnimal.setVisible(false);
+            correto++;
+        } else {
+            jlCampoObrigatorioUltimaVacinacaoAnimal.setVisible(true);
+            //correto = false;
+        }
+        if (jtDiaVacinacao.getText().length() > 0 ) {
+            jlCampoObrigatorioUltimaVacinacaoAnimal.setVisible(false);
+            correto++;
+        } else {
+            jlCampoObrigatorioUltimaVacinacaoAnimal.setVisible(true);
+            //correto = false;
+        }
+    }//GEN-LAST:event_jbCadastrarActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jbCancelarActionPerformed
-
-    private void jtAnoVacinacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtAnoVacinacaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtAnoVacinacaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -365,6 +501,12 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
     private javax.swing.JButton jbCancelar;
     private javax.swing.JCheckBox jcTipo1;
     private javax.swing.JCheckBox jcTipo2;
+    private javax.swing.JLabel jlCampoObrigatorioDataNascimentoAnimal;
+    private javax.swing.JLabel jlCampoObrigatorioNomeAnimal;
+    private javax.swing.JLabel jlCampoObrigatorioPesoAnimal;
+    private javax.swing.JLabel jlCampoObrigatorioRacaAnimal;
+    private javax.swing.JLabel jlCampoObrigatorioTipoAnimal;
+    private javax.swing.JLabel jlCampoObrigatorioUltimaVacinacaoAnimal;
     private javax.swing.JLabel jlCpfCliente;
     private javax.swing.JLabel jlDataNascimento;
     private javax.swing.JLabel jlEndereco;

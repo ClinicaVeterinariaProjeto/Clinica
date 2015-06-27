@@ -25,7 +25,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" min="-2" max="-2" attributes="0"/>
+          <Component id="jPanel1" alignment="0" min="-2" pref="608" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -45,6 +45,19 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <Component id="jSeparator1" min="-2" pref="672" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jbExcluirAnimal" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="jbCancelar" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="jbAlterarCliente" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
+              </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -84,81 +97,150 @@
                                   <Component id="jtAnoVacinacao" min="-2" pref="43" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jlCampoObrigatorioDataNascimentoAnimal" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jlCampoObrigatorioUltimaVacinacaoAnimal" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jbConfirmar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jbExcluirAnimal" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
-                          <Component id="jbCancelar" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jlPeso" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jtPeso" min="-2" pref="236" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jlRaca" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jlTipo" min="-2" pref="34" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jcCachorro" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jcGato" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jlNomeCliente" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jlCpfCliente" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jlEndereco" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jtRaca" alignment="0" min="-2" pref="238" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jtCpfCliente" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jtNomeCliente" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jtEnderecoCliente" alignment="0" pref="241" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jlIdCliente" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jtIdCliente" min="-2" pref="28" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="jlNome" min="-2" pref="39" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="jtNome" min="-2" pref="238" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="jlPeso" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="jtPeso" min="-2" pref="236" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jlRaca" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="1" attributes="0">
+                                                  <Component id="jlTipo" min="-2" pref="34" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jcTipo1" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="jcTipo2" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                                                  <Component id="jlCampoObrigatorioTipoAnimal" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="jtRaca" alignment="0" min="-2" pref="238" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="jlCampoObrigatorioNomeAnimal" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="jlCampoObrigatorioRacaAnimal" alignment="0" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="jlIdAnimal" min="-2" pref="17" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jtIdAnimal" min="-2" pref="29" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jlCampoObrigatorioPesoAnimal" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jlNome" max="32767" attributes="0"/>
-                                  <Component id="jlNomeCliente" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="36" pref="36" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jtNomeCliente" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jtNome" alignment="1" min="-2" pref="238" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <EmptySpace min="99" pref="99" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="53" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jlNomeCliente" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jtNomeCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jlNomeCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtNomeCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jlIdCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtIdCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jlCpfCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jtCpfCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jlEndereco" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jtEnderecoCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jlNome" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                       <Component id="jtNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlIdAnimal" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jtIdAnimal" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlCampoObrigatorioNomeAnimal" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jlRaca" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                       <Component id="jtRaca" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlCampoObrigatorioRacaAnimal" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jlTipo" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                      <Component id="jcCachorro" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jcGato" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jcTipo1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jcTipo2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlCampoObrigatorioTipoAnimal" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jlPeso" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                       <Component id="jtPeso" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlCampoObrigatorioPesoAnimal" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -168,6 +250,7 @@
                       <Component id="jtDataMes" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jtDataAno" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlCampoObrigatorioDataNascimentoAnimal" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -177,14 +260,15 @@
                       <Component id="jtMesVacinacao" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jtAnoVacinacao" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlCampoObrigatorioUltimaVacinacaoAnimal" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="55" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jbConfirmar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jbExcluirAnimal" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jbExcluirAnimal" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                       <Component id="jbCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jbAlterarCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -192,7 +276,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jlNome">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Nome Animal"/>
+            <Property name="text" type="java.lang.String" value="Nome"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jlRaca">
@@ -214,6 +298,8 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Tipo"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JSeparator" name="jSeparator1">
         </Component>
         <Component class="javax.swing.JTextField" name="jtNome">
         </Component>
@@ -240,17 +326,17 @@
             <Property name="text" type="java.lang.String" value="/"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jcCachorro">
+        <Component class="javax.swing.JCheckBox" name="jcTipo1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Cachorro"/>
+            <Property name="text" type="java.lang.String" value="tipo1"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jcGato">
+        <Component class="javax.swing.JCheckBox" name="jcTipo2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Gato"/>
+            <Property name="text" type="java.lang.String" value="tipo2"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcGatoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcTipo2ActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jlUltimaVacinacao">
@@ -277,12 +363,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtAnoVacinacaoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jbConfirmar">
+        <Component class="javax.swing.JButton" name="jbAlterarCliente">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Confirmar"/>
+            <Property name="text" type="java.lang.String" value="Alterar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbConfirmarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbAlterarClienteActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jbCancelar">
@@ -293,17 +379,93 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbCancelarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jbExcluirAnimal">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Excluir Animal"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="jlNomeCliente">
           <Properties>
             <Property name="text" type="java.lang.String" value="Nome Cliente"/>
           </Properties>
         </Component>
+        <Component class="javax.swing.JLabel" name="jlCpfCliente">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="CPF"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlEndereco">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Endere&#xe7;o"/>
+          </Properties>
+        </Component>
         <Component class="javax.swing.JTextField" name="jtNomeCliente">
+        </Component>
+        <Component class="javax.swing.JTextField" name="jtCpfCliente">
+        </Component>
+        <Component class="javax.swing.JTextField" name="jtEnderecoCliente">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlIdCliente">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="ID"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jtIdCliente">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlIdAnimal">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="ID"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jtIdAnimal">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlCampoObrigatorioNomeAnimal">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Campo Obrigat&#xf3;rio *"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlCampoObrigatorioRacaAnimal">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Campo Obrigat&#xf3;rio *"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlCampoObrigatorioTipoAnimal">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Campo Obrigat&#xf3;rio *"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlCampoObrigatorioPesoAnimal">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Campo Obrigat&#xf3;rio *"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlCampoObrigatorioDataNascimentoAnimal">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Campo Obrigat&#xf3;rio *"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlCampoObrigatorioUltimaVacinacaoAnimal">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Campo Obrigat&#xf3;rio *"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jbExcluirAnimal">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Excluir"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

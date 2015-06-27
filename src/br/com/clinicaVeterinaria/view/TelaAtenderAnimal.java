@@ -295,22 +295,22 @@ public class TelaAtenderAnimal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
+    private void jtDataDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtDataDiaActionPerformed
         // TODO add your handling code here:
-        dispose();
-    }//GEN-LAST:event_jbCancelarActionPerformed
-
-    private void jtAnoVacinacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtAnoVacinacaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtAnoVacinacaoActionPerformed
+    }//GEN-LAST:event_jtDataDiaActionPerformed
 
     private void jcTipo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcTipo2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcTipo2ActionPerformed
 
-    private void jtDataDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtDataDiaActionPerformed
+    private void jtAnoVacinacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtAnoVacinacaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtDataDiaActionPerformed
+    }//GEN-LAST:event_jtAnoVacinacaoActionPerformed
+
+    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jbCancelarActionPerformed
 
     /**
      * @param args the command line arguments

@@ -5,6 +5,7 @@
  */
 package br.com.clinicaVeterinaria.view;
 
+import Controle.ControleCliente;
 import Controle.ControleTeclasPermitidasLetras;
 import Controle.ControleTeclasPermitidasNumeros;
 import javax.swing.JOptionPane;
@@ -497,7 +498,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         }
 
         if (correto == 11) {
-            try {
+            try{
                 ModeloCliente cliente = new ModeloCliente();
                 cliente.setNome(jtNome.getText());
                 cliente.setBairro(jtBairro.getText());
@@ -509,15 +510,21 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                 cliente.setSexo(jtSexo.getText());
                 cliente.setTelefone(jtTelefone.getText());
                 cliente.setDataNascimento(jtDataAno.getText()+jtDataMes.getText()+jtDataDia.getText());
-
-            } catch (Exception ex) {
-                Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            JOptionPane.showMessageDialog(this, "informaçoes corretas");
-        } else {
-            JOptionPane.showMessageDialog(this, "informações invalidas");
+                
+                
+            /*if (ControleCliente.persistir(cliente)==true) {
+                JOptionPane.showMessageDialog(this,"Cliente gravado com Sucesso");
+                dispose();
+            } else{
+                JOptionPane.showMessageDialog(this,"Cliente gravado com Sucesso");
+            }*/
+           
+        } catch (Exception ex) {
+            Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
+
         // TODO add your handling code here:
+        }
     }//GEN-LAST:event_jbCadastrarActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed

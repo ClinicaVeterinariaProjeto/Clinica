@@ -571,12 +571,17 @@ public class TelaCadastroVeterinario extends javax.swing.JFrame {
                 veterinario.setSenhaVeterinario(jtSenha.getText());
                 //veterinario.setLoguin(jtLogin.getText());
 
-            } catch (Exception ex) {
-                Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            JOptionPane.showMessageDialog(this, "informaçoes corretas");
-        } else {
-            JOptionPane.showMessageDialog(this, "informações invalidas");
+            /*if (ControleVeterinario.persistir(cliente)==true) {
+                JOptionPane.showMessageDialog(this,"Cliente gravado com Sucesso");
+                dispose();
+            } else{
+                JOptionPane.showMessageDialog(this,"Cliente gravado com Sucesso");
+            }*/
+           
+        } catch (Exception ex) {
+            Logger.getLogger(TelaCadastroVeterinario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
         }
     }//GEN-LAST:event_jbCadastrarActionPerformed
 

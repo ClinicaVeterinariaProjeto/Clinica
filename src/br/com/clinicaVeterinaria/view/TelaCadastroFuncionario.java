@@ -572,12 +572,16 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
                 funcionario.setSenhaFuncionario(jtSenha.getText());
                 //funcionario.setLoguin(jtLogin.getText());
 
-            } catch (Exception ex) {
-                Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            JOptionPane.showMessageDialog(this, "informaçoes corretas");
-        } else {
-            JOptionPane.showMessageDialog(this, "informações invalidas");
+            /*if (ControleFuncionario.persistir(cliente)==true) {
+                JOptionPane.showMessageDialog(this,"Cliente gravado com Sucesso");
+                dispose();
+            } else{
+                JOptionPane.showMessageDialog(this,"Cliente gravado com Sucesso");
+            }*/
+           
+        } catch (Exception ex) {
+            Logger.getLogger(TelaCadastroFuncionario.class.getName()).log(Level.SEVERE, null, ex);
+        }
         }
     }//GEN-LAST:event_jbCadastrarActionPerformed
 

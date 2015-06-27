@@ -8,6 +8,9 @@ package br.com.clinicaVeterinaria.view;
 import Controle.ControleTeclasPermitidasLetras;
 import Controle.ControleTeclasPermitidasNumeros;
 import javax.swing.JOptionPane;
+import Modelo.ModeloCliente;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -490,9 +493,25 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             //correto = false;
         }
 
-        if(correto==13)
+        if(correto==13){
+            try{
+                ModeloCliente cliente = new ModeloCliente();
+                cliente.setNome(jtNome.getText());
+                cliente.setBairro(jtBairro.getText());
+                cliente.setCidade(jtCidade.getText());
+                cliente.setCpf(jtCpf.getText());
+                cliente.setEmail(jtEmail.getText());
+                cliente.setNumeroCasa(Integer.parseInt(jtNumeroCasa.getText()));
+                cliente.setRua(jtRua.getText());
+                cliente.setSexo(jtSexo.getText());
+                cliente.setTelefone(jtTelefone.getText());
+            
+            
+            }catch (Exception ex) {
+            Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
         JOptionPane.showMessageDialog(this, "informaçoes corretas");
-        else
+        }else
         JOptionPane.showMessageDialog(this, "informações invalidas");
         // TODO add your handling code here:
     }//GEN-LAST:event_jbCadastrarActionPerformed

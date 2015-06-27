@@ -7,6 +7,9 @@ package br.com.clinicaVeterinaria.view;
 
 import Controle.ControleTeclasPermitidasLetras;
 import Controle.ControleTeclasPermitidasNumeros;
+import Modelo.ModeloCliente;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -382,6 +385,7 @@ public class TelaAlteracaoCliente extends javax.swing.JFrame {
 
     private void jbAlterarjbAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAlterarjbAlterarActionPerformed
         int correto = 0;
+        int dia, mes, ano;
 
         if (jtNome.getText().length() > 0) {
             jlCampoObrigatorioNome.setVisible(false);
@@ -390,7 +394,7 @@ public class TelaAlteracaoCliente extends javax.swing.JFrame {
             jlCampoObrigatorioNome.setVisible(true);
             //correto = false;
         }
-        if (jtRua.getText().length() > 0 ) {
+        if (jtRua.getText().length() > 0) {
             jlCampoObrigatorioRua.setVisible(false);
             correto++;
         } else {
@@ -418,6 +422,7 @@ public class TelaAlteracaoCliente extends javax.swing.JFrame {
             jlCampoObrigatorioEstado.setVisible(true);
             //correto = false;
         }
+
         if (jtBairro.getText().length() > 0) {
             jlCampoObrigatorioBairro.setVisible(false);
             correto++;
@@ -425,7 +430,7 @@ public class TelaAlteracaoCliente extends javax.swing.JFrame {
             jlCampoObrigatorioBairro.setVisible(true);
             //correto = false;
         }
-        if (jtCpf.getText().length() > 0 && jtCpf.getText().length()==11) {
+        if (jtCpf.getText().length() > 0 && jtCpf.getText().length() == 11) {
             jlCampoObrigatorioCPF.setVisible(false);
             correto++;
         } else {
@@ -439,33 +444,39 @@ public class TelaAlteracaoCliente extends javax.swing.JFrame {
             jlCampoObrigatorioTelefone.setVisible(true);
             //correto = false;
         }
-        if (jtDataAno.getText().length() > 0) {
-            jlCampoObrigatorioDataNascimento.setVisible(false);
-            correto++;
+        if (jtDataAno.getText().length() > 0 && jtDataMes.getText().length() > 0 && jtDataDia.getText().length() > 0) {
+            ano = (Integer.parseInt(jtDataAno.getText()));
+            mes = (Integer.parseInt(jtDataMes.getText()));
+            dia = (Integer.parseInt(jtDataDia.getText()));
+            if (ano <= 2015 && ano > 1965) {
+                if (mes > 0 && mes <= 12) {
+                    if (dia > 0 && dia <= 30) {
+                        jlCampoObrigatorioDataNascimento.setVisible(false);
+                        correto++;
+                    } else {
+                        jlCampoObrigatorioDataNascimento.setVisible(true);
+                    }
+                } else {
+                    jlCampoObrigatorioDataNascimento.setVisible(true);
+                }
+            } else {
+                jlCampoObrigatorioDataNascimento.setVisible(true);
+            }
         } else {
             jlCampoObrigatorioDataNascimento.setVisible(true);
-            //correto = false;
         }
-        if (jtDataMes.getText().length() > 0) {
-            jlCampoObrigatorioDataNascimento.setVisible(false);
-            correto++;
-        } else {
-            jlCampoObrigatorioDataNascimento.setVisible(true);
-            //correto = false;
-        }
-        if (jtDataDia.getText().length() > 0) {
-            jlCampoObrigatorioDataNascimento.setVisible(false);
-            correto++;
-        } else {
-            jlCampoObrigatorioDataNascimento.setVisible(true);
-            //correto = false;
-        }
-        if (jtSexo.getText().length() > 0 ) {
-            jlCampoObrigatorioSexo.setVisible(false);
-            correto++;
+
+        if (jtSexo.getText().length() > 0) {
+            if (jtSexo.getText().equals("MASCULINO") || jtSexo.getText().equals("FEMININO")) {
+                jlCampoObrigatorioSexo.setVisible(false);
+                correto++;
+            } else {
+                jlCampoObrigatorioSexo.setVisible(true);
+            }
         } else {
             jlCampoObrigatorioSexo.setVisible(true);
         }
+
         if (jtEmail.getText().length() > 0) {
             jlCampoObrigatorioEmail.setVisible(false);
             correto++;
@@ -474,10 +485,26 @@ public class TelaAlteracaoCliente extends javax.swing.JFrame {
             //correto = false;
         }
 
-        if(correto==12)
-        JOptionPane.showMessageDialog(this, "informaçoes corretas");
-        else
-        JOptionPane.showMessageDialog(this, "informações invalidas");
+        if (correto == 11) {
+            try {
+                ModeloCliente cliente = new ModeloCliente();
+                cliente.setNome(jtNome.getText());
+                cliente.setBairro(jtBairro.getText());
+                cliente.setCidade(jtCidade.getText());
+                cliente.setCpf(jtCpf.getText());
+                cliente.setEmail(jtEmail.getText());
+                cliente.setNumeroCasa(Integer.parseInt(jtNumeroCasa.getText()));
+                cliente.setRua(jtRua.getText());
+                cliente.setSexo(jtSexo.getText());
+                cliente.setTelefone(jtTelefone.getText());
+
+            } catch (Exception ex) {
+                Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(this, "informaçoes corretas");
+        } else {
+            JOptionPane.showMessageDialog(this, "informações invalidas");
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_jbAlterarjbAlterarActionPerformed
 

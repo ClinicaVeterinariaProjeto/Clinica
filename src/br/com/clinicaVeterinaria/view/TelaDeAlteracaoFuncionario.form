@@ -70,21 +70,26 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="25" pref="25" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jlNovaSenha" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jlSenha" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jlLogin" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jtNovaSenha" alignment="0" pref="150" max="32767" attributes="0"/>
-                                      <Component id="jtLogin" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jtSenha" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jlCampoObrigatorioLogin" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jlCampoObrigatorioSenha" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jlCampoObrigatorioNovaSenha" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jlNovaSenha" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jlSenha" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jlLogin" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="jtNovaSenha" alignment="0" pref="150" max="32767" attributes="0"/>
+                                              <Component id="jtLogin" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="jtSenha" alignment="0" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jlCampoObrigatorioLogin" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jlCampoObrigatorioSenha" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jlCampoObrigatorioNovaSenha" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Component id="jbExcluir" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -175,7 +180,7 @@
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   <Component id="jbCancelar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jbCadastrar" min="-2" max="-2" attributes="0"/>
+                  <Component id="jbAlterar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="256" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -270,8 +275,9 @@
                   </Group>
                   <EmptySpace pref="50" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jbCadastrar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jbAlterar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jbCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jbExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -366,12 +372,12 @@
         </Component>
         <Component class="javax.swing.JPasswordField" name="jtLogin">
         </Component>
-        <Component class="javax.swing.JToggleButton" name="jbCadastrar">
+        <Component class="javax.swing.JToggleButton" name="jbAlterar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Cadastrar"/>
+            <Property name="text" type="java.lang.String" value="Alterar Funcion&#xe1;rio"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbCadastrarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbAlterarActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jbCancelar">
@@ -512,6 +518,11 @@
               <Color blue="0" green="0" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Campo Obrigat&#xf3;rio *"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jbExcluir">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Excluir Funcion&#xe1;rio"/>
           </Properties>
         </Component>
       </SubComponents>

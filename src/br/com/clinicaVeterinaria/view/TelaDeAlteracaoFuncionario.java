@@ -80,7 +80,7 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
         jtNovaSenha = new javax.swing.JPasswordField();
         jtSenha = new javax.swing.JPasswordField();
         jtLogin = new javax.swing.JPasswordField();
-        jbCadastrar = new javax.swing.JToggleButton();
+        jbAlterar = new javax.swing.JToggleButton();
         jbCancelar = new javax.swing.JButton();
         jlCidade = new javax.swing.JLabel();
         jlBairro = new javax.swing.JLabel();
@@ -103,6 +103,7 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
         jlCampoObrigatorioLogin = new javax.swing.JLabel();
         jlCampoObrigatorioSenha = new javax.swing.JLabel();
         jlCampoObrigatorioNovaSenha = new javax.swing.JLabel();
+        jbExcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -139,10 +140,10 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
 
         jlNovaSenha.setText("Nova Senha");
 
-        jbCadastrar.setText("Cadastrar");
-        jbCadastrar.addActionListener(new java.awt.event.ActionListener() {
+        jbAlterar.setText("Alterar Funcionário");
+        jbAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbCadastrarActionPerformed(evt);
+                jbAlterarActionPerformed(evt);
             }
         });
 
@@ -200,6 +201,8 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
         jlCampoObrigatorioNovaSenha.setForeground(new java.awt.Color(255, 0, 0));
         jlCampoObrigatorioNovaSenha.setText("Campo Obrigatório *");
 
+        jbExcluir.setText("Excluir Funcionário");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -229,19 +232,22 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(25, 25, 25)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jlNovaSenha)
-                                    .addComponent(jlSenha)
-                                    .addComponent(jlLogin))
-                                .addGap(55, 55, 55)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jtNovaSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                    .addComponent(jtLogin)
-                                    .addComponent(jtSenha))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jlCampoObrigatorioLogin)
-                                    .addComponent(jlCampoObrigatorioSenha)
-                                    .addComponent(jlCampoObrigatorioNovaSenha)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jlNovaSenha)
+                                            .addComponent(jlSenha)
+                                            .addComponent(jlLogin))
+                                        .addGap(55, 55, 55)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jtNovaSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                            .addComponent(jtLogin)
+                                            .addComponent(jtSenha))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jlCampoObrigatorioLogin)
+                                            .addComponent(jlCampoObrigatorioSenha)
+                                            .addComponent(jlCampoObrigatorioNovaSenha)))
+                                    .addComponent(jbExcluir)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(20, 20, 20)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -306,7 +312,7 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jbCancelar)
                 .addGap(18, 18, 18)
-                .addComponent(jbCadastrar)
+                .addComponent(jbAlterar)
                 .addGap(256, 256, 256))
         );
         jPanel1Layout.setVerticalGroup(
@@ -386,8 +392,9 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
                     .addComponent(jlCampoObrigatorioNovaSenha))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbCadastrar)
-                    .addComponent(jbCancelar))
+                    .addComponent(jbAlterar)
+                    .addComponent(jbCancelar)
+                    .addComponent(jbExcluir))
                 .addContainerGap())
         );
 
@@ -410,9 +417,10 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtDataDiaActionPerformed
 
-    private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
+    private void jbAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAlterarActionPerformed
         // TODO add your handling code here:
-        int correto=0;
+        int correto = 0;
+        int mes, ano, dia;
         if (jtNome.getText().length() > 0) {
             jlCampoObrigatorioNome.setVisible(false);
             correto++;
@@ -448,7 +456,7 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
             jlCampoObrigatorioEstado.setVisible(true);
             //correto = false;
         }
-        if (jtCpf.getText().length() > 0) {
+        if (jtCpf.getText().length() > 0 && jtCpf.getText().length()== 11) {
             jlCampoObrigatorioCPF.setVisible(false);
             correto++;
         } else {
@@ -462,34 +470,41 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
             jlCampoObrigatorioTelefone.setVisible(true);
             //correto = false;
         }
-        if (jtDataAno.getText().length() > 0) {
-            jlCampoObrigatorioDataNascimento.setVisible(false);
-            correto++;
+        if (jtDataAno.getText().length() > 0 && jtDataMes.getText().length() > 0 && jtDataDia.getText().length() > 0) {
+            ano = (Integer.parseInt(jtDataAno.getText()));
+            mes = (Integer.parseInt(jtDataMes.getText()));
+            dia = (Integer.parseInt(jtDataDia.getText()));
+            if (ano <= 2015 && ano > 1965) {
+                if (mes > 0 && mes <= 12) {
+                    if (dia > 0 && dia <= 30) {
+                        jlCampoObrigatorioDataNascimento.setVisible(false);
+                        correto++;
+                    } else {
+                        jlCampoObrigatorioDataNascimento.setVisible(true);
+                    }
+                } else {
+                    jlCampoObrigatorioDataNascimento.setVisible(true);
+                }
+            } else {
+                jlCampoObrigatorioDataNascimento.setVisible(true);
+            }
         } else {
             jlCampoObrigatorioDataNascimento.setVisible(true);
-            //correto = false;
         }
-        if (jtDataMes.getText().length() > 0) {
-            jlCampoObrigatorioDataNascimento.setVisible(false);
-            correto++;
-        } else {
-            jlCampoObrigatorioDataNascimento.setVisible(true);
-            //correto = false;
-        }
-        if (jtDataDia.getText().length() > 0 ) {
-            jlCampoObrigatorioDataNascimento.setVisible(false);
-            correto++;
-        } else {
-            jlCampoObrigatorioDataNascimento.setVisible(true);
-            //correto = false;
-        }
+
+        
         if (jtSexo.getText().length() > 0) {
+            if(jtSexo.getText().equals("MASCULINO") || jtSexo.getText().equals("FEMININO")){
             jlCampoObrigatorioSexo.setVisible(false);
             correto++;
+            }
+            else {
+            jlCampoObrigatorioSexo.setVisible(true);
+        }
         } else {
             jlCampoObrigatorioSexo.setVisible(true);
-            //correto = false;
         }
+        
         if (jtEmail.getText().length() > 0) {
             jlCampoObrigatorioEmail.setVisible(false);
             correto++;
@@ -519,11 +534,12 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "As senhas não correspondem!");
             //correto = false;
         }
-        if(correto==15)
-        JOptionPane.showMessageDialog(this, "informaçoes corretas");
-        else
-        JOptionPane.showMessageDialog(this, "informações invalidas");
-    }//GEN-LAST:event_jbCadastrarActionPerformed
+        if (correto == 13) {
+            JOptionPane.showMessageDialog(this, "informaçoes corretas");
+        } else {
+            JOptionPane.showMessageDialog(this, "informações invalidas");
+        }   
+    }//GEN-LAST:event_jbAlterarActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
         // TODO add your handling code here:
@@ -571,8 +587,9 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JToggleButton jbCadastrar;
+    private javax.swing.JToggleButton jbAlterar;
     private javax.swing.JButton jbCancelar;
+    private javax.swing.JButton jbExcluir;
     private javax.swing.JLabel jlBairro;
     private javax.swing.JLabel jlCampoObrigatorioBairro;
     private javax.swing.JLabel jlCampoObrigatorioCPF;

@@ -528,7 +528,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "As senhas não correspondem!");
             //correto = false;
         }
-        if (correto == 15) {
+        if (correto == 13) {
             JOptionPane.showMessageDialog(this, "informaçoes corretas");
         } else {
             JOptionPane.showMessageDialog(this, "informações invalidas");

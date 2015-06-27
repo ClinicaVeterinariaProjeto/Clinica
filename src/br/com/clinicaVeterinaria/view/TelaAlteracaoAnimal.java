@@ -135,7 +135,7 @@ public class TelaAlteracaoAnimal extends javax.swing.JFrame {
             }
         });
 
-        jbAlterarCliente.setText("Alterar");
+        jbAlterarCliente.setText("Alterar Animal");
         jbAlterarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbAlterarClienteActionPerformed(evt);
@@ -177,7 +177,7 @@ public class TelaAlteracaoAnimal extends javax.swing.JFrame {
         jlCampoObrigatorioUltimaVacinacaoAnimal.setForeground(new java.awt.Color(255, 0, 0));
         jlCampoObrigatorioUltimaVacinacaoAnimal.setText("Campo Obrigatório *");
 
-        jbExcluirAnimal.setText("Excluir");
+        jbExcluirAnimal.setText("Excluir Animal");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

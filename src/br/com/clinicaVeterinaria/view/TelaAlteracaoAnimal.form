@@ -365,7 +365,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="jbAlterarCliente">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Alterar"/>
+            <Property name="text" type="java.lang.String" value="Alterar Animal"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbAlterarClienteActionPerformed"/>
@@ -464,7 +464,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="jbExcluirAnimal">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Excluir"/>
+            <Property name="text" type="java.lang.String" value="Excluir Animal"/>
           </Properties>
         </Component>
       </SubComponents>

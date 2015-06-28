@@ -13,7 +13,6 @@ package Modelo;
 public abstract class ModeloPessoa {
     
     private String nome;
-    private String sobrenome;
     private String cpf;
     private String email;
     private String telefone;
@@ -29,9 +28,8 @@ public abstract class ModeloPessoa {
     public ModeloPessoa() {
     }
  
-    public ModeloPessoa(String nome, String sobrenome, String cpf, String email, String telefone, String sexo, String dataNascimento, String rua, String cidade, String bairro, int numeroCasa) {
+    public ModeloPessoa(String nome, String cpf, String email, String telefone, String sexo, String dataNascimento, String rua, String cidade, String bairro, int numeroCasa) {
         this.setNome(nome);
-        this.setSobrenome(sobrenome);
         this.setCpf(cpf);
         this.setEmail(email);
         this.setTelefone(telefone);
@@ -47,9 +45,6 @@ public abstract class ModeloPessoa {
         return nome;
     }
 
-    public String getSobrenome() {
-        return sobrenome;
-    }
 
     public String getCpf() {
         return cpf;
@@ -91,9 +86,6 @@ public abstract class ModeloPessoa {
         this.nome = nome;
     }
 
-    public void setSobrenome(String sobrenome) {
-        this.sobrenome = sobrenome;
-    }
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
@@ -133,8 +125,7 @@ public abstract class ModeloPessoa {
 
     @Override
     public String toString() {
-        return "ModeloPessoa{" + "nome=" + this.getNome() + ", sobrenome=" 
-                + this.getSobrenome() + ", cpf=" + this.getCpf() + ", email=" 
+        return "ModeloPessoa{" + "nome=" + this.getNome() + "cpf=" + this.getCpf() + ", email=" 
                 + this.getEmail() + ", sexo=" + this.getSexo() + ", dataNascimento="
                 + this.getDataNascimento() + ", rua=" 
                 + this.getRua() + ", cidade=" + this.getCidade() + ", bairro=" 

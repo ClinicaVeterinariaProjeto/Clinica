@@ -21,23 +21,22 @@ public class PrincipalDao {
     private static int id;
     public static void main (String Args []) throws SQLException, ClassNotFoundException, Exception{
     
-     /*   ModeloGerente gerent = new ModeloGerente();
+        ModeloGerente gerent = new ModeloGerente();
         gerent.setNome("ale");
-        gerent.setSobrenome("onça");
         gerent.setEmail("teste@test");
         gerent.setDataNascimento("10/01/16");
         gerent.setTelefone("91189052");
         gerent.setCpf("1542121545");
         gerent.setSexo("M");
         gerent.setIdGerente(2);
+        gerent.setLoginGerente("admin");
         gerent.setSenhaGerente("admin");
         gerent.setRua("fikb");
         gerent.setBairro("teste");
         gerent.setCidade("citytest");
         gerent.setNumeroCasa(667);
-        gerent.setCidade("CP");
-        GerenteDAO cd = new GerenteDAO();*/
-      //  cd.inserirGerenteNoBanco(gerent);
+        GerenteDAO cd = new GerenteDAO();
+        cd.inserirGerenteNoBanco(gerent);
         
         //cd.excluirClienteNoBanco(cpf);
         
@@ -62,11 +61,11 @@ public class PrincipalDao {
         funcionario.setCidade("CP");
         funcionario.setSenhaFuncionario("123");*/
        
-        GerenteDAO gr = new GerenteDAO();
+        //GerenteDAO gr = new GerenteDAO();
       //  id = gr.pesquisaGerenteNoBanco(cpf);
       //  System.out.print(id);
-        String cpf = ("1542121545");
-        FuncionarioDAO fun = new FuncionarioDAO();
+        //String cpf = ("1542121545");
+       // FuncionarioDAO fun = new FuncionarioDAO();
        /* fun.inserirFuncionarioNoBanco(funcionario,gerent.getIdGerente()); //funcionando
         ModeloFuncionario func = new ModeloFuncionario();
         func=fun.pesquisarFuncionarioNoBanco(cpf);
@@ -93,8 +92,8 @@ public class PrincipalDao {
         veterinario.setCidade("CP");
         veterinario.setSenhaVeterinario("naruto");*/
         
-        VeterinarioDAO vet = new VeterinarioDAO();
-        ModeloVeterinario func = new ModeloVeterinario();
+      //  VeterinarioDAO vet = new VeterinarioDAO();
+       // ModeloVeterinario func = new ModeloVeterinario();
        // vet.inserirVeterinarioNoBanco(veterinario,gerent.getIdGerente() );
         //func=vet.pesquisarVeterinarioNoBanco(cpf);
        // System.out.println(   func.getCpf() +func.getNome() + func.getSobrenome() 
@@ -105,7 +104,7 @@ public class PrincipalDao {
         
         
         //teste animal
-        ModeloCliente cliente = new ModeloCliente();
+      /*  ModeloCliente cliente = new ModeloCliente();
         cliente.setNome("ale");
         cliente.setSobrenome("onça");
         cliente.setEmail("teste@test");
@@ -132,10 +131,8 @@ public class PrincipalDao {
         exotic.setPeso(5);
         exotic.setUltimaVascina("2000-12-12");
         AnimalExoticoDAO ex = new AnimalExoticoDAO();
-      //  ex.inserirAnimalNoBanco(exotic);
-        ModeloAnimalExotico u = new ModeloAnimalExotico();
-        u = ex.pesquisarAnimalNoBanco(cpf);
-        System.out.println(u.getNome() + u.getRaca() + u.getUltimaVascina()+ u.getIdAnimal()+u.getAnoNascimento());
-}
+        ex.inserirAnimalNoBanco(exotic);
+}*/
     
+}
 }

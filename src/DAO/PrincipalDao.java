@@ -22,13 +22,13 @@ public class PrincipalDao {
     public static void main (String Args []) throws SQLException, ClassNotFoundException, Exception{
     
         ModeloGerente gerent = new ModeloGerente();
-        gerent.setNome("ale");
+       /*gerent.setNome("ale");
         gerent.setEmail("teste@test");
         gerent.setDataNascimento("10/01/16");
         gerent.setTelefone("91189052");
         gerent.setCpf("1542121545");
         gerent.setSexo("M");
-        gerent.setIdGerente(2);
+        gerent.setIdGerente(3);
         gerent.setLoginGerente("admin");
         gerent.setSenhaGerente("admin");
         gerent.setRua("fikb");
@@ -43,11 +43,11 @@ public class PrincipalDao {
         //cliente = cd.pesquisaClienteNoBanco(cpf);
         //cd.alterarClienteNoBanco(cpf, cliente);
         
-       
+       */
          
-      /*  ModeloFuncionario funcionario = new ModeloFuncionario();
+      /* ModeloFuncionario funcionario = new ModeloFuncionario();
         funcionario.setNome("Will");
-        funcionario.setSobrenome("marques");
+        funcionario.setLoginFuncionario("marques");
         funcionario.setEmail("teste@test");
         funcionario.setDataNascimento("10/01/16");
         funcionario.setTelefone("91189052");
@@ -59,42 +59,42 @@ public class PrincipalDao {
         funcionario.setCidade("citytest");
         funcionario.setNumeroCasa(665);
         funcionario.setCidade("CP");
-        funcionario.setSenhaFuncionario("123");*/
-       
+        funcionario.setSenhaFuncionario("123");
+      // String cpf = ("1542121545");
         //GerenteDAO gr = new GerenteDAO();
-      //  id = gr.pesquisaGerenteNoBanco(cpf);
-      //  System.out.print(id);
+        //id = gr.pesquisaGerenteNoBanco(cpf);
+        //System.out.print(id);
         //String cpf = ("1542121545");
-       // FuncionarioDAO fun = new FuncionarioDAO();
-       /* fun.inserirFuncionarioNoBanco(funcionario,gerent.getIdGerente()); //funcionando
-        ModeloFuncionario func = new ModeloFuncionario();
-        func=fun.pesquisarFuncionarioNoBanco(cpf);
-        System.out.println(   func.getCpf() +func.getNome() + func.getSobrenome() 
+        FuncionarioDAO fun = new FuncionarioDAO();
+        fun.inserirFuncionarioNoBanco(funcionario,gerent.getIdGerente()); //funcionando
+       // ModeloFuncionario func = new ModeloFuncionario();
+       // func=fun.pesquisarFuncionarioNoBanco(cpf);
+        /*System.out.println(   func.getCpf() +func.getNome() + func.getSobrenome() 
         + func.getEmail() + func.getTelefone() + func.getDataNascimento() + func.getSexo()
         + func.getIdFuncionario() + func.getRua() + func.getNumeroCasa() + func.getBairro()+ func.getCidade());
        fun.alterarFuncionarioNoBanco(cpf,funcionario);  
         fun.excluirFuncionarioNoBanco(cpf);*/
         
         // testando veterinario 
-      /*  ModeloVeterinario veterinario = new ModeloVeterinario();
+       ModeloVeterinario veterinario = new ModeloVeterinario();
         veterinario.setNome("NEW-ALTERAÇÃO");
-        veterinario.setSobrenome("testeALTERAÇÃO");
+        veterinario.setLoginVeterinario("testeALTE");
         veterinario.setEmail("teste@test");
         veterinario.setDataNascimento("10/01/16");
         veterinario.setTelefone("91189052");
         veterinario.setCpf("1542121545");
         veterinario.setSexo("M");
-        veterinario.setIdVeterinario(1);
+        veterinario.setIdVeterinario(2);
         veterinario.setRua("fikb");
         veterinario.setBairro("teste-new");
         veterinario.setCidade("citytest");
         veterinario.setNumeroCasa(665);
         veterinario.setCidade("CP");
-        veterinario.setSenhaVeterinario("naruto");*/
+        veterinario.setSenhaVeterinario("naruto");
         
-      //  VeterinarioDAO vet = new VeterinarioDAO();
+      VeterinarioDAO vet = new VeterinarioDAO();
        // ModeloVeterinario func = new ModeloVeterinario();
-       // vet.inserirVeterinarioNoBanco(veterinario,gerent.getIdGerente() );
+       vet.inserirVeterinarioNoBanco(veterinario,gerent.getIdGerente() );
         //func=vet.pesquisarVeterinarioNoBanco(cpf);
        // System.out.println(   func.getCpf() +func.getNome() + func.getSobrenome() 
        // + func.getEmail() + func.getTelefone() + func.getDataNascimento() + func.getSexo()

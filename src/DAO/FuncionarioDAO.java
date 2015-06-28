@@ -32,7 +32,7 @@ public class FuncionarioDAO {
               
             
             
-            String query = "INSERT INTO funcionario(Nome, email, Telefone, CPF, DataNascimento, Sexo, idFuncionario, senhaFuncionario, Rua, NumeroCasa, Bairro, Cidade, idGerente) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String query = "INSERT INTO funcionario(Nome, email, Telefone, CPF, DataNascimento, Sexo, idFuncionario, loginFuncionario,senhaFuncionario, Rua, NumeroCasa, Bairro, Cidade, idGerente) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
  
             PreparedStatement pstmt = conexao.prepareStatement(query);
             pstmt.setString(1, funcionario.getNome());
@@ -42,12 +42,13 @@ public class FuncionarioDAO {
             pstmt.setString(5, funcionario.getDataNascimento());
             pstmt.setString(6, funcionario.getSexo());
             pstmt.setInt(7, funcionario.getIdFuncionario());
-            pstmt.setString(8, funcionario.getSenhaFuncionario());
-            pstmt.setString(9, funcionario.getRua());
-            pstmt.setInt(10, funcionario.getNumeroCasa());
-            pstmt.setString(11, funcionario.getBairro());
-            pstmt.setString(12,funcionario.getCidade());
-            pstmt.setInt(13, idGerente);
+            pstmt.setString(8,funcionario.getLoginFuncionario());
+            pstmt.setString(9, funcionario.getSenhaFuncionario());
+            pstmt.setString(10, funcionario.getRua());
+            pstmt.setInt(11, funcionario.getNumeroCasa());
+            pstmt.setString(12, funcionario.getBairro());
+            pstmt.setString(13,funcionario.getCidade());
+            pstmt.setInt(14, idGerente);
             pstmt.executeUpdate();
             pstmt.close();
             conexao.close();
@@ -78,6 +79,7 @@ public class FuncionarioDAO {
               temp.setDataNascimento(rs.getString("datanascimento"));
               temp.setSexo(rs.getString("sexo"));
               temp.setIdFuncionario(rs.getInt("idFuncionario"));
+              temp.setLoginFuncionario(rs.getString("loginFuncionario"));
               temp.setSenhaFuncionario(rs.getString("senhaFuncionario"));
               temp.setRua(rs.getString("rua"));
               temp.setNumeroCasa(rs.getInt("numeroCasa"));
@@ -103,7 +105,7 @@ public class FuncionarioDAO {
         try{
             
             String sql ="UPDATE Funcionario SET Nome = ?, email = ?, Telefone = ?,"
-            + " Rua = ?, NumeroCasa = ?, Bairro = ?, Cidade = ? WHERE CPF=?" ;
+            + " Rua = ?, NumeroCasa = ?, Bairro = ?, Cidade = ?, senhaFuncionario = ?WHERE CPF=?" ;
             PreparedStatement stmt = conexao.prepareStatement(sql);
             stmt.setString(1,funcionario.getNome());
             stmt.setString(2,funcionario.getEmail());
@@ -112,7 +114,8 @@ public class FuncionarioDAO {
             stmt.setInt(5,funcionario.getNumeroCasa());
             stmt.setString(6,funcionario.getBairro());
             stmt.setString(7,funcionario.getCidade());
-            stmt.setString(8,cpf);
+            stmt.setString(8,funcionario.getSenhaFuncionario());
+            stmt.setString(9,cpf);
             stmt.execute();
             stmt.close();
             conexao.close();

@@ -25,7 +25,7 @@ public class VeterinarioDAO {
         this.conexao = new Conexao().getConexao();
         try{
            
-            String query = "INSERT INTO Veterinario(Nome, email, Telefone, CPF, DataNascimento, Sexo, idVeterinario, senhaVeterinario, Rua, NumeroCasa, Bairro, Cidade, idGerente) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String query = "INSERT INTO Veterinario(Nome, email, Telefone, CPF, DataNascimento, Sexo, idVeterinario, loginVeterinario, senhaVeterinario, Rua, NumeroCasa, Bairro, Cidade, idGerente) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
  
             PreparedStatement pstmt = conexao.prepareStatement(query);
             pstmt.setString(1, veterinario.getNome());
@@ -35,12 +35,13 @@ public class VeterinarioDAO {
             pstmt.setString(5, veterinario.getDataNascimento());
             pstmt.setString(6, veterinario.getSexo());
             pstmt.setInt(7, veterinario.getIdVeterinario());
-            pstmt.setString(8, veterinario.getSenhaVeterinario());
-            pstmt.setString(9, veterinario.getRua());
-            pstmt.setInt(10, veterinario.getNumeroCasa());
-            pstmt.setString(11, veterinario.getBairro());
-            pstmt.setString(12,veterinario.getCidade());
-            pstmt.setInt(13, idGerente);
+            pstmt.setString(8,veterinario.getLoginVeterinario());
+            pstmt.setString(9, veterinario.getSenhaVeterinario());
+            pstmt.setString(10, veterinario.getRua());
+            pstmt.setInt(11, veterinario.getNumeroCasa());
+            pstmt.setString(12, veterinario.getBairro());
+            pstmt.setString(13,veterinario.getCidade());
+            pstmt.setInt(14, idGerente);
             pstmt.executeUpdate();
             pstmt.close();
             conexao.close();
@@ -55,7 +56,7 @@ public class VeterinarioDAO {
         ModeloVeterinario dadosVeterinario = new ModeloVeterinario();
         ResultSet rs = null;
         try{
-            String sql ="Select cpf, nome, email, telefone, DataNascimento, sexo, idVeterinario,senhaVeterinario, rua, numeroCasa, bairro, cidade  FROM VETERINARIO WHERE CPF = ?";
+            String sql ="Select cpf, nome, email, telefone, DataNascimento, sexo, idVeterinario, loginVeterinario, senhaVeterinario, rua, numeroCasa, bairro, cidade  FROM VETERINARIO WHERE CPF = ?";
             PreparedStatement pstmt = conexao.prepareStatement(sql); 
             pstmt.setString(1, cpf);
             rs = pstmt.executeQuery();
@@ -69,6 +70,7 @@ public class VeterinarioDAO {
               temp.setDataNascimento(rs.getString("datanascimento"));
               temp.setSexo(rs.getString("sexo"));
               temp.setIdVeterinario(rs.getInt("idVeterinario"));
+              temp.setLoginVeterinario(rs.getString("idVeterinario"));
               temp.setSenhaVeterinario(rs.getString("senhaVeterinario"));
               temp.setRua(rs.getString("rua"));
               temp.setNumeroCasa(rs.getInt("numeroCasa"));
@@ -94,7 +96,7 @@ public class VeterinarioDAO {
          this.conexao = new Conexao().getConexao();
         try{
             String sql ="UPDATE Veterinario SET Nome = ?, email = ?, Telefone = ?,"
-            + " Rua = ?, NumeroCasa = ?, Bairro = ?, Cidade = ? WHERE CPF=?" ;
+            + " Rua = ?, NumeroCasa = ?, Bairro = ?, Cidade = ?, senhaVeterinario = ? WHERE CPF=?" ;
             PreparedStatement stmt = conexao.prepareStatement(sql);
             stmt.setString(1,veterinario.getNome());
             stmt.setString(2,veterinario.getEmail());
@@ -103,7 +105,8 @@ public class VeterinarioDAO {
             stmt.setInt(5,veterinario.getNumeroCasa());
             stmt.setString(6,veterinario.getBairro());
             stmt.setString(7,veterinario.getCidade());
-            stmt.setString(8,cpf);
+            stmt.setString(8,veterinario.getSenhaVeterinario());
+            stmt.setString(9,cpf);
             stmt.execute();
             stmt.close();
             conexao.close();

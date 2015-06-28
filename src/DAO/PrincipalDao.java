@@ -5,10 +5,12 @@
  */
 
 package DAO;
+import Modelo.ModeloAnimalExotico;
 import Persistencia.Conexao;
 import Modelo.ModeloCliente;
 import Modelo.ModeloFuncionario;
 import Modelo.ModeloGerente;
+import Modelo.ModeloVeterinario;
 import java.sql.SQLException;
 
 /**
@@ -19,7 +21,7 @@ public class PrincipalDao {
     private static int id;
     public static void main (String Args []) throws SQLException, ClassNotFoundException, Exception{
     
-        ModeloGerente gerent = new ModeloGerente();
+     /*   ModeloGerente gerent = new ModeloGerente();
         gerent.setNome("ale");
         gerent.setSobrenome("onça");
         gerent.setEmail("teste@test");
@@ -34,7 +36,7 @@ public class PrincipalDao {
         gerent.setCidade("citytest");
         gerent.setNumeroCasa(667);
         gerent.setCidade("CP");
-        GerenteDAO cd = new GerenteDAO();
+        GerenteDAO cd = new GerenteDAO();*/
       //  cd.inserirGerenteNoBanco(gerent);
         
         //cd.excluirClienteNoBanco(cpf);
@@ -44,7 +46,7 @@ public class PrincipalDao {
         
        
          
-        ModeloFuncionario funcionario = new ModeloFuncionario();
+      /*  ModeloFuncionario funcionario = new ModeloFuncionario();
         funcionario.setNome("Will");
         funcionario.setSobrenome("marques");
         funcionario.setEmail("teste@test");
@@ -58,7 +60,7 @@ public class PrincipalDao {
         funcionario.setCidade("citytest");
         funcionario.setNumeroCasa(665);
         funcionario.setCidade("CP");
-        funcionario.setSenhaFuncionario("123");
+        funcionario.setSenhaFuncionario("123");*/
        
         GerenteDAO gr = new GerenteDAO();
       //  id = gr.pesquisaGerenteNoBanco(cpf);
@@ -71,9 +73,66 @@ public class PrincipalDao {
         System.out.println(   func.getCpf() +func.getNome() + func.getSobrenome() 
         + func.getEmail() + func.getTelefone() + func.getDataNascimento() + func.getSexo()
         + func.getIdFuncionario() + func.getRua() + func.getNumeroCasa() + func.getBairro()+ func.getCidade());
-       fun.alterarFuncionarioNoBanco(cpf,funcionario);  */
-        fun.excluirFuncionarioNoBanco(cpf);
-     
+       fun.alterarFuncionarioNoBanco(cpf,funcionario);  
+        fun.excluirFuncionarioNoBanco(cpf);*/
+        
+        // testando veterinario 
+      /*  ModeloVeterinario veterinario = new ModeloVeterinario();
+        veterinario.setNome("NEW-ALTERAÇÃO");
+        veterinario.setSobrenome("testeALTERAÇÃO");
+        veterinario.setEmail("teste@test");
+        veterinario.setDataNascimento("10/01/16");
+        veterinario.setTelefone("91189052");
+        veterinario.setCpf("1542121545");
+        veterinario.setSexo("M");
+        veterinario.setIdVeterinario(1);
+        veterinario.setRua("fikb");
+        veterinario.setBairro("teste-new");
+        veterinario.setCidade("citytest");
+        veterinario.setNumeroCasa(665);
+        veterinario.setCidade("CP");
+        veterinario.setSenhaVeterinario("naruto");*/
+        
+        VeterinarioDAO vet = new VeterinarioDAO();
+        ModeloVeterinario func = new ModeloVeterinario();
+       // vet.inserirVeterinarioNoBanco(veterinario,gerent.getIdGerente() );
+        //func=vet.pesquisarVeterinarioNoBanco(cpf);
+       // System.out.println(   func.getCpf() +func.getNome() + func.getSobrenome() 
+       // + func.getEmail() + func.getTelefone() + func.getDataNascimento() + func.getSexo()
+       // + func.getIdVeterinario() + func.getRua() + func.getNumeroCasa() + func.getBairro()+ func.getCidade());
+       // vet.alterarVeterinarioNoBanco(cpf, veterinario);
+      //  vet.excluirVeterinarioNoBanco(cpf);
+        
+        
+        //teste animal
+        ModeloCliente cliente = new ModeloCliente();
+        cliente.setNome("ale");
+        cliente.setSobrenome("onça");
+        cliente.setEmail("teste@test");
+        cliente.setDataNascimento("10/01/16");
+        cliente.setTelefone("91189052");
+        cliente.setCpf("1542121545");
+        cliente.setSexo("M");
+        cliente.setIdCliente(8);
+        cliente.setRua("Rua do Teste");
+        cliente.setBairro("Testolandia");
+        cliente.setCidade("Teste City");
+        cliente.setNumeroCasa(888);
+        
+        ClienteDAO cl = new ClienteDAO();
+        cl.inserirClienteNoBanco(cliente);
+        
+        ModeloAnimalExotico exotic = new ModeloAnimalExotico();
+        exotic.setNome("Bob Esponja");
+        exotic.setRaca("Esponja"); 
+        exotic.setAnoNascimento(1994);
+        exotic.setIdAnimal(1);
+        exotic.setIdDono(8);
+        exotic.setIdAnimal(1);
+        exotic.setPeso(5);
+        exotic.setUltimaVascina("2000-12-12");
+        AnimalExoticoDAO ex = new AnimalExoticoDAO();
+        ex.inserirAnimalNoBanco(exotic);
 }
     
 }

@@ -22,7 +22,7 @@ import java.text.SimpleDateFormat;
  * @author William
  */
 public class AnimalExoticoDAO {
-    // formato de data dia/mes/ano
+    // pesquisar o id do cliente apartir do cpf para referenciar no animal
     private Connection conexao;
     public void inserirAnimalNoBanco(ModeloAnimalExotico animalExotico) throws ClassNotFoundException, SQLException, ParseException{
            this.conexao = new Conexao().getConexao();
@@ -34,7 +34,10 @@ public class AnimalExoticoDAO {
             PreparedStatement stmt1 = conexao.prepareStatement(query_animal);
             stmt1.setInt(1,animalExotico.getIdAnimal());
             stmt1.setInt(2,animalExotico.getIdDono());
-            String query_exotico = "INSERT INTO Exotico(Raca, Nome, AnoNascimento, Peso, Data_vasc,idAnimal,idCliente)VALUES(?,?,?,?,?,?,?)";
+            stmt1.execute();
+            stmt1.close();
+            conexao.close();
+          /*  String query_exotico = "INSERT INTO Exotico(Raca, Nome, AnoNascimento, Peso, Data_vasc,idAnimal,idCliente)VALUES(?,?,?,?,?,?,?)";
             
             PreparedStatement stmt2 = conexao.prepareStatement(query_exotico);
             stmt2.setString(1,animalExotico.getRaca());
@@ -45,17 +48,18 @@ public class AnimalExoticoDAO {
             stmt2.setInt(6,animalExotico.getIdAnimal());
             stmt2.setInt(7,animalExotico.getIdDono());
            
-            stmt1.executeUpdate();
+            
             stmt2.executeUpdate();
-            stmt1.close();
+            
             stmt2.close();
-            conexao.close();
+            conexao.close();*/
         } 
         catch (SQLException sqlException) {
             sqlException.printStackTrace();
-        }
-    
+        }    
     }
+    
+   // public void inserir
     public void alterarAnimalNoBanco(ModeloAnimalExotico animalExotico) throws ClassNotFoundException, SQLException, ParseException{
         this.conexao = new Conexao().getConexao();
         try{

@@ -26,17 +26,17 @@ public class GerenteDAO {
         
         try{
               
-            String query = "INSERT INTO gerente(Nome, Sobrenome, email, Telefone, CPF, DataNascimento, Sexo, idGerente, senhaGerente, Rua, NumeroCasa, Bairro, Cidade) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String query = "INSERT INTO gerente(Nome, email, Telefone, CPF, DataNascimento, Sexo, idGerente, loginGerente, senhaGerente, Rua, NumeroCasa, Bairro, Cidade) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
  
             PreparedStatement pstmt = conexao.prepareStatement(query);
             pstmt.setString(1, gerente.getNome());
-            pstmt.setString(2, gerente.getSobrenome());
-            pstmt.setString(3, gerente.getEmail());
-            pstmt.setString(4,  gerente.getTelefone());
-            pstmt.setString(5, gerente.getCpf());
-            pstmt.setString(6, gerente.getDataNascimento());
-            pstmt.setString(7, gerente.getSexo());
-            pstmt.setInt(8, gerente.getIdGerente());
+            pstmt.setString(2, gerente.getEmail());
+            pstmt.setString(3,  gerente.getTelefone());
+            pstmt.setString(4, gerente.getCpf());
+            pstmt.setString(5, gerente.getDataNascimento());
+            pstmt.setString(6, gerente.getSexo());
+            pstmt.setInt(7, gerente.getIdGerente());
+            pstmt.setString(8, gerente.getLoginGerente());
             pstmt.setString(9, gerente.getSenhaGerente());
             pstmt.setString(10, gerente.getRua());
             pstmt.setInt(11, gerente.getNumeroCasa());
@@ -52,7 +52,7 @@ public class GerenteDAO {
     }
     
     
-    public void alterarGerenteNoBanco (String cpf,ModeloGerente gerente) throws ClassNotFoundException, SQLException{
+    /*public void alterarGerenteNoBanco (String cpf,ModeloGerente gerente) throws ClassNotFoundException, SQLException{
          this.conexao = new Conexao().getConexao();
     
         try{
@@ -129,5 +129,5 @@ public class GerenteDAO {
                   }
         return 0;
       }
-    
+    */
 }

@@ -19,7 +19,7 @@ import java.sql.ResultSetMetaData;
 public class ClienteDAO {
      private Connection conexao;
     
- public void inserirClienteNoBanco(ModeloCliente cliente) throws ClassNotFoundException, SQLException, Exception  {  
+ public boolean inserirClienteNoBanco(ModeloCliente cliente) throws ClassNotFoundException, SQLException, Exception  {  
       /* try {     
         Conexao con = new Conexao();
            com.mysql.jdbc.Statement stmt = con.getStmt();
@@ -59,57 +59,55 @@ public class ClienteDAO {
             pstmt.executeUpdate();
             pstmt.close();
             conexao.close();
+            return true;
         } 
         catch (SQLException sqlException) {
             sqlException.printStackTrace();
+            return false;
         }
     }
     
     
     public ModeloCliente pesquisaClienteNoBanco (String cpf) throws ClassNotFoundException, SQLException{
         this.conexao = new Conexao().getConexao();
-        ModeloCliente dadosCliente = new ModeloCliente(); 
-        
+        ModeloCliente dadosCliente = new ModeloCliente();        
         ResultSet rs = null;
-      try{
-          //rs = stmt.executeQuery("select * from cliente where cpf='" +cpf+"';" );
-           //PreparedStatement pstmt = this.conexao.prepareStatement("SELECT * FROM cliente WHERE cpf = ?");
-          String sql ="Select cpf, nome, email, telefone, DataNascimento, sexo, idCliente, rua, numeroCasa, bairro, cidade  FROM CLIENTE WHERE CPF = ?";
-          PreparedStatement pstmt = conexao.prepareStatement(sql); 
-          pstmt.setString(1, cpf);
-           rs = pstmt.executeQuery();
-          while (rs.next()){
-             
-              ModeloCliente temp = new ModeloCliente();
-              temp.setCpf(rs.getString("cpf"));
-              temp.setNome(rs.getString("nome"));
-              temp.setEmail(rs.getString("email"));
-              temp.setTelefone(rs.getString("telefone"));
-              temp.setDataNascimento(rs.getString("datanascimento"));
-              temp.setSexo(rs.getString("sexo"));
-              temp.setIdCliente(rs.getInt("idCliente"));
-              temp.setRua(rs.getString("rua"));
-              temp.setNumeroCasa(rs.getInt("numeroCasa"));
-              temp.setBairro(rs.getString("bairro"));
-              temp.setCidade(rs.getString("cidade"));
-              dadosCliente=temp;
-              
-              }
-          rs.close();
-          pstmt.close();
-          conexao.close();
-         
-          return dadosCliente;
-      }
-          catch (SQLException e) { 
-                   System.out.println("Erro ao buscar pessoa");
-                   return null;
-                  }
-      }
+        try{
+            //rs = stmt.executeQuery("select * from cliente where cpf='" +cpf+"';" );
+            //PreparedStatement pstmt = this.conexao.prepareStatement("SELECT * FROM cliente WHERE cpf = ?");
+            String sql ="Select cpf, nome, email, telefone, DataNascimento, sexo, idCliente, rua, numeroCasa, bairro, cidade  FROM CLIENTE WHERE CPF = ?";
+            PreparedStatement pstmt = conexao.prepareStatement(sql); 
+            pstmt.setString(1, cpf);
+            rs = pstmt.executeQuery();
+            while (rs.next()){             
+                ModeloCliente temp = new ModeloCliente();
+                temp.setCpf(rs.getString("cpf"));
+                temp.setNome(rs.getString("nome"));
+                temp.setEmail(rs.getString("email"));
+                temp.setTelefone(rs.getString("telefone"));
+                temp.setDataNascimento(rs.getString("datanascimento"));
+                temp.setSexo(rs.getString("sexo"));
+                temp.setIdCliente(rs.getInt("idCliente"));
+                temp.setRua(rs.getString("rua"));
+                temp.setNumeroCasa(rs.getInt("numeroCasa"));
+                temp.setBairro(rs.getString("bairro"));
+                temp.setCidade(rs.getString("cidade"));
+                dadosCliente=temp;              
+            }
+            rs.close();
+            pstmt.close();
+            conexao.close();         
+            return dadosCliente;
+        }
+        catch (SQLException e) { 
+            System.out.println("Erro ao buscar pessoa");
+            return null;
+       }
+    }
         
             
     
-    public void alterarClienteNoBanco (String cpf,ModeloCliente cliente) throws ClassNotFoundException, SQLException{
+    public boolean alterarClienteNoBanco (String cpf,ModeloCliente cliente) throws ClassNotFoundException, SQLException{
     this.conexao = new Conexao().getConexao();
     
         try{
@@ -124,18 +122,19 @@ public class ClienteDAO {
             pstmt.setInt(5,cliente.getNumeroCasa());
             pstmt.setString(6,cliente.getBairro());
             pstmt.setString(7,cliente.getCidade());
-            pstmt.setString(8,cpf);
-            
+            pstmt.setString(8,cpf);            
             pstmt.execute();
             pstmt.close();
             conexao.close();
+            return true;
         }
         catch (SQLException sqlException) {
             sqlException.printStackTrace();
+            return false;
         }
     }
     
-    public void excluirClienteNoBanco (String cpf) throws ClassNotFoundException, SQLException{
+    public boolean excluirClienteNoBanco (String cpf) throws ClassNotFoundException, SQLException{
     this.conexao = new Conexao().getConexao();
     
         try{
@@ -146,9 +145,11 @@ public class ClienteDAO {
             pstmt.execute();
             pstmt.close();
             conexao.close();
+            return true;
         }
         catch (SQLException sqlException) {
             sqlException.printStackTrace();
+            return false;
         }
     }
 

@@ -19,7 +19,7 @@ import java.sql.ResultSetMetaData;
 public class GerenteDAO {
     private Connection conexao;    
     
-    public void inserirGerenteNoBanco(ModeloGerente gerente) throws ClassNotFoundException, SQLException{
+    public boolean inserirGerenteNoBanco(ModeloGerente gerente) throws ClassNotFoundException, SQLException{
            
        this.conexao = new Conexao().getConexao();
 
@@ -45,14 +45,16 @@ public class GerenteDAO {
             pstmt.executeUpdate();
             pstmt.close();
             conexao.close();
+            return true;
         } 
         catch (SQLException sqlException) {
             sqlException.printStackTrace();
+            return false;
         }
     }
     
     
-    public void alterarGerenteNoBanco (String cpf,ModeloGerente gerente) throws ClassNotFoundException, SQLException{
+    public boolean alterarGerenteNoBanco (String cpf,ModeloGerente gerente) throws ClassNotFoundException, SQLException{
          this.conexao = new Conexao().getConexao();
     
         try{
@@ -73,13 +75,15 @@ public class GerenteDAO {
             pstmt.execute();
             pstmt.close();
             conexao.close();
+            return true;
         }
         catch (SQLException sqlException) {
             sqlException.printStackTrace();
+            return false;
         }
     }
     
-    public void excluirGerenteNoBanco (String cpf) throws ClassNotFoundException, SQLException{
+    public boolean excluirGerenteNoBanco (String cpf) throws ClassNotFoundException, SQLException{
         this.conexao = new Conexao().getConexao();
     
         try{
@@ -90,9 +94,11 @@ public class GerenteDAO {
             pstmt.execute();
             pstmt.close();
             conexao.close();
+            return true;
         }
         catch (SQLException sqlException) {
             sqlException.printStackTrace();
+            return false;
         }
     }
     

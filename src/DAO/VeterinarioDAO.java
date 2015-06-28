@@ -21,7 +21,7 @@ import java.sql.Statement;
 
 public class VeterinarioDAO {
     private Connection conexao;
-    public void inserirVeterinarioNoBanco(ModeloVeterinario veterinario, int idGerente) throws ClassNotFoundException, SQLException{
+    public boolean inserirVeterinarioNoBanco(ModeloVeterinario veterinario, int idGerente) throws ClassNotFoundException, SQLException{
         this.conexao = new Conexao().getConexao();
         try{
            
@@ -45,9 +45,11 @@ public class VeterinarioDAO {
             pstmt.executeUpdate();
             pstmt.close();
             conexao.close();
+            return true;
         } 
         catch (SQLException sqlException) {
             sqlException.printStackTrace();
+            return false;
         }
     }
     
@@ -92,7 +94,7 @@ public class VeterinarioDAO {
               
     }
     
-    public void alterarVeterinarioNoBanco (String cpf,ModeloVeterinario veterinario) throws ClassNotFoundException, SQLException{
+    public boolean alterarVeterinarioNoBanco (String cpf,ModeloVeterinario veterinario) throws ClassNotFoundException, SQLException{
          this.conexao = new Conexao().getConexao();
         try{
             String sql ="UPDATE Veterinario SET Nome = ?, email = ?, Telefone = ?,"
@@ -110,13 +112,15 @@ public class VeterinarioDAO {
             stmt.execute();
             stmt.close();
             conexao.close();
+            return true;
         }
         catch (SQLException sqlException) {
             sqlException.printStackTrace();
+            return false;
         }
     }
     
-    public void excluirVeterinarioNoBanco (String cpf) throws ClassNotFoundException, SQLException{
+    public boolean excluirVeterinarioNoBanco (String cpf) throws ClassNotFoundException, SQLException{
         this.conexao = new Conexao().getConexao();
     
         try{
@@ -126,9 +130,11 @@ public class VeterinarioDAO {
             stmt.execute();
             stmt.close();
             conexao.close();
+            return true;
         }
         catch (SQLException sqlException) {
             sqlException.printStackTrace();
+            return false;
         }
     }
 }

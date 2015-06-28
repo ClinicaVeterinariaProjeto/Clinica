@@ -22,9 +22,8 @@ import java.sql.SQLException;
 public class AnimalExoticoDAO {
     // pesquisar o id do cliente apartir do cpf para referenciar no animal
     private Connection conexao;
-    public void inserirAnimalNoBanco(ModeloAnimalExotico animalExotico) throws ClassNotFoundException, SQLException{
-           this.conexao = new Conexao().getConexao();
-
+    public boolean inserirAnimalNoBanco(ModeloAnimalExotico animalExotico) throws ClassNotFoundException, SQLException{
+        this.conexao = new Conexao().getConexao();
         try{            
             String query_animal = "INSERT INTO Animal(idAnimal, idCliente) VALUES (?,?)";            
             PreparedStatement stmt1 = conexao.prepareStatement(query_animal);
@@ -34,17 +33,17 @@ public class AnimalExoticoDAO {
             stmt1.close();
             conexao.close();
             inserirExoticoNoBanco(animalExotico);
+            return true;
         } 
         catch (SQLException sqlException) {
             sqlException.printStackTrace();
+            return false;
         }    
     }
     
     public void inserirExoticoNoBanco(ModeloAnimalExotico animalExotico) throws ClassNotFoundException, SQLException{
         this.conexao = new Conexao().getConexao();
-
-        try{
-                        
+        try{                        
             String query_exotico = "INSERT INTO Exotico(Raca, Nome, AnoNascimento, Peso, Data_vasc,idAnimal,idCliente)VALUES(?,?,?,?,?,?,?)";
             PreparedStatement stmt2 = conexao.prepareStatement(query_exotico);
             stmt2.setString(1,animalExotico.getRaca());
@@ -62,10 +61,9 @@ public class AnimalExoticoDAO {
             sqlException.printStackTrace();
         }
     }
-    public void alterarAnimalNoBanco(ModeloAnimalExotico animalExotico,int idDoAnimal) throws ClassNotFoundException, SQLException{
+    public boolean alterarAnimalNoBanco(ModeloAnimalExotico animalExotico,int idDoAnimal) throws ClassNotFoundException, SQLException{
         this.conexao = new Conexao().getConexao();
-        try{
-            
+        try{            
             String sql ="UPDATE Exotico SET Raca = ?, Nome = ?, Peso = ?,"
             + " Data_vasc = ? WHERE idAnimal = ?" ;
             PreparedStatement stmt = conexao.prepareStatement(sql);
@@ -77,9 +75,11 @@ public class AnimalExoticoDAO {
             stmt.execute();
             stmt.close();
             conexao.close();
+            return true;
         }
         catch (SQLException sqlException) {
             sqlException.printStackTrace();
+            return false;
         }
     }
     public ModeloAnimalExotico pesquisarAnimalNoBanco(String cpf,String nomeDoAnimal) throws ClassNotFoundException, SQLException{
@@ -89,12 +89,10 @@ public class AnimalExoticoDAO {
         ModeloCliente cliente = new ModeloCliente();
         ClienteDAO cl = new ClienteDAO();
         cliente=cl.pesquisaClienteNoBanco(cpf);
-        try{
-            
+        try{            
             String sql ="SELECT Raca,Nome,AnoNascimento,Peso,Data_vasc,idAnimal,idCliente "
                     + "FROM Exotico "
-                    + "WHERE idCliente = ? and Nome = ? ";
-                   
+                    + "WHERE idCliente = ? and Nome = ? ";                   
             PreparedStatement pstmt = conexao.prepareStatement(sql); 
             pstmt.setInt(1,cliente.getIdCliente());
             pstmt.setString(2,nomeDoAnimal);
@@ -112,8 +110,7 @@ public class AnimalExoticoDAO {
             }
             rs.close();
             pstmt.close();
-            conexao.close();
-         
+            conexao.close();         
             return animalExotico;
         }
         catch (SQLException e) { 
@@ -122,19 +119,20 @@ public class AnimalExoticoDAO {
         }   
     
     }
-    public void excluirAnimalExoticoNoBanco (int idDoAnimal) throws ClassNotFoundException, SQLException{
+    public boolean excluirAnimalExoticoNoBanco (int idDoAnimal) throws ClassNotFoundException, SQLException{
         this.conexao = new Conexao().getConexao();    
-        try{
-            
+        try{            
             String sql ="DELETE FROM Exotico WHERE idAnimal = ?";
             PreparedStatement stmt = conexao.prepareStatement(sql);
             stmt.setInt(1,idDoAnimal);  
             stmt.executeUpdate();
             conexao.close();
             excluirAnimal(idDoAnimal);
+            return true;
         }
         catch (SQLException sqlException) {
             sqlException.printStackTrace();
+            return false;
         }
     }
     public void excluirAnimal(int idDoAnimal)throws ClassNotFoundException, SQLException{

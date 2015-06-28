@@ -22,13 +22,13 @@ public class PrincipalDao {
     public static void main (String Args []) throws SQLException, ClassNotFoundException, Exception{
     
         ModeloGerente gerent = new ModeloGerente();
-       /*gerent.setNome("ale");
+       gerent.setNome("ale");
         gerent.setEmail("teste@test");
         gerent.setDataNascimento("10/01/16");
         gerent.setTelefone("91189052");
         gerent.setCpf("1542121545");
         gerent.setSexo("M");
-        gerent.setIdGerente(3);
+        gerent.setIdGerente(2);
         gerent.setLoginGerente("admin");
         gerent.setSenhaGerente("admin");
         gerent.setRua("fikb");
@@ -36,16 +36,16 @@ public class PrincipalDao {
         gerent.setCidade("citytest");
         gerent.setNumeroCasa(667);
         GerenteDAO cd = new GerenteDAO();
-        cd.inserirGerenteNoBanco(gerent);
+      //  cd.inserirGerenteNoBanco(gerent);
         
         //cd.excluirClienteNoBanco(cpf);
         
         //cliente = cd.pesquisaClienteNoBanco(cpf);
         //cd.alterarClienteNoBanco(cpf, cliente);
         
-       */
+       
          
-      /* ModeloFuncionario funcionario = new ModeloFuncionario();
+       ModeloFuncionario funcionario = new ModeloFuncionario();
         funcionario.setNome("Will");
         funcionario.setLoginFuncionario("marques");
         funcionario.setEmail("teste@test");
@@ -94,7 +94,7 @@ public class PrincipalDao {
         
       VeterinarioDAO vet = new VeterinarioDAO();
        // ModeloVeterinario func = new ModeloVeterinario();
-       vet.inserirVeterinarioNoBanco(veterinario,gerent.getIdGerente() );
+     //  vet.inserirVeterinarioNoBanco(veterinario,gerent.getIdGerente() );
         //func=vet.pesquisarVeterinarioNoBanco(cpf);
        // System.out.println(   func.getCpf() +func.getNome() + func.getSobrenome() 
        // + func.getEmail() + func.getTelefone() + func.getDataNascimento() + func.getSexo()

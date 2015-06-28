@@ -22,9 +22,8 @@ import java.sql.SQLException;
 public class AnimalDomesticoDAO {
     // formato de data dia/mes/ano
 private Connection conexao;
-    public void inserirAnimalNoBanco(ModeloAnimalDomestico animalDomestico) throws ClassNotFoundException, SQLException{
-           this.conexao = new Conexao().getConexao();
-
+    public boolean inserirAnimalNoBanco(ModeloAnimalDomestico animalDomestico) throws ClassNotFoundException, SQLException{
+        this.conexao = new Conexao().getConexao();
         try{            
             String query_animal = "INSERT INTO Animal(idAnimal, idCliente) VALUES (?,?)";            
             PreparedStatement stmt1 = conexao.prepareStatement(query_animal);
@@ -34,9 +33,11 @@ private Connection conexao;
             stmt1.close();
             conexao.close();
             inserirExoticoNoBanco(animalDomestico);
+            return true;
         } 
         catch (SQLException sqlException) {
             sqlException.printStackTrace();
+            return false;
         }    
     }
     
@@ -62,7 +63,7 @@ private Connection conexao;
             sqlException.printStackTrace();
         }
     }
-     public void alterarAnimalNoBanco(ModeloAnimalDomestico animalDomestico,int idDoAnimal) throws ClassNotFoundException, SQLException{
+     public boolean alterarAnimalNoBanco(ModeloAnimalDomestico animalDomestico,int idDoAnimal) throws ClassNotFoundException, SQLException{
         this.conexao = new Conexao().getConexao();
         try{
             
@@ -77,9 +78,11 @@ private Connection conexao;
             stmt.execute();
             stmt.close();
             conexao.close();
+            return true;
         }
         catch (SQLException sqlException) {
             sqlException.printStackTrace();
+            return false;
         }
     }
     public ModeloAnimalDomestico pesquisarAnimalNoBanco(String cpf,String nomeDoAnimal) throws ClassNotFoundException, SQLException{
@@ -122,7 +125,7 @@ private Connection conexao;
         } 
     
     }
-    public void excluirAnimalNoBanco (int idDoAnimal) throws ClassNotFoundException, SQLException{
+    public boolean excluirAnimalNoBanco (int idDoAnimal) throws ClassNotFoundException, SQLException{
         this.conexao = new Conexao().getConexao();    
         try{
             
@@ -132,9 +135,11 @@ private Connection conexao;
             stmt.executeUpdate();
             conexao.close();
             excluirAnimal(idDoAnimal);
+            return true;
         }
         catch (SQLException sqlException) {
             sqlException.printStackTrace();
+            return false;
         }
     }
     public void excluirAnimal(int idDoAnimal)throws ClassNotFoundException, SQLException{

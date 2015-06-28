@@ -22,14 +22,13 @@ import java.sql.Statement;
 public class FuncionarioDAO {
     private Connection conexao;
     //funcionando
-    public void inserirFuncionarioNoBanco(ModeloFuncionario funcionario,int idGerente) throws ClassNotFoundException, SQLException{
+    public boolean inserirFuncionarioNoBanco(ModeloFuncionario funcionario,int idGerente) throws ClassNotFoundException, SQLException{
      this.conexao = new Conexao().getConexao();
      
     // ModeloGerente gerente = new ModeloGerente();
     // GerenteDAO gr = new GerenteDAO();
        // idGerente = gr.pesquisaGerenteNoBanco(gerente.getCpf());
-        try{
-              
+        try{              
             
             
             String query = "INSERT INTO funcionario(Nome, email, Telefone, CPF, DataNascimento, Sexo, idFuncionario, loginFuncionario,senhaFuncionario, Rua, NumeroCasa, Bairro, Cidade, idGerente) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -52,9 +51,11 @@ public class FuncionarioDAO {
             pstmt.executeUpdate();
             pstmt.close();
             conexao.close();
+            return true;
         } 
         catch (SQLException sqlException) {
             sqlException.printStackTrace();
+            return false;
         }
     }
     // funcionando
@@ -99,7 +100,7 @@ public class FuncionarioDAO {
         }       
     }
     //funcionando
-    public void alterarFuncionarioNoBanco (String cpf,ModeloFuncionario funcionario) throws ClassNotFoundException, SQLException{
+    public boolean alterarFuncionarioNoBanco (String cpf,ModeloFuncionario funcionario) throws ClassNotFoundException, SQLException{
         this.conexao = new Conexao().getConexao();
     
         try{
@@ -119,13 +120,15 @@ public class FuncionarioDAO {
             stmt.execute();
             stmt.close();
             conexao.close();
+            return true;
         }
         catch (SQLException sqlException) {
             sqlException.printStackTrace();
+            return false;
         }
     }
     
-    public void excluirFuncionarioNoBanco (String cpf) throws ClassNotFoundException, SQLException{
+    public boolean excluirFuncionarioNoBanco (String cpf) throws ClassNotFoundException, SQLException{
        this.conexao = new Conexao().getConexao();
     
         try{
@@ -136,16 +139,19 @@ public class FuncionarioDAO {
             stmt.execute();
             stmt.close();
             conexao.close();
+            return true;
         }
         catch (SQLException sqlException) {
             sqlException.printStackTrace();
+            return false;
         }
     }
     
     
-    public void agendarConsulta (){
-    
+    public boolean agendarConsulta (){    
+        return true;
     }
-    public void alterarDataConsulta(){
+    public boolean alterarDataConsulta(){
+        return true;
     }
 }

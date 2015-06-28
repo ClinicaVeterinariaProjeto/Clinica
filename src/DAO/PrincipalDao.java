@@ -10,6 +10,7 @@ import Persistencia.Conexao;
 import Modelo.ModeloCliente;
 import Modelo.ModeloFuncionario;
 import Modelo.ModeloGerente;
+import Modelo.ModeloRelatorios;
 import Modelo.ModeloVeterinario;
 import java.sql.SQLException;
 
@@ -21,7 +22,7 @@ public class PrincipalDao {
     private static int id;
     public static void main (String Args []) throws SQLException, ClassNotFoundException, Exception{
     
-        ModeloGerente gerent = new ModeloGerente();
+     /*   ModeloGerente gerent = new ModeloGerente();
        gerent.setNome("ale");
         gerent.setEmail("teste@test");
         gerent.setDataNascimento("10/01/16");
@@ -53,7 +54,7 @@ public class PrincipalDao {
         funcionario.setTelefone("91189052");
         funcionario.setCpf("1542121545");
         funcionario.setSexo("M");
-        funcionario.setIdFuncionario(1);
+        funcionario.setIdFuncionario(2);
         funcionario.setRua("fikb");
         funcionario.setBairro("teste-new");
         funcionario.setCidade("citytest");
@@ -76,7 +77,7 @@ public class PrincipalDao {
         fun.excluirFuncionarioNoBanco(cpf);*/
         
         // testando veterinario 
-       ModeloVeterinario veterinario = new ModeloVeterinario();
+    /*   ModeloVeterinario veterinario = new ModeloVeterinario();
         veterinario.setNome("NEW-ALTERAÇÃO");
         veterinario.setLoginVeterinario("testeALTE");
         veterinario.setEmail("teste@test");
@@ -133,6 +134,7 @@ public class PrincipalDao {
         AnimalExoticoDAO ex = new AnimalExoticoDAO();
         ex.inserirAnimalNoBanco(exotic);
 }*/
-    
+        ModeloRelatorios rel = new ModeloRelatorios();
+        rel.relatorioCliente();
 }
 }

@@ -6,6 +6,7 @@
 package DAO;
 
 import Modelo.ModeloAnimalExotico;
+import Modelo.ModeloCliente;
 import Persistencia.Conexao;
 import com.mysql.jdbc.Connection;
 import java.sql.PreparedStatement;
@@ -44,7 +45,7 @@ public class AnimalExoticoDAO {
 
         try{
                         
-            String query_exotico = "INSERT INTO Exotico(Raça, Nome, AnoNascimento, Peso, Data_vasc,idAnimal,idCliente)VALUES(?,?,?,?,?,?,?)";
+            String query_exotico = "INSERT INTO Exotico(Raca, Nome, AnoNascimento, Peso, Data_vasc,idAnimal,idCliente)VALUES(?,?,?,?,?,?,?)";
             PreparedStatement stmt2 = conexao.prepareStatement(query_exotico);
             stmt2.setString(1,animalExotico.getRaca());
             stmt2.setString(2,animalExotico.getNome());
@@ -61,19 +62,18 @@ public class AnimalExoticoDAO {
             sqlException.printStackTrace();
         }
     }
-    public void alterarAnimalNoBanco(ModeloAnimalExotico animalExotico) throws ClassNotFoundException, SQLException{
+    public void alterarAnimalNoBanco(ModeloAnimalExotico animalExotico,int idDoAnimal) throws ClassNotFoundException, SQLException{
         this.conexao = new Conexao().getConexao();
         try{
             
             String sql ="UPDATE Exotico SET Raca = ?, Nome = ?, Peso = ?,"
-            + " Data_vasc = ? WHERE idAnimal = ? and idCliente = ?" ;
+            + " Data_vasc = ? WHERE idAnimal = ?" ;
             PreparedStatement stmt = conexao.prepareStatement(sql);
             stmt.setString(1,animalExotico.getRaca());
             stmt.setString(2,animalExotico.getNome());
-            stmt.setInt(3,animalExotico.getAnoNascimento());
-            stmt.setFloat(4,animalExotico.getPeso());            
-            stmt.setInt(5,animalExotico.getIdAnimal());
-            stmt.setInt(6,animalExotico.getIdDono());
+            stmt.setFloat(3,animalExotico.getPeso());
+            stmt.setString(4,animalExotico.getUltimaVascina());                        
+            stmt.setInt(5,idDoAnimal);
             stmt.execute();
             stmt.close();
             conexao.close();
@@ -82,30 +82,32 @@ public class AnimalExoticoDAO {
             sqlException.printStackTrace();
         }
     }
-    public ModeloAnimalExotico pesquisarAnimalNoBanco(String cpf) throws ClassNotFoundException, SQLException{
+    public ModeloAnimalExotico pesquisarAnimalNoBanco(String cpf,String nomeDoAnimal) throws ClassNotFoundException, SQLException{
         this.conexao = new Conexao().getConexao();
         ModeloAnimalExotico animalExotico = new ModeloAnimalExotico();
         ResultSet rs = null;
+        ModeloCliente cliente = new ModeloCliente();
+        ClienteDAO cl = new ClienteDAO();
+        cliente=cl.pesquisaClienteNoBanco(cpf);
         try{
-           /* ModeloCliente cliente = new ModeloCliente();
-            ClienteDAO cl = new ClienteDAO();
-            cliente=cl.pesquisaClienteNoBanco(cpf);*/
-            String sql ="SELECT e.Raça, e.Nome, e.AnoNascimento, e.Peso, e.Data_vasc,e.idAnimal,e.idCliente "
-                    + "FROM Exotico as e INNER JOIN Animal AS a ON e.idCliente = a.idCliente INNER JOIN Cliente as c ON c.idCliente=a.idCliente"
-                    + "WHERE c.cpf = ?";
+            
+            String sql ="SELECT Raca,Nome,AnoNascimento,Peso,Data_vasc,idAnimal,idCliente "
+                    + "FROM Exotico "
+                    + "WHERE idCliente = ? and Nome = ? ";
                    
             PreparedStatement pstmt = conexao.prepareStatement(sql); 
-            pstmt.setString(1,cpf );
+            pstmt.setInt(1,cliente.getIdCliente());
+            pstmt.setString(2,nomeDoAnimal);
             rs = pstmt.executeQuery();
             while (rs.next()){ 
                 ModeloAnimalExotico temp = new ModeloAnimalExotico();
-                temp.setRaca(rs.getString("e.Raça"));
-                temp.setNome(rs.getString("e.Nome"));
-                temp.setAnoNascimento(rs.getInt("e.AnoNascimento"));
-               // temp.setPeso(rs.getFloat("e.Peso"));
-               // temp.setUltimaVascina(rs.getString("e.Data_vasc"));
-               // temp.setIdAnimal(rs.getInt("e.idAnimal"));
-              //  temp.setIdDono(rs.getInt("e.idCliente"));
+                temp.setRaca(rs.getString("Raca"));
+                temp.setNome(rs.getString("Nome"));
+                temp.setAnoNascimento(rs.getInt("AnoNascimento"));
+                temp.setPeso(rs.getFloat("Peso"));
+                temp.setUltimaVascina(rs.getString("Data_vasc"));
+                temp.setIdAnimal(rs.getInt("idAnimal"));
+                temp.setIdDono(rs.getInt("idCliente"));
                 animalExotico=temp;
             }
             rs.close();
@@ -120,14 +122,27 @@ public class AnimalExoticoDAO {
         }   
     
     }
-    public void excluirAnimalNoBanco () throws ClassNotFoundException, SQLException{
-        this.conexao = new Conexao().getConexao();
-    
+    public void excluirAnimalExoticoNoBanco (int idDoAnimal) throws ClassNotFoundException, SQLException{
+        this.conexao = new Conexao().getConexao();    
         try{
             
-            String sql ="DELETE FROM Exotico WHERE  = ?";
+            String sql ="DELETE FROM Exotico WHERE idAnimal = ?";
             PreparedStatement stmt = conexao.prepareStatement(sql);
-            stmt.setString(1,null);  
+            stmt.setInt(1,idDoAnimal);  
+            stmt.executeUpdate();
+            conexao.close();
+            excluirAnimal(idDoAnimal);
+        }
+        catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
+    }
+    public void excluirAnimal(int idDoAnimal)throws ClassNotFoundException, SQLException{
+        this.conexao = new Conexao().getConexao();    
+        try{            
+            String sql ="DELETE FROM Animal WHERE idAnimal = ?";
+            PreparedStatement stmt = conexao.prepareStatement(sql);
+            stmt.setInt(1,idDoAnimal);  
             stmt.executeUpdate();
             conexao.close();
         }
@@ -135,4 +150,5 @@ public class AnimalExoticoDAO {
             sqlException.printStackTrace();
         }
     }
+    
 }

@@ -6,6 +6,7 @@
 package DAO;
 
 import Modelo.ModeloAnimalDomestico;
+import Modelo.ModeloCliente;
 
 import Persistencia.Conexao;
 import com.mysql.jdbc.Connection;
@@ -44,7 +45,7 @@ private Connection conexao;
 
         try{
                         
-            String query_exotico = "INSERT INTO Domestico(Raça, Nome, AnoNascimento, Peso, Data_vasc,idAnimal,idCliente)VALUES(?,?,?,?,?,?,?)";
+            String query_exotico = "INSERT INTO Domestico(Raca, Nome, AnoNascimento, Peso, Data_vasc,idAnimal,idCliente)VALUES(?,?,?,?,?,?,?)";
             PreparedStatement stmt2 = conexao.prepareStatement(query_exotico);
             stmt2.setString(1,animalDomestico.getRaca());
             stmt2.setString(2,animalDomestico.getNome());
@@ -61,19 +62,18 @@ private Connection conexao;
             sqlException.printStackTrace();
         }
     }
-    public void alterarAnimalNoBanco(ModeloAnimalDomestico animalDomestico) throws ClassNotFoundException, SQLException{
+     public void alterarAnimalNoBanco(ModeloAnimalDomestico animalDomestico,int idDoAnimal) throws ClassNotFoundException, SQLException{
         this.conexao = new Conexao().getConexao();
         try{
-            String sql ="UPDATE Domestico SET Raca = ?, Nome = ?, AnoNascimento = ?, Peso = ?,"
-            + " Data_vasc = ? WHERE idAnimal = ? and idCliente = ?" ;
+            
+            String sql ="UPDATE Domestico SET Raca = ?, Nome = ?, Peso = ?,"
+            + " Data_vasc = ? WHERE idAnimal = ?" ;
             PreparedStatement stmt = conexao.prepareStatement(sql);
             stmt.setString(1,animalDomestico.getRaca());
             stmt.setString(2,animalDomestico.getNome());
-            stmt.setInt(3,animalDomestico.getAnoNascimento());
-            stmt.setFloat(4,animalDomestico.getPeso());
-            stmt.setString(5,animalDomestico.getUltimaVascina());
-            stmt.setInt(6,animalDomestico.getIdAnimal());
-            stmt.setInt(7,animalDomestico.getIdDono());
+            stmt.setFloat(3,animalDomestico.getPeso());
+            stmt.setString(4,animalDomestico.getUltimaVascina());                        
+            stmt.setInt(5,idDoAnimal);
             stmt.execute();
             stmt.close();
             conexao.close();
@@ -82,17 +82,33 @@ private Connection conexao;
             sqlException.printStackTrace();
         }
     }
-    public ModeloAnimalDomestico pesquisarAnimalNoBanco(String cpf) throws ClassNotFoundException, SQLException{
+    public ModeloAnimalDomestico pesquisarAnimalNoBanco(String cpf,String nomeDoAnimal) throws ClassNotFoundException, SQLException{
         this.conexao = new Conexao().getConexao();
         ResultSet rs = null;
         ModeloAnimalDomestico animalDomestico = new ModeloAnimalDomestico();
+        ModeloCliente cliente = new ModeloCliente();
+        ClienteDAO cl = new ClienteDAO();
+        cliente=cl.pesquisaClienteNoBanco(cpf);
         try{ 
-            String sql = "SELECT .. ";
+            
+            String sql ="SELECT Raca,Nome,AnoNascimento,Peso,Data_vasc,idAnimal,idCliente "
+                    + "FROM Domestico "
+                    + "WHERE idCliente = ? and Nome = ? ";
+                   
             PreparedStatement pstmt = conexao.prepareStatement(sql); 
-           
+            pstmt.setInt(1,cliente.getIdCliente());
+            pstmt.setString(2,nomeDoAnimal);
             rs = pstmt.executeQuery();
-            while (rs.next()){                
-              
+            while (rs.next()){ 
+                ModeloAnimalDomestico temp = new ModeloAnimalDomestico();
+                temp.setRaca(rs.getString("Raca"));
+                temp.setNome(rs.getString("Nome"));
+                temp.setAnoNascimento(rs.getInt("AnoNascimento"));
+                temp.setPeso(rs.getFloat("Peso"));
+                temp.setUltimaVascina(rs.getString("Data_vasc"));
+                temp.setIdAnimal(rs.getInt("idAnimal"));
+                temp.setIdDono(rs.getInt("idCliente"));
+                animalDomestico=temp;
             }
             rs.close();
             pstmt.close();
@@ -106,14 +122,27 @@ private Connection conexao;
         } 
     
     }
-    public void excluirAnimalNoBanco () throws ClassNotFoundException, SQLException{
-        this.conexao = new Conexao().getConexao();
-    
+    public void excluirAnimalNoBanco (int idDoAnimal) throws ClassNotFoundException, SQLException{
+        this.conexao = new Conexao().getConexao();    
         try{
             
-            String sql ="DELETE FROM Domestico WHERE  = ?";
+            String sql ="DELETE FROM domestico WHERE idAnimal = ?";
             PreparedStatement stmt = conexao.prepareStatement(sql);
-            stmt.setString(1,null);  
+            stmt.setInt(1,idDoAnimal);  
+            stmt.executeUpdate();
+            conexao.close();
+            excluirAnimal(idDoAnimal);
+        }
+        catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
+    }
+    public void excluirAnimal(int idDoAnimal)throws ClassNotFoundException, SQLException{
+        this.conexao = new Conexao().getConexao();    
+        try{            
+            String sql ="DELETE FROM Animal WHERE idAnimal = ?";
+            PreparedStatement stmt = conexao.prepareStatement(sql);
+            stmt.setInt(1,idDoAnimal);  
             stmt.executeUpdate();
             conexao.close();
         }

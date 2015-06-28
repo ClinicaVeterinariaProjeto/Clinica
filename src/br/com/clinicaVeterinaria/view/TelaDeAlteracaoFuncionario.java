@@ -30,25 +30,23 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
         jlCampoObrigatorioNovaSenha.setVisible(false);
         jlCampoObrigatorioNome.setVisible(false);
         jlCampoObrigatorioLogin.setVisible(false);
-        jlCampoObrigatorioEstado.setVisible(false);
         jlCampoObrigatorioEmail.setVisible(false);
         jlCampoObrigatorioDataNascimento.setVisible(false);
         jlCampoObrigatorioCidade.setVisible(false);
         jlCampoObrigatorioCPF.setVisible(false);
         jlCampoObrigatorioBairro.setVisible(false);
-        jlCampoObrigatorioNumerodaCasa.setVisible(false);
+        jlCampoObrigatorioNumeroDaCasa.setVisible(false);
         jtBairro.setDocument(new ControleTeclasPermitidasLetras(30));
         jtCidade.setDocument(new ControleTeclasPermitidasLetras(30));
         jtCpf.setDocument(new ControleTeclasPermitidasNumeros(11));
         jtDataAno.setDocument(new ControleTeclasPermitidasNumeros(4));
         jtDataMes.setDocument(new ControleTeclasPermitidasNumeros(2));
         jtDataDia.setDocument(new ControleTeclasPermitidasNumeros(2));
-        jtEstado.setDocument(new ControleTeclasPermitidasLetras(20));
         jtRua.setDocument(new ControleTeclasPermitidasLetras(20));
         jtSexo.setDocument(new ControleTeclasPermitidasLetras(10));
         jtTelefone.setDocument(new ControleTeclasPermitidasNumeros(10));
         jtNome.setDocument(new ControleTeclasPermitidasLetras(30));
-        jtNumerodaCasa.setDocument(new ControleTeclasPermitidasNumeros(4));
+        jtNumeroDaCasa.setDocument(new ControleTeclasPermitidasNumeros(4));
     }
 
     /**
@@ -85,22 +83,18 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
         jtNovaSenha = new javax.swing.JPasswordField();
         jtSenha = new javax.swing.JPasswordField();
         jtLogin = new javax.swing.JPasswordField();
-        jbAlterarFuncionario = new javax.swing.JToggleButton();
+        jbCadastrar = new javax.swing.JToggleButton();
         jbCancelar = new javax.swing.JButton();
         jlCidade = new javax.swing.JLabel();
         jlBairro = new javax.swing.JLabel();
-        jlEstado = new javax.swing.JLabel();
         jtCidade = new javax.swing.JTextField();
         jtBairro = new javax.swing.JTextField();
-        jtEstado = new javax.swing.JTextField();
         jlCampoObrigatorioNome = new javax.swing.JLabel();
         jlCampoObrigatorioRua = new javax.swing.JLabel();
         jlCampoObrigatorioCidade = new javax.swing.JLabel();
         jlCampoObrigatorioBairro = new javax.swing.JLabel();
-        jlCampoObrigatorioEstado = new javax.swing.JLabel();
         jlCampoObrigatorioCPF = new javax.swing.JLabel();
         jlCampoObrigatorioTelefone = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         jtSexo = new javax.swing.JTextField();
         jlCampoObrigatorioDataNascimento = new javax.swing.JLabel();
         jlCampoObrigatorioSexo = new javax.swing.JLabel();
@@ -108,10 +102,9 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
         jlCampoObrigatorioLogin = new javax.swing.JLabel();
         jlCampoObrigatorioSenha = new javax.swing.JLabel();
         jlCampoObrigatorioNovaSenha = new javax.swing.JLabel();
-        jtNumerodaCasa = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jlCampoObrigatorioNumerodaCasa = new javax.swing.JLabel();
-        jbExcluirFuncionario = new javax.swing.JButton();
+        jlNumeroDaCasa = new javax.swing.JLabel();
+        jtNumeroDaCasa = new javax.swing.JTextField();
+        jlCampoObrigatorioNumeroDaCasa = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -148,10 +141,10 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
 
         jlNovaSenha.setText("Nova Senha");
 
-        jbAlterarFuncionario.setText("Cadastrar Funcionário");
-        jbAlterarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+        jbCadastrar.setText("Cadastrar");
+        jbCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbAlterarFuncionarioActionPerformed(evt);
+                jbCadastrarActionPerformed(evt);
             }
         });
 
@@ -166,8 +159,6 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
 
         jlBairro.setText("Bairro");
 
-        jlEstado.setText("Estado");
-
         jlCampoObrigatorioNome.setForeground(new java.awt.Color(255, 0, 0));
         jlCampoObrigatorioNome.setText("Campo Obrigatório *");
 
@@ -180,16 +171,11 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
         jlCampoObrigatorioBairro.setForeground(new java.awt.Color(255, 0, 0));
         jlCampoObrigatorioBairro.setText("Campo Obrigatório *");
 
-        jlCampoObrigatorioEstado.setForeground(new java.awt.Color(255, 0, 0));
-        jlCampoObrigatorioEstado.setText("Campo Obrigatório *");
-
         jlCampoObrigatorioCPF.setForeground(new java.awt.Color(255, 0, 0));
         jlCampoObrigatorioCPF.setText("Campo Obrigatório *");
 
         jlCampoObrigatorioTelefone.setForeground(new java.awt.Color(255, 0, 0));
         jlCampoObrigatorioTelefone.setText("Campo Obrigatório *");
-
-        jLabel11.setText("jLabel11");
 
         jlCampoObrigatorioDataNascimento.setForeground(new java.awt.Color(255, 0, 0));
         jlCampoObrigatorioDataNascimento.setText("Campo Obrigatório *");
@@ -209,12 +195,10 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
         jlCampoObrigatorioNovaSenha.setForeground(new java.awt.Color(255, 0, 0));
         jlCampoObrigatorioNovaSenha.setText("Campo Obrigatório *");
 
-        jLabel1.setText("Nº");
+        jlNumeroDaCasa.setText("Nº");
 
-        jlCampoObrigatorioNumerodaCasa.setForeground(new java.awt.Color(255, 0, 0));
-        jlCampoObrigatorioNumerodaCasa.setText("Campo Obrigatório *");
-
-        jbExcluirFuncionario.setText("Excluir Funcionário");
+        jlCampoObrigatorioNumeroDaCasa.setForeground(new java.awt.Color(255, 0, 0));
+        jlCampoObrigatorioNumeroDaCasa.setText(" *");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -236,94 +220,89 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jtDataAno, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jlCampoObrigatorioDataNascimento)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel11))
+                        .addComponent(jlCampoObrigatorioDataNascimento))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 672, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jlNovaSenha)
-                                    .addComponent(jlSenha)
-                                    .addComponent(jlLogin))
-                                .addGap(55, 55, 55)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jtNovaSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                    .addComponent(jtLogin)
-                                    .addComponent(jtSenha))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jlCampoObrigatorioLogin)
-                                    .addComponent(jlCampoObrigatorioSenha)
-                                    .addComponent(jlCampoObrigatorioNovaSenha)))
-                            .addComponent(jbExcluirFuncionario)))
+                            .addComponent(jlNovaSenha)
+                            .addComponent(jlSenha)
+                            .addComponent(jlLogin))
+                        .addGap(55, 55, 55)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jtNovaSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                            .addComponent(jtLogin)
+                            .addComponent(jtSenha))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlCampoObrigatorioLogin)
+                            .addComponent(jlCampoObrigatorioSenha)
+                            .addComponent(jlCampoObrigatorioNovaSenha)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jlNome, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jlCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jlTelefone))
-                                .addGap(37, 37, 37)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jtCpf, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-                                    .addComponent(jtTelefone))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jtCpf, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                                    .addComponent(jtTelefone)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jlRua)
-                                    .addComponent(jlCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jlEstado)
-                                    .addComponent(jlBairro)
-                                    .addComponent(jlNome, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(34, 34, 34)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jtEstado, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-                                        .addComponent(jtBairro, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jtCidade, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jtRua, javax.swing.GroupLayout.Alignment.LEADING)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jlRua)
+                                            .addComponent(jlCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jlBairro)
+                                        .addGap(51, 51, 51)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jtRua, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                                    .addComponent(jtCidade)
+                                    .addComponent(jtBairro))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jlCampoObrigatorioRua)
-                                .addGap(16, 16, 16)
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jtNumerodaCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jlCampoObrigatorioNumerodaCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jlCampoObrigatorioNome, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jlCampoObrigatorioCidade)
                             .addComponent(jlCampoObrigatorioBairro)
-                            .addComponent(jlCampoObrigatorioEstado)
                             .addComponent(jlCampoObrigatorioCPF)
                             .addComponent(jlCampoObrigatorioTelefone)
-                            .addComponent(jlCampoObrigatorioNome, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(85, 85, 85))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jlCampoObrigatorioRua)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jlNumeroDaCasa)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtNumeroDaCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jlCampoObrigatorioNumeroDaCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jlSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jlEmail))
-                        .addGap(39, 39, 39)
+                        .addGap(47, 47, 47)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jtSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jlCampoObrigatorioSexo))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jlCampoObrigatorioEmail)))))
-                .addGap(159, 159, 159))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jbCancelar)
                 .addGap(18, 18, 18)
-                .addComponent(jbAlterarFuncionario)
+                .addComponent(jbCadastrar)
                 .addGap(256, 256, 256))
         );
         jPanel1Layout.setVerticalGroup(
@@ -339,9 +318,9 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
                     .addComponent(jlRua, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtRua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlCampoObrigatorioRua)
-                    .addComponent(jtNumerodaCasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jlCampoObrigatorioNumerodaCasa))
+                    .addComponent(jlNumeroDaCasa)
+                    .addComponent(jtNumeroDaCasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlCampoObrigatorioNumeroDaCasa))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlCidade)
@@ -354,18 +333,9 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
                     .addComponent(jlCampoObrigatorioBairro))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlEstado)
-                    .addComponent(jtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlCampoObrigatorioEstado))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jlCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlCampoObrigatorioCPF))))
+                    .addComponent(jlCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlCampoObrigatorioCPF))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -379,7 +349,6 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
                     .addComponent(jtDataMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
                     .addComponent(jtDataAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11)
                     .addComponent(jlCampoObrigatorioDataNascimento))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -408,11 +377,10 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
                     .addComponent(jlNovaSenha)
                     .addComponent(jtNovaSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlCampoObrigatorioNovaSenha))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbAlterarFuncionario)
-                    .addComponent(jbCancelar)
-                    .addComponent(jbExcluirFuncionario))
+                    .addComponent(jbCadastrar)
+                    .addComponent(jbCancelar))
                 .addContainerGap())
         );
 
@@ -424,7 +392,7 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -435,7 +403,7 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtDataDiaActionPerformed
 
-    private void jbAlterarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAlterarFuncionarioActionPerformed
+    private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
         // TODO add your handling code here:
         int correto = 0;
         int mes, ano, dia;
@@ -467,13 +435,6 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
             jlCampoObrigatorioBairro.setVisible(true);
             //correto = false;
         }
-        if (jtEstado.getText().length() > 0) {
-            jlCampoObrigatorioEstado.setVisible(false);
-            correto++;
-        } else {
-            jlCampoObrigatorioEstado.setVisible(true);
-            //correto = false;
-        }
         if (jtCpf.getText().length() > 0 && jtCpf.getText().length()== 11) {
             jlCampoObrigatorioCPF.setVisible(false);
             correto++;
@@ -482,11 +443,11 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
             //correto = false;
         }
 
-        if (jtNumerodaCasa.getText().length() > 0) {
-            jlCampoObrigatorioNumerodaCasa.setVisible(false);
+        if (jtNumeroDaCasa.getText().length() > 0) {
+            jlCampoObrigatorioNumeroDaCasa.setVisible(false);
             correto++;
         } else {
-            jlCampoObrigatorioNumerodaCasa.setVisible(true);
+            jlCampoObrigatorioNumeroDaCasa.setVisible(true);
             //correto = false;
         }
 
@@ -560,7 +521,7 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "As senhas não correspondem!");
             //correto = false;
         }
-        if (correto == 14) {
+        if (correto == 13) {
             try {
                 ModeloFuncionario funcionario = new ModeloFuncionario();
                 funcionario.setNome(jtNome.getText());
@@ -568,11 +529,13 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
                 funcionario.setCidade(jtCidade.getText());
                 funcionario.setCpf(jtCpf.getText());
                 funcionario.setEmail(jtEmail.getText());
-                funcionario.setNumeroCasa(Integer.parseInt(jtNumerodaCasa.getText()));
+                funcionario.setNumeroCasa(Integer.parseInt(jtNumeroDaCasa.getText()));
                 funcionario.setRua(jtRua.getText());
                 funcionario.setSexo(jtSexo.getText());
                 funcionario.setTelefone(jtTelefone.getText());
                 funcionario.setDataNascimento(jtDataAno.getText()+jtDataMes.getText()+jtDataDia.getText());
+                funcionario.setLoginFuncionario(jtLogin.getText());
+                funcionario.setSenhaFuncionario(jtSenha.getText());
 
             } catch (Exception ex) {
                 Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
@@ -581,7 +544,7 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "informações invalidas");
         }
-    }//GEN-LAST:event_jbAlterarFuncionarioActionPerformed
+    }//GEN-LAST:event_jbCadastrarActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
         // TODO add your handling code here:
@@ -624,26 +587,22 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JToggleButton jbAlterarFuncionario;
+    private javax.swing.JToggleButton jbCadastrar;
     private javax.swing.JButton jbCancelar;
-    private javax.swing.JButton jbExcluirFuncionario;
     private javax.swing.JLabel jlBairro;
     private javax.swing.JLabel jlCampoObrigatorioBairro;
     private javax.swing.JLabel jlCampoObrigatorioCPF;
     private javax.swing.JLabel jlCampoObrigatorioCidade;
     private javax.swing.JLabel jlCampoObrigatorioDataNascimento;
     private javax.swing.JLabel jlCampoObrigatorioEmail;
-    private javax.swing.JLabel jlCampoObrigatorioEstado;
     private javax.swing.JLabel jlCampoObrigatorioLogin;
     private javax.swing.JLabel jlCampoObrigatorioNome;
     private javax.swing.JLabel jlCampoObrigatorioNovaSenha;
-    private javax.swing.JLabel jlCampoObrigatorioNumerodaCasa;
+    private javax.swing.JLabel jlCampoObrigatorioNumeroDaCasa;
     private javax.swing.JLabel jlCampoObrigatorioRua;
     private javax.swing.JLabel jlCampoObrigatorioSenha;
     private javax.swing.JLabel jlCampoObrigatorioSexo;
@@ -652,10 +611,10 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
     private javax.swing.JLabel jlCpf;
     private javax.swing.JLabel jlDataNascimento;
     private javax.swing.JLabel jlEmail;
-    private javax.swing.JLabel jlEstado;
     private javax.swing.JLabel jlLogin;
     private javax.swing.JLabel jlNome;
     private javax.swing.JLabel jlNovaSenha;
+    private javax.swing.JLabel jlNumeroDaCasa;
     private javax.swing.JLabel jlRua;
     private javax.swing.JLabel jlSenha;
     private javax.swing.JLabel jlSexo;
@@ -667,11 +626,10 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
     private javax.swing.JTextField jtDataDia;
     private javax.swing.JTextField jtDataMes;
     private javax.swing.JTextField jtEmail;
-    private javax.swing.JTextField jtEstado;
     private javax.swing.JPasswordField jtLogin;
     private javax.swing.JTextField jtNome;
     private javax.swing.JPasswordField jtNovaSenha;
-    private javax.swing.JTextField jtNumerodaCasa;
+    private javax.swing.JTextField jtNumeroDaCasa;
     private javax.swing.JTextField jtRua;
     private javax.swing.JPasswordField jtSenha;
     private javax.swing.JTextField jtSexo;

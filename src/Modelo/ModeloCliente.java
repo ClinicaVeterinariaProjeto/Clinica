@@ -18,8 +18,8 @@ public class ModeloCliente extends ModeloPessoa implements InterfaceControleDado
 
     }
 
-    public ModeloCliente(int idCliente, String nome, String sobrenome, String cpf, String email, String telefone, String sexo, String dataNascimento, String rua, String cidade, String bairro, int numeroCasa) {
-        super(nome, sobrenome, cpf, email, telefone, sexo, dataNascimento, rua, cidade, bairro, numeroCasa);
+    public ModeloCliente(int idCliente, String nome, String cpf, String email, String telefone, String sexo, String dataNascimento, String rua, String cidade, String bairro, int numeroCasa) {
+        super(nome, cpf, email, telefone, sexo, dataNascimento, rua, cidade, bairro, numeroCasa);
         this.idCliente = idCliente;
     }  
 

@@ -6,17 +6,13 @@
 package DAO;
 
 import Modelo.ModeloAnimalExotico;
-import Modelo.ModeloCliente;
 import Persistencia.Conexao;
 import com.mysql.jdbc.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
+
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+
 
 /**
  *
@@ -25,7 +21,7 @@ import java.text.SimpleDateFormat;
 public class AnimalExoticoDAO {
     // pesquisar o id do cliente apartir do cpf para referenciar no animal
     private Connection conexao;
-    public void inserirAnimalNoBanco(ModeloAnimalExotico animalExotico) throws ClassNotFoundException, SQLException, ParseException{
+    public void inserirAnimalNoBanco(ModeloAnimalExotico animalExotico) throws ClassNotFoundException, SQLException{
            this.conexao = new Conexao().getConexao();
 
         try{            
@@ -65,7 +61,7 @@ public class AnimalExoticoDAO {
             sqlException.printStackTrace();
         }
     }
-    public void alterarAnimalNoBanco(ModeloAnimalExotico animalExotico) throws ClassNotFoundException, SQLException, ParseException{
+    public void alterarAnimalNoBanco(ModeloAnimalExotico animalExotico) throws ClassNotFoundException, SQLException{
         this.conexao = new Conexao().getConexao();
         try{
             
@@ -78,7 +74,7 @@ public class AnimalExoticoDAO {
             stmt.setFloat(4,animalExotico.getPeso());            
             stmt.setInt(5,animalExotico.getIdAnimal());
             stmt.setInt(6,animalExotico.getIdDono());
-            stmt.executeUpdate();
+            stmt.execute();
             stmt.close();
             conexao.close();
         }

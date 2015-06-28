@@ -42,21 +42,20 @@ public class ClienteDAO {
         
         try{
               
-            String query = "INSERT INTO cliente(Nome, Sobrenome, email, Telefone, CPF, DataNascimento, Sexo, idCliente, Rua, NumeroCasa, Bairro, Cidade) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+            String query = "INSERT INTO cliente(Nome, email, Telefone, CPF, DataNascimento, Sexo, idCliente, Rua, NumeroCasa, Bairro, Cidade) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
  
             PreparedStatement pstmt = conexao.prepareStatement(query);
             pstmt.setString(1, cliente.getNome());
-            pstmt.setString(2, cliente.getSobrenome());
-            pstmt.setString(3, cliente.getEmail());
-            pstmt.setString(4,  cliente.getTelefone());
-            pstmt.setString(5, cliente.getCpf());
-            pstmt.setString(6, cliente.getDataNascimento());
-            pstmt.setString(7, cliente.getSexo());
-            pstmt.setInt(8, cliente.getIdCliente());
-            pstmt.setString(9, cliente.getRua());
-            pstmt.setInt(10, cliente.getNumeroCasa());
-            pstmt.setString(11, cliente.getBairro());
-            pstmt.setString(12,cliente.getCidade());
+            pstmt.setString(2, cliente.getEmail());
+            pstmt.setString(3,  cliente.getTelefone());
+            pstmt.setString(4, cliente.getCpf());
+            pstmt.setString(5, cliente.getDataNascimento());
+            pstmt.setString(6, cliente.getSexo());
+            pstmt.setInt(7, cliente.getIdCliente());
+            pstmt.setString(8, cliente.getRua());
+            pstmt.setInt(9, cliente.getNumeroCasa());
+            pstmt.setString(10, cliente.getBairro());
+            pstmt.setString(11,cliente.getCidade());
             pstmt.executeUpdate();
             pstmt.close();
             conexao.close();
@@ -75,7 +74,7 @@ public class ClienteDAO {
       try{
           //rs = stmt.executeQuery("select * from cliente where cpf='" +cpf+"';" );
            //PreparedStatement pstmt = this.conexao.prepareStatement("SELECT * FROM cliente WHERE cpf = ?");
-          String sql ="Select cpf, nome, sobrenome, email, telefone, DataNascimento, sexo, idCliente, rua, numeroCasa, bairro, cidade  FROM CLIENTE WHERE CPF = ?";
+          String sql ="Select cpf, nome, email, telefone, DataNascimento, sexo, idCliente, rua, numeroCasa, bairro, cidade  FROM CLIENTE WHERE CPF = ?";
           PreparedStatement pstmt = conexao.prepareStatement(sql); 
           pstmt.setString(1, cpf);
            rs = pstmt.executeQuery();
@@ -84,7 +83,6 @@ public class ClienteDAO {
               ModeloCliente temp = new ModeloCliente();
               temp.setCpf(rs.getString("cpf"));
               temp.setNome(rs.getString("nome"));
-              temp.setSobrenome(rs.getString("sobrenome"));
               temp.setEmail(rs.getString("email"));
               temp.setTelefone(rs.getString("telefone"));
               temp.setDataNascimento(rs.getString("datanascimento"));
@@ -116,18 +114,17 @@ public class ClienteDAO {
     
         try{
             
-            String sql ="UPDATE CLIENTE SET Nome = ?, Sobrenome = ?, email = ?, Telefone = ?,"
+            String sql ="UPDATE CLIENTE SET Nome = ?, email = ?, Telefone = ?,"
             + " Rua = ?, NumeroCasa = ?, Bairro = ?, Cidade = ? WHERE CPF=?" ;
             PreparedStatement pstmt = conexao.prepareStatement(sql);
-            pstmt.setString(1,cliente.getNome());
-            pstmt.setString(2,cliente.getSobrenome());
-            pstmt.setString(3,cliente.getEmail());
-            pstmt.setString(4,cliente.getTelefone());            
-            pstmt.setString(5,cliente.getRua());
-            pstmt.setInt(6,cliente.getNumeroCasa());
-            pstmt.setString(7,cliente.getBairro());
-            pstmt.setString(8,cliente.getCidade());
-            pstmt.setString(9,cpf);
+            pstmt.setString(1,cliente.getNome()); 
+            pstmt.setString(2,cliente.getEmail());
+            pstmt.setString(3,cliente.getTelefone());            
+            pstmt.setString(4,cliente.getRua());
+            pstmt.setInt(5,cliente.getNumeroCasa());
+            pstmt.setString(6,cliente.getBairro());
+            pstmt.setString(7,cliente.getCidade());
+            pstmt.setString(8,cpf);
             
             pstmt.execute();
             pstmt.close();

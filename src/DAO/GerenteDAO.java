@@ -52,24 +52,23 @@ public class GerenteDAO {
     }
     
     
-    /*public void alterarGerenteNoBanco (String cpf,ModeloGerente gerente) throws ClassNotFoundException, SQLException{
+    public void alterarGerenteNoBanco (String cpf,ModeloGerente gerente) throws ClassNotFoundException, SQLException{
          this.conexao = new Conexao().getConexao();
     
         try{
             
-            String sql ="UPDATE gerente SET Nome = ?, Sobrenome = ?, email = ?, Telefone = ?,"
+            String sql ="UPDATE gerente SET Nome = ?, email = ?, Telefone = ?,"
             + " Rua = ?, NumeroCasa = ?, Bairro = ?, Cidade = ?, senhaGerente =? WHERE CPF=?" ;
             PreparedStatement pstmt = conexao.prepareStatement(sql);
             pstmt.setString(1,gerente.getNome());
-            pstmt.setString(2,gerente.getSobrenome());
-            pstmt.setString(3,gerente.getEmail());
-            pstmt.setString(4,gerente.getTelefone());            
-            pstmt.setString(5,gerente.getRua());
-            pstmt.setInt(6,gerente.getNumeroCasa());
-            pstmt.setString(7,gerente.getBairro());
-            pstmt.setString(8,gerente.getCidade());
-            pstmt.setString(9,gerente.getSenhaGerente());
-            pstmt.setString(10,cpf);
+            pstmt.setString(2,gerente.getEmail());
+            pstmt.setString(3,gerente.getTelefone());            
+            pstmt.setString(4,gerente.getRua());
+            pstmt.setInt(5,gerente.getNumeroCasa());
+            pstmt.setString(6,gerente.getBairro());
+            pstmt.setString(7,gerente.getCidade());
+            pstmt.setString(8,gerente.getSenhaGerente());
+            pstmt.setString(9,cpf);
             
             pstmt.execute();
             pstmt.close();
@@ -129,5 +128,5 @@ public class GerenteDAO {
                   }
         return 0;
       }
-    */
+    
 }

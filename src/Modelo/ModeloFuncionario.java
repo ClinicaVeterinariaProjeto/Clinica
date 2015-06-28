@@ -18,8 +18,8 @@ public class ModeloFuncionario extends ModeloPessoa implements InterfaceControle
     public ModeloFuncionario() {
     }
 
-    public ModeloFuncionario(int idFuncionario, String senhaFuncionario, String nome, String sobrenome, String cpf, String email, String telefone, String sexo, String dataNascimento, String rua, String cidade, String bairro, int numeroCasa) {
-        super(nome, sobrenome, cpf, email, telefone, sexo, dataNascimento, rua, cidade, bairro, numeroCasa);
+    public ModeloFuncionario(int idFuncionario, String senhaFuncionario, String nome, String cpf, String email, String telefone, String sexo, String dataNascimento, String rua, String cidade, String bairro, int numeroCasa) {
+        super(nome, cpf, email, telefone, sexo, dataNascimento, rua, cidade, bairro, numeroCasa);
         this.idFuncionario = idFuncionario;
         this.senhaFuncionario = senhaFuncionario;
     }

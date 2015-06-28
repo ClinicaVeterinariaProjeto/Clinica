@@ -232,6 +232,11 @@ public class TelaGerente extends javax.swing.JFrame {
         jmCliente.setText("Cliente");
 
         jmClienteCadastrar.setText("Cadastrar");
+        jmClienteCadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmClienteCadastrarMouseClicked(evt);
+            }
+        });
         jmClienteCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmClienteCadastrarActionPerformed(evt);
@@ -240,6 +245,11 @@ public class TelaGerente extends javax.swing.JFrame {
         jmCliente.add(jmClienteCadastrar);
 
         jmClienteAlterar.setText("Alterar");
+        jmClienteAlterar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmClienteAlterarMouseClicked(evt);
+            }
+        });
         jmClienteAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmClienteAlterarActionPerformed(evt);
@@ -248,6 +258,11 @@ public class TelaGerente extends javax.swing.JFrame {
         jmCliente.add(jmClienteAlterar);
 
         jmClienteExcluir.setText("Excluir");
+        jmClienteExcluir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmClienteExcluirMouseClicked(evt);
+            }
+        });
         jmCliente.add(jmClienteExcluir);
 
         jmClientePesquisar.setText("Pesquisar");
@@ -448,11 +463,11 @@ public class TelaGerente extends javax.swing.JFrame {
         ModeloVeterinario veterinario = new ModeloVeterinario();
         Controle.ControleVeterinario controlV = new ControleVeterinario();
         String cpf;
-        TelaDeAlteracaoFuncionario telaFunc = new TelaDeAlteracaoFuncionario();
+        TelaDeAlteracaoVeterinario telaFunc = new TelaDeAlteracaoVeterinario();
         cpf=JOptionPane.showInputDialog(this, "Digite o CPF do funcionário");
         try {
             veterinario = controlV.consultarVeterinario(cpf);
-            telaFunc.inserirDados(veterinario);
+            telaFunc.inserirDadosV(veterinario);
             telaFunc.setVisible(true);
         } catch (Exception ex) {
             Logger.getLogger(TelaGerente.class.getName()).log(Level.SEVERE, null, ex);
@@ -471,6 +486,33 @@ public class TelaGerente extends javax.swing.JFrame {
         TelaCadastroVeterinario vet = new TelaCadastroVeterinario();
         vet.setVisible(true);
     }//GEN-LAST:event_jbCadastrarVeterinarioActionPerformed
+
+    private void jmClienteCadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmClienteCadastrarMouseClicked
+        // TODO add your handling code here:
+        TelaCadastroCliente tcc = new TelaCadastroCliente();
+        tcc.setVisible(true);
+    }//GEN-LAST:event_jmClienteCadastrarMouseClicked
+
+    private void jmClienteAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmClienteAlterarMouseClicked
+        // TODO add your handling code here:
+        ModeloCliente cliente = new ModeloCliente();
+        Controle.ControleCliente control = new ControleCliente();
+        String cpf;
+        TelaAlteracaoCliente telaAlteracaoCliente = new TelaAlteracaoCliente();
+        
+        try {
+            cpf=JOptionPane.showInputDialog(null, "Digite o CPF do cliente");
+            cliente = control.consultarCliente(cpf);
+            telaAlteracaoCliente.insertDados(cliente);
+            telaAlteracaoCliente.setVisible(true);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(TelaGerente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jmClienteAlterarMouseClicked
+
+    private void jmClienteExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmClienteExcluirMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmClienteExcluirMouseClicked
 
     /**
      * @param args the command line arguments

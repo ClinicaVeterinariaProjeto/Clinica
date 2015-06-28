@@ -5,10 +5,14 @@
  */
 package br.com.clinicaVeterinaria.view;
 
+import Controle.ControleCliente;
 import Controle.ControleFuncionario;
 import Controle.ControleTeclasPermitidasLetras;
 import Controle.ControleTeclasPermitidasNumeros;
+import Controle.ControleVeterinario;
 import Modelo.ModeloFuncionario;
+import Modelo.ModeloVeterinario;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -17,12 +21,12 @@ import javax.swing.JOptionPane;
  *
  * @author Alessandro
  */
-public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
+public class TelaDeAlteracaoVeterinario extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaDeAlteracaoFuncionario
      */
-    public TelaDeAlteracaoFuncionario() {
+    public TelaDeAlteracaoVeterinario() {
         initComponents();
         jlCampoObrigatorioTelefone.setVisible(false);
         jlCampoObrigatorioSexo.setVisible(false);
@@ -49,7 +53,7 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
         jtNumeroDaCasa.setDocument(new ControleTeclasPermitidasNumeros(4));
     }
     
-    public void inserirDados(ModeloFuncionario funcionario){
+        public void inserirDadosV(ModeloVeterinario funcionario){
         jtNome.setText(funcionario.getNome());
         jtBairro.setText(funcionario.getBairro());
         jtCidade.setText(funcionario.getCidade());
@@ -58,15 +62,14 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
         jtDataNasc.setText(funcionario.getDataNascimento());
         jtDataNasc.setEnabled(false);
         jtEmail.setText(funcionario.getEmail());
-        jtLogin.setText(funcionario.getLoginFuncionario());
-        jtSenha.setText(funcionario.getSenhaFuncionario());
+        jtLogin.setText(funcionario.getLoginVeterinario());
+        jtSenha.setText(funcionario.getSenhaVeterinario());
         jtNumeroDaCasa.setText(String.valueOf(funcionario.getNumeroCasa()));
         jtRua.setText(funcionario.getRua());
         jtSexo.setText(funcionario.getSexo());
         jtSexo.setEnabled(false);
         jtTelefone.setText(funcionario.getTelefone());
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -122,6 +125,7 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
         jbExcluirFuncionario = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -406,6 +410,7 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jtDataNascActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtDataNascActionPerformed
@@ -459,7 +464,7 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
             jlCampoObrigatorioTelefone.setVisible(true);
             //correto = false;
         }
-
+       
         if (jtEmail.getText().length() > 0) {
             jlCampoObrigatorioEmail.setVisible(false);
             correto++;
@@ -491,8 +496,8 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
         }
         if (correto == 10) {
             try {
-                Controle.ControleFuncionario control = new ControleFuncionario();
-                ModeloFuncionario funcionario = new ModeloFuncionario();
+                Controle.ControleVeterinario control = new ControleVeterinario();
+                ModeloVeterinario funcionario = new ModeloVeterinario();
                 funcionario.setNome(jtNome.getText());
                 funcionario.setBairro(jtBairro.getText());
                 funcionario.setCidade(jtCidade.getText());
@@ -503,12 +508,13 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
                 funcionario.setSexo(jtSexo.getText());
                 funcionario.setTelefone(jtTelefone.getText());
                 funcionario.setDataNascimento(jtDataNasc.getText());
-                funcionario.setLoginFuncionario(jtLogin.getText());
-                funcionario.setSenhaFuncionario(jtSenha.getText());
+                funcionario.setLoginVeterinario(jtLogin.getText());
+                funcionario.setSenhaVeterinario(jtSenha.getText());
 
-                control.alterarFuncionario(funcionario, jtCpf.getText());
-                JOptionPane.showMessageDialog(this, "Funcionário alerado com Sucesso");
-
+                
+                control.alterarVeterinario(jtCpf.getText(), funcionario);
+                JOptionPane.showMessageDialog(this, "Veterinário alerado com Sucesso");
+                
             } catch (Exception ex) {
                 Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -525,14 +531,15 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
 
     private void jbExcluirFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExcluirFuncionarioActionPerformed
         // TODO add your handling code here:
-        ControleFuncionario control = new ControleFuncionario();
-        try {
-            control.excluirFuncionario(jtCpf.getText());
-        } catch (Exception ex) {
-            Logger.getLogger(TelaDeAlteracaoVeterinario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        JOptionPane.showMessageDialog(this, "Cliente excluido com Sucesso");
-        dispose();
+        ControleVeterinario control = new ControleVeterinario();
+            try {
+                control.excluirVeterinario(jtCpf.getText());
+            } catch (Exception ex) {
+                Logger.getLogger(TelaDeAlteracaoVeterinario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(this, "Cliente excluido com Sucesso");
+            dispose();
+
     }//GEN-LAST:event_jbExcluirFuncionarioActionPerformed
 
     /**
@@ -552,20 +559,21 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaDeAlteracaoFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaDeAlteracaoVeterinario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaDeAlteracaoFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaDeAlteracaoVeterinario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaDeAlteracaoFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaDeAlteracaoVeterinario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaDeAlteracaoFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaDeAlteracaoVeterinario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaDeAlteracaoFuncionario().setVisible(true);
+                new TelaDeAlteracaoVeterinario().setVisible(true);
             }
         });
     }

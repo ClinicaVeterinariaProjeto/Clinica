@@ -5,6 +5,18 @@
  */
 package br.com.clinicaVeterinaria.view;
 
+import Controle.ControleCliente;
+import Controle.ControleFuncionario;
+import Controle.ControleVeterinario;
+import DAO.ClienteDAO;
+import Modelo.ModeloCliente;
+import Modelo.ModeloFuncionario;
+import Modelo.ModeloVeterinario;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Alessandro
@@ -115,12 +127,32 @@ public class TelaGerente extends javax.swing.JFrame {
         jbPesquisarAnimal.setText("Pesquisar Animal");
 
         jbCadastrarFuncionario.setText("Cadastrar Funcionário");
+        jbCadastrarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCadastrarFuncionarioActionPerformed(evt);
+            }
+        });
 
         jbCadastrarVeterinario.setText("Cadastrar Veterinário");
+        jbCadastrarVeterinario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCadastrarVeterinarioActionPerformed(evt);
+            }
+        });
 
         jbPesquisarFuncionario.setText("Pesquisar Funcionário");
+        jbPesquisarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbPesquisarFuncionarioActionPerformed(evt);
+            }
+        });
 
         jbPesquisarVeterinario.setText("Pesquisar Veterinário");
+        jbPesquisarVeterinario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbPesquisarVeterinarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -367,7 +399,20 @@ public class TelaGerente extends javax.swing.JFrame {
 
     private void jbPesquisarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPesquisarClienteActionPerformed
         // TODO add your handling code here:
-        //pede o cpf verifica e procura o animal
+        ModeloCliente cliente = new ModeloCliente();
+        Controle.ControleCliente control = new ControleCliente();
+        String cpf;
+        TelaAlteracaoCliente telaAlteracaoCliente = new TelaAlteracaoCliente();
+        
+        try {
+            cpf=JOptionPane.showInputDialog(null, "Digite o CPF do cliente");
+            cliente = control.consultarCliente(cpf);
+            telaAlteracaoCliente.insertDados(cliente);
+            telaAlteracaoCliente.setVisible(true);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(TelaGerente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_jbPesquisarClienteActionPerformed
 
     private void jmVeterinarioCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmVeterinarioCadastrarActionPerformed
@@ -381,6 +426,51 @@ public class TelaGerente extends javax.swing.JFrame {
     private void jmVeterinarioPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmVeterinarioPesquisarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jmVeterinarioPesquisarActionPerformed
+
+    private void jbPesquisarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPesquisarFuncionarioActionPerformed
+        ModeloFuncionario funcionario = new ModeloFuncionario();
+        Controle.ControleFuncionario controlF = new ControleFuncionario();
+        String cpfF;
+        TelaDeAlteracaoFuncionario telaFunc = new TelaDeAlteracaoFuncionario();
+        cpfF=JOptionPane.showInputDialog(this, "Digite o CPF do funcionário");
+        try {
+            funcionario = controlF.consultarFuncionario(cpfF);
+            telaFunc.inserirDados(funcionario);
+            telaFunc.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(TelaGerente.class.getName()).log(Level.SEVERE, null, ex);
+                
+    }//GEN-LAST:event_jbPesquisarFuncionarioActionPerformed
+    }
+    
+    private void jbPesquisarVeterinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPesquisarVeterinarioActionPerformed
+        // TODO add your handling code here:
+        ModeloVeterinario veterinario = new ModeloVeterinario();
+        Controle.ControleVeterinario controlV = new ControleVeterinario();
+        String cpf;
+        TelaDeAlteracaoFuncionario telaFunc = new TelaDeAlteracaoFuncionario();
+        cpf=JOptionPane.showInputDialog(this, "Digite o CPF do funcionário");
+        try {
+            veterinario = controlV.consultarVeterinario(cpf);
+            telaFunc.inserirDados(veterinario);
+            telaFunc.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(TelaGerente.class.getName()).log(Level.SEVERE, null, ex);
+                
+    }  
+    }//GEN-LAST:event_jbPesquisarVeterinarioActionPerformed
+
+    private void jbCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarFuncionarioActionPerformed
+        // TODO add your handling code here:
+        TelaCadastroFuncionario func = new TelaCadastroFuncionario();
+        func.setVisible(true);
+    }//GEN-LAST:event_jbCadastrarFuncionarioActionPerformed
+
+    private void jbCadastrarVeterinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarVeterinarioActionPerformed
+        // TODO add your handling code here:
+        TelaCadastroVeterinario vet = new TelaCadastroVeterinario();
+        vet.setVisible(true);
+    }//GEN-LAST:event_jbCadastrarVeterinarioActionPerformed
 
     /**
      * @param args the command line arguments

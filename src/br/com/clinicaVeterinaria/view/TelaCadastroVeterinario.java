@@ -7,6 +7,7 @@ package br.com.clinicaVeterinaria.view;
 
 import Controle.ControleTeclasPermitidasLetras;
 import Controle.ControleTeclasPermitidasNumeros;
+import Controle.ControleVeterinario;
 import Modelo.ModeloVeterinario;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -525,6 +526,7 @@ public class TelaCadastroVeterinario extends javax.swing.JFrame {
         }
         if (correto == 13) {
             try {
+                Controle.ControleVeterinario control = new ControleVeterinario();
                 ModeloVeterinario veterinario = new ModeloVeterinario();
                 veterinario.setNome(jtNome.getText());
                 veterinario.setBairro(jtBairro.getText());
@@ -539,6 +541,13 @@ public class TelaCadastroVeterinario extends javax.swing.JFrame {
                 veterinario.setLoginVeterinario(jtLogin.getText());
                 veterinario.setSenhaVeterinario(jtSenha.getText());
 
+                if (control.inserirVeterinario(veterinario, 01) == true) {
+                    JOptionPane.showMessageDialog(this, "Cliente gravado com Sucesso");
+                    dispose();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Cliente gravado com Sucesso");
+                }
+                
             } catch (Exception ex) {
                 Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
             }

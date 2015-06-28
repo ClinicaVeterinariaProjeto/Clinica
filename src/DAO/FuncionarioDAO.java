@@ -66,7 +66,7 @@ public class FuncionarioDAO {
         try{
           //rs = stmt.executeQuery("select * from cliente where cpf='" +cpf+"';" );
            //PreparedStatement pstmt = this.conexao.prepareStatement("SELECT * FROM cliente WHERE cpf = ?");
-          String sql ="Select cpf, nome, email, telefone, DataNascimento, sexo, idFuncionario,senhaFuncionario, rua, numeroCasa, bairro, cidade  FROM FUNCIONARIO WHERE CPF = ?";
+          String sql ="Select cpf, nome, email, telefone, DataNascimento, sexo, idFuncionario,loginFuncionario, senhaFuncionario, rua, numeroCasa, bairro, cidade  FROM FUNCIONARIO WHERE CPF = ?";
           PreparedStatement pstmt = conexao.prepareStatement(sql); 
           pstmt.setString(1, cpf);
           rs = pstmt.executeQuery();

@@ -326,21 +326,33 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Cadastrar Funcion&#xe1;rio"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbCadastrarFuncionarioActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jbCadastrarVeterinario">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cadastrar Veterin&#xe1;rio"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbCadastrarVeterinarioActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jbPesquisarFuncionario">
           <Properties>
             <Property name="text" type="java.lang.String" value="Pesquisar Funcion&#xe1;rio"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbPesquisarFuncionarioActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jbPesquisarVeterinario">
           <Properties>
             <Property name="text" type="java.lang.String" value="Pesquisar Veterin&#xe1;rio"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbPesquisarVeterinarioActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

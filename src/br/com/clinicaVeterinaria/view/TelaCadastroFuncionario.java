@@ -5,6 +5,8 @@
  */
 package br.com.clinicaVeterinaria.view;
 
+import Controle.ControleCliente;
+import Controle.ControleFuncionario;
 import Controle.ControleTeclasPermitidasLetras;
 import Controle.ControleTeclasPermitidasNumeros;
 import Modelo.ModeloFuncionario;
@@ -524,6 +526,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         }
         if (correto == 13) {
             try {
+                ControleFuncionario control = new ControleFuncionario();
                 ModeloFuncionario funcionario = new ModeloFuncionario();
                 funcionario.setNome(jtNome.getText());
                 funcionario.setBairro(jtBairro.getText());
@@ -537,6 +540,16 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
                 funcionario.setDataNascimento(jtDataAno.getText()+jtDataMes.getText()+jtDataDia.getText());
                 funcionario.setLoginFuncionario(jtLogin.getText());
                 funcionario.setSenhaFuncionario(jtSenha.getText());
+                
+                control.inserirFuncionario(funcionario,01);
+                JOptionPane.showMessageDialog(this, "Funcionario inserido com Sucesso");
+                
+                /*if (control.inserirFuncionario(funcionario, 01) == true) {
+                    JOptionPane.showMessageDialog(this, "Cliente gravado com Sucesso");
+                    dispose();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Cliente gravado com Sucesso");
+                }*/
 
             } catch (Exception ex) {
                 Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);

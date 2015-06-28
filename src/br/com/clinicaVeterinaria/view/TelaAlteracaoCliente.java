@@ -9,6 +9,7 @@ import Controle.ControleCliente;
 import Controle.ControleTeclasPermitidasLetras;
 import Controle.ControleTeclasPermitidasNumeros;
 import Modelo.ModeloCliente;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -35,16 +36,27 @@ public class TelaAlteracaoCliente extends javax.swing.JFrame {
         jlCampoObrigatorioTelefone.setVisible(false);
         jlCampoObrigatorioBairro.setVisible(false);
         jtNome.setDocument(new ControleTeclasPermitidasLetras(50));
-        jtCpf.setDocument(new ControleTeclasPermitidasNumeros(11));
-        jtDataAno.setDocument(new ControleTeclasPermitidasNumeros(4));
-        jtDataMes.setDocument(new ControleTeclasPermitidasNumeros(2));
-        jtDataDia.setDocument(new ControleTeclasPermitidasNumeros(2));
         jtTelefone.setDocument(new ControleTeclasPermitidasNumeros(10));
         jtCidade.setDocument(new ControleTeclasPermitidasLetras(20));
         jtRua.setDocument(new ControleTeclasPermitidasLetras(30));
         jtNumeroCasa.setDocument(new ControleTeclasPermitidasNumeros(4));
-        jtSexo.setDocument(new ControleTeclasPermitidasLetras(10));
         jtBairro.setDocument(new ControleTeclasPermitidasLetras(20));
+    }
+
+    public void insertDados(ModeloCliente cliente) {
+        jtNome.setText(cliente.getNome());
+        jtRua.setText(cliente.getRua());
+        jtCidade.setText(cliente.getCidade());
+        jtBairro.setText(cliente.getBairro());
+        jtNumeroCasa.setText(String.valueOf(cliente.getNumeroCasa()));
+        jtCpf.setText(cliente.getCpf());
+        jtCpf.setEnabled(false);
+        jtSexo.setText(cliente.getSexo());
+        jtSexo.setEnabled(false);
+        jtTelefone.setText(cliente.getTelefone());
+        jtEmail.setText(cliente.getEmail());
+        jtDataNasc.setText(cliente.getDataNascimento());
+        jtDataNasc.setEnabled(false);
     }
 
     /**
@@ -67,15 +79,11 @@ public class TelaAlteracaoCliente extends javax.swing.JFrame {
         jtNome = new javax.swing.JTextField();
         jtCpf = new javax.swing.JTextField();
         jtTelefone = new javax.swing.JTextField();
-        jtDataDia = new javax.swing.JTextField();
-        jtDataMes = new javax.swing.JTextField();
-        jtDataAno = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        jtDataNasc = new javax.swing.JTextField();
         jtEmail = new javax.swing.JTextField();
-        jbCadastrar = new javax.swing.JToggleButton();
+        jbAlterarCliente = new javax.swing.JToggleButton();
         jbCancelar = new javax.swing.JButton();
-        jbCadastrarAnimal = new javax.swing.JButton();
+        jbExcluirCliente = new javax.swing.JButton();
         jlCampoObrigatorioNome = new javax.swing.JLabel();
         jtRua = new javax.swing.JTextField();
         jlRua = new javax.swing.JLabel();
@@ -114,20 +122,16 @@ public class TelaAlteracaoCliente extends javax.swing.JFrame {
 
         jlEmail.setText("Email");
 
-        jtDataDia.addActionListener(new java.awt.event.ActionListener() {
+        jtDataNasc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtDataDiaActionPerformed(evt);
+                jtDataNascActionPerformed(evt);
             }
         });
 
-        jLabel8.setText("/");
-
-        jLabel9.setText("/");
-
-        jbCadastrar.setText("Cadastrar");
-        jbCadastrar.addActionListener(new java.awt.event.ActionListener() {
+        jbAlterarCliente.setText("Alterar Cliente");
+        jbAlterarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbCadastrarActionPerformed(evt);
+                jbAlterarClienteActionPerformed(evt);
             }
         });
 
@@ -138,7 +142,12 @@ public class TelaAlteracaoCliente extends javax.swing.JFrame {
             }
         });
 
-        jbCadastrarAnimal.setText("Cadastrar Animal");
+        jbExcluirCliente.setText("Excluir Cliente");
+        jbExcluirCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbExcluirClienteActionPerformed(evt);
+            }
+        });
 
         jlCampoObrigatorioNome.setForeground(new java.awt.Color(255, 51, 51));
         jlCampoObrigatorioNome.setText("Campo Obrigatório *");
@@ -192,21 +201,6 @@ public class TelaAlteracaoCliente extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 672, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jlDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jtDataDia, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtDataMes, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtDataAno, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jlCampoObrigatorioDataNascimento))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -228,20 +222,8 @@ public class TelaAlteracaoCliente extends javax.swing.JFrame {
                                         .addComponent(jtNumeroCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jlCampoObrigatorioNumeroCasa))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jlEmail)
-                                    .addComponent(jlSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(60, 60, 60)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jlCampoObrigatorioEmail))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jtSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jlCampoObrigatorioSexo))))
+                            .addComponent(jlEmail)
+                            .addComponent(jlSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jlBairro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -262,15 +244,32 @@ public class TelaAlteracaoCliente extends javax.swing.JFrame {
                                             .addComponent(jlCampoObrigatorioTelefone)
                                             .addComponent(jlCampoObrigatorioCPF))
                                         .addGap(1, 1, 1))
-                                    .addComponent(jlCampoObrigatorioBairro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                    .addComponent(jlCampoObrigatorioBairro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jlDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jtSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jlCampoObrigatorioSexo))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jlCampoObrigatorioDataNascimento))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jlCampoObrigatorioEmail)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jbCadastrarAnimal)
+                .addComponent(jbExcluirCliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jbCancelar)
                 .addGap(31, 31, 31)
-                .addComponent(jbCadastrar)
+                .addComponent(jbAlterarCliente)
                 .addGap(108, 108, 108))
         );
         jPanel1Layout.setVerticalGroup(
@@ -316,11 +315,7 @@ public class TelaAlteracaoCliente extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtDataDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(jtDataMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(jtDataAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlCampoObrigatorioDataNascimento))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -336,9 +331,9 @@ public class TelaAlteracaoCliente extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbCadastrar)
+                    .addComponent(jbAlterarCliente)
                     .addComponent(jbCancelar)
-                    .addComponent(jbCadastrarAnimal))
+                    .addComponent(jbExcluirCliente))
                 .addContainerGap())
         );
 
@@ -357,13 +352,12 @@ public class TelaAlteracaoCliente extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtDataDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtDataDiaActionPerformed
+    private void jtDataNascActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtDataNascActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtDataDiaActionPerformed
+    }//GEN-LAST:event_jtDataNascActionPerformed
 
-    private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
+    private void jbAlterarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAlterarClienteActionPerformed
         int correto = 0;
-        int dia, mes, ano;
 
         if (jtNome.getText().length() > 0) {
             jlCampoObrigatorioNome.setVisible(false);
@@ -401,51 +395,13 @@ public class TelaAlteracaoCliente extends javax.swing.JFrame {
             jlCampoObrigatorioBairro.setVisible(true);
             //correto = false;
         }
-        if (jtCpf.getText().length() > 0 && jtCpf.getText().length() == 11) {
-            jlCampoObrigatorioCPF.setVisible(false);
-            correto++;
-        } else {
-            jlCampoObrigatorioCPF.setVisible(true);
-            //correto = false;
-        }
+
         if (jtTelefone.getText().length() > 0) {
             jlCampoObrigatorioTelefone.setVisible(false);
             correto++;
         } else {
             jlCampoObrigatorioTelefone.setVisible(true);
             //correto = false;
-        }
-        if (jtDataAno.getText().length() > 0 && jtDataMes.getText().length() > 0 && jtDataDia.getText().length() > 0) {
-            ano = (Integer.parseInt(jtDataAno.getText()));
-            mes = (Integer.parseInt(jtDataMes.getText()));
-            dia = (Integer.parseInt(jtDataDia.getText()));
-            if (ano <= 2015 && ano > 1965) {
-                if (mes > 0 && mes <= 12) {
-                    if (dia > 0 && dia <= 30) {
-                        jlCampoObrigatorioDataNascimento.setVisible(false);
-                        correto++;
-                    } else {
-                        jlCampoObrigatorioDataNascimento.setVisible(true);
-                    }
-                } else {
-                    jlCampoObrigatorioDataNascimento.setVisible(true);
-                }
-            } else {
-                jlCampoObrigatorioDataNascimento.setVisible(true);
-            }
-        } else {
-            jlCampoObrigatorioDataNascimento.setVisible(true);
-        }
-
-        if (jtSexo.getText().length() > 0) {
-            if (jtSexo.getText().equals("MASCULINO") || jtSexo.getText().equals("FEMININO")) {
-                jlCampoObrigatorioSexo.setVisible(false);
-                correto++;
-            } else {
-                jlCampoObrigatorioSexo.setVisible(true);
-            }
-        } else {
-            jlCampoObrigatorioSexo.setVisible(true);
         }
 
         if (jtEmail.getText().length() > 0) {
@@ -456,7 +412,7 @@ public class TelaAlteracaoCliente extends javax.swing.JFrame {
             //correto = false;
         }
 
-        if (correto == 10) {
+        if (correto == 7) {
             try {
                 ControleCliente control = new ControleCliente();
                 ModeloCliente cliente = new ModeloCliente();
@@ -469,22 +425,24 @@ public class TelaAlteracaoCliente extends javax.swing.JFrame {
                 cliente.setRua(jtRua.getText());
                 cliente.setSexo(jtSexo.getText());
                 cliente.setTelefone(jtTelefone.getText());
-                cliente.setDataNascimento(jtDataAno.getText() + jtDataMes.getText() + jtDataDia.getText());
+                cliente.setDataNascimento(jtDataNasc.getText());
+                
+                control.alterarCliente(cliente,  jtCpf.getText());
+                JOptionPane.showMessageDialog(this, "Cliente alerado com Sucesso");
 
-                if (control.inserirCliente(cliente) == true) {
-                    JOptionPane.showMessageDialog(this, "Cliente gravado com Sucesso");
-                    dispose();
-                } else {
-                    JOptionPane.showMessageDialog(this, "Cliente gravado com Sucesso");
-                }
-
+                /*if (control.alterarCliente(cliente,jtCpf.getText()) == true) {
+                 JOptionPane.showMessageDialog(this, "Cliente alerado com Sucesso");
+                 dispose();
+                 } else {
+                 JOptionPane.showMessageDialog(this, "Cliente não foi alterado com Sucesso");
+                 }*/
             } catch (Exception ex) {
                 Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
             }
 
             // TODO add your handling code here:
         }
-    }//GEN-LAST:event_jbCadastrarActionPerformed
+    }//GEN-LAST:event_jbAlterarClienteActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
         // TODO add your handling code here:
@@ -494,6 +452,18 @@ public class TelaAlteracaoCliente extends javax.swing.JFrame {
     private void jtCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtCidadeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtCidadeActionPerformed
+
+    private void jbExcluirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExcluirClienteActionPerformed
+        // TODO add your handling code here:
+        ControleCliente control = new ControleCliente();
+        try {
+            control.excluirCliente(jtCpf.getText());
+            JOptionPane.showMessageDialog(this, "Cliente excluido com Sucesso");
+            dispose();
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(TelaAlteracaoCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jbExcluirClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -531,13 +501,11 @@ public class TelaAlteracaoCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JToggleButton jbCadastrar;
-    private javax.swing.JButton jbCadastrarAnimal;
+    private javax.swing.JToggleButton jbAlterarCliente;
     private javax.swing.JButton jbCancelar;
+    private javax.swing.JButton jbExcluirCliente;
     private javax.swing.JLabel jlBairro;
     private javax.swing.JLabel jlCampoObrigatorioBairro;
     private javax.swing.JLabel jlCampoObrigatorioCPF;
@@ -561,9 +529,7 @@ public class TelaAlteracaoCliente extends javax.swing.JFrame {
     private javax.swing.JTextField jtBairro;
     private javax.swing.JTextField jtCidade;
     private javax.swing.JTextField jtCpf;
-    private javax.swing.JTextField jtDataAno;
-    private javax.swing.JTextField jtDataDia;
-    private javax.swing.JTextField jtDataMes;
+    private javax.swing.JTextField jtDataNasc;
     private javax.swing.JTextField jtEmail;
     private javax.swing.JTextField jtNome;
     private javax.swing.JTextField jtNumeroCasa;

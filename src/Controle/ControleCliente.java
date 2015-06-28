@@ -12,15 +12,23 @@ package Controle;
 
 import DAO.ClienteDAO;
 import Modelo.ModeloCliente;
+import java.sql.SQLException;
 
 public class ControleCliente {
-    public void inserirCliente(ModeloCliente cliente){
-      //ClienteDAO.inserirClienteNoBanco(cliente);
+    ClienteDAO cl=new ClienteDAO();
+    public boolean inserirCliente(ModeloCliente cliente) throws SQLException, Exception{
+      return cl.inserirClienteNoBanco(cliente);
     }
     
-    public void alterarCliente(ModeloCliente cliente){}
+    public boolean alterarCliente(ModeloCliente cliente,String cpf)throws SQLException, Exception{
+       return cl.alterarClienteNoBanco(cpf,cliente);
+    }
     
-    public void consultarCliente(ModeloCliente cliente){}
+    public ModeloCliente consultarCliente(String cpf) throws ClassNotFoundException, SQLException{
+        return cl.pesquisaClienteNoBanco(cpf);
+    }
     
-    public void excluirCliente(ModeloCliente cliente){}
+    public boolean excluirCliente(String cpf)throws ClassNotFoundException, SQLException{
+        return cl.excluirClienteNoBanco(cpf);
+    }
 }

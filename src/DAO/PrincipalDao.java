@@ -120,7 +120,7 @@ public class PrincipalDao {
         cliente.setNumeroCasa(888);
         
         ClienteDAO cl = new ClienteDAO();
-        cl.inserirClienteNoBanco(cliente);
+       // cl.inserirClienteNoBanco(cliente);
         
         ModeloAnimalExotico exotic = new ModeloAnimalExotico();
         exotic.setNome("Bob Esponja");
@@ -128,11 +128,14 @@ public class PrincipalDao {
         exotic.setAnoNascimento(1994);
         exotic.setIdAnimal(1);
         exotic.setIdDono(8);
-        exotic.setIdAnimal(1);
+        exotic.setIdAnimal(4);
         exotic.setPeso(5);
         exotic.setUltimaVascina("2000-12-12");
         AnimalExoticoDAO ex = new AnimalExoticoDAO();
-        ex.inserirAnimalNoBanco(exotic);
+      //  ex.inserirAnimalNoBanco(exotic);
+        ModeloAnimalExotico u = new ModeloAnimalExotico();
+        u = ex.pesquisarAnimalNoBanco(cpf);
+        System.out.println(u.getNome() + u.getRaca() + u.getUltimaVascina()+ u.getIdAnimal()+u.getAnoNascimento());
 }
     
 }

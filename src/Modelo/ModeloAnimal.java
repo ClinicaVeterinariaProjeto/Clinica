@@ -9,7 +9,7 @@ package Modelo;
  *
  * @author Alessandro
  */
-public abstract class ModeloAnimal {
+public class ModeloAnimal {
     private String nome;
     private String raca;
     private String tipo;

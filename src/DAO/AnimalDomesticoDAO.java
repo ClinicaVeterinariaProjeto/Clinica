@@ -125,7 +125,7 @@ private Connection conexao;
         } 
     
     }
-    public boolean excluirAnimalNoBanco (int idDoAnimal) throws ClassNotFoundException, SQLException{
+    public boolean excluirAnimalDomesticoNoBanco (int idDoAnimal) throws ClassNotFoundException, SQLException{
         this.conexao = new Conexao().getConexao();    
         try{
             

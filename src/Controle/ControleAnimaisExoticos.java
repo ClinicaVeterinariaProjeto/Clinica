@@ -11,13 +11,22 @@ package Controle;
  */
 import Modelo.ModeloAnimalExotico;
 import DAO.AnimalExoticoDAO;
+import java.sql.SQLException;
 public class ControleAnimaisExoticos {
+    AnimalExoticoDAO exotico = new AnimalExoticoDAO();
+    public boolean inserirAnimalExotico(ModeloAnimalExotico animalexotico)throws SQLException, Exception{
+        return exotico.inserirAnimalNoBanco(animalexotico);
+    }
     
-    public void inserirAnimalExotico(ModeloAnimalExotico animalexotico){}
+    public boolean alterarAnimalExotico(ModeloAnimalExotico animalexotico,int idDoAnimal)throws SQLException, Exception{
+        return exotico.alterarAnimalNoBanco(animalexotico, idDoAnimal);
+    }
     
-    public void alterarAnimalExotico(ModeloAnimalExotico animalexotico){}
+    public ModeloAnimalExotico consultarAnimalExotico(String cpf,String nomeAnimal)throws SQLException, Exception{
+        return exotico.pesquisarAnimalNoBanco(cpf, nomeAnimal);
+    }
     
-    public void consultarAnimalExotico(ModeloAnimalExotico animalexotico){}
-    
-    public void excluirAnimalExotico(ModeloAnimalExotico animalexotico){}
+    public boolean excluirAnimalExotico(int idDoAnimal)throws SQLException, Exception{
+        return exotico.excluirAnimalExoticoNoBanco(idDoAnimal);
+    }
 }

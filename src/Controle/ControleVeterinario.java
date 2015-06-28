@@ -11,12 +11,22 @@ package Controle;
  */
 import DAO.VeterinarioDAO;
 import Modelo.ModeloVeterinario;
+import java.sql.SQLException;
 public class ControleVeterinario {
-    public void inserirVeterinario(ModeloVeterinario veterinario){}
+    VeterinarioDAO vet = new VeterinarioDAO();
+    public boolean inserirVeterinario(ModeloVeterinario veterinario,int idGerente)throws SQLException, Exception{
+        return vet.inserirVeterinarioNoBanco(veterinario, idGerente);
+    }
     
-    public void alterarVeterinario(ModeloVeterinario veterinario){}
+    public boolean alterarVeterinario(String cpf,ModeloVeterinario veterinario)throws SQLException, Exception{
+        return vet.alterarVeterinarioNoBanco(cpf, veterinario);
+    }
     
-    public void consultarVeterinario(ModeloVeterinario veterinario){}
+    public ModeloVeterinario consultarVeterinario(String cpf)throws SQLException, Exception{
+        return vet.pesquisarVeterinarioNoBanco(cpf);
+    }
     
-    public void excluirVeterinario(ModeloVeterinario veterinario){}
+    public boolean excluirVeterinario(String cpf)throws SQLException, Exception{
+        return vet.excluirVeterinarioNoBanco(cpf);
+    }
 }

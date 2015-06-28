@@ -12,14 +12,23 @@ package Controle;
 
 import DAO.FuncionarioDAO;
 import Modelo.ModeloFuncionario;
+import java.sql.SQLException;
 public class ControleFuncionario {
+    FuncionarioDAO func =new FuncionarioDAO();
+    public boolean inserirFuncionario(ModeloFuncionario funcionario,int idGerente)throws SQLException, Exception{
+        return func.inserirFuncionarioNoBanco(funcionario, idGerente);
+    }
     
-    public void inserirFuncionario(ModeloFuncionario funcionario){}
+    public boolean alterarFuncionario(ModeloFuncionario funcionario,String cpf)throws SQLException, Exception{
+        return func.alterarFuncionarioNoBanco(cpf, funcionario);
+    }
     
-    public void alterarFuncionario(ModeloFuncionario funcionario){}
+    public ModeloFuncionario consultarFuncionario(String cpf)throws SQLException, Exception{
+        return func.pesquisarFuncionarioNoBanco(cpf);
+    }
     
-    public void consultarFuncionario(ModeloFuncionario funcionario){}
-    
-    public void excluirFuncionario(ModeloFuncionario funcionario){}
+    public boolean excluirFuncionario(String cpf)throws SQLException, Exception{
+        return func.excluirFuncionarioNoBanco(cpf);
+    }
     
 }

@@ -24,11 +24,8 @@ public class FuncionarioDAO {
     //funcionando
     public boolean inserirFuncionarioNoBanco(ModeloFuncionario funcionario,int idGerente) throws ClassNotFoundException, SQLException{
      this.conexao = new Conexao().getConexao();
-     
-    // ModeloGerente gerente = new ModeloGerente();
-    // GerenteDAO gr = new GerenteDAO();
-       // idGerente = gr.pesquisaGerenteNoBanco(gerente.getCpf());
-        try{              
+
+        try{            
             
             
             String query = "INSERT INTO funcionario(Nome, email, Telefone, CPF, DataNascimento, Sexo, idFuncionario, loginFuncionario,senhaFuncionario, Rua, NumeroCasa, Bairro, Cidade, idGerente) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";

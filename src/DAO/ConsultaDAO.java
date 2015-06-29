@@ -21,7 +21,7 @@ import java.sql.SQLException;
 public class ConsultaDAO {
     private Connection conexao;
     
-    public boolean marcarConsulta (ModeloConsulta consulta) throws ClassNotFoundException{
+    public boolean marcarConsulta (ModeloConsulta consulta, int idCliente, int idAnimal) throws ClassNotFoundException{
         this.conexao = new Conexao().getConexao();
         try{
             String query = ("INSERT INTO dia, mes, horarios, valor, idCliente, idAnimal  FROM consulta VALUES(?,?,?,?,?,?);");
@@ -30,8 +30,8 @@ public class ConsultaDAO {
             pstmt.setInt(2,consulta.getMes());
             pstmt.setInt(3,consulta.getHorario());
             pstmt.setFloat(4,consulta.getValorConsulta());
-            pstmt.setInt(5, consulta.getIdCliente());
-            pstmt.setInt(6, consulta.getIdAnimal());
+            pstmt.setInt(5, idCliente);
+            pstmt.setInt(6, idAnimal);
             pstmt.executeUpdate();
             pstmt.close();
             conexao.close();
@@ -67,6 +67,37 @@ public class ConsultaDAO {
         }
         
         
+    }
+    
+    public boolean verificarHorario (int dia,int mes,int horario) throws ClassNotFoundException, SQLException{
+        this.conexao = new Conexao().getConexao();
+        ResultSet rs = null;
+        try{
+            String sql = ("SELECT horario FROM consulta where dia = ? and mes = ? and horario = ?");
+            PreparedStatement pstmt = conexao.prepareStatement(sql);
+            pstmt.setInt(1,dia);
+            pstmt.setInt(2,mes);
+            pstmt.setInt(3,horario);
+            int compara;
+            rs = pstmt.executeQuery();
+                while(rs.next()){
+                    compara=rs.getInt("horario");
+                        if(horario==compara){
+                            pstmt.close();
+                            conexao.close();
+                            return true;
+                        }else{
+                            pstmt.close();
+                            conexao.close();
+                            return false;
+                    }
+                }
+            
+            }
+            catch (SQLException e) { 
+            return false;
+            }
+            return false;
     }
 }
 

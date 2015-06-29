@@ -93,12 +93,12 @@ public class Conexao {
         return null;
     }
     //criando o banco
-    public void geraDb(){
+    public void geraDb() {
         
         try{
             this.conexao = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/mysql", this.login, this.senha);
             this.stmt = (Statement) this.conexao.createStatement();
-            String sql = ("CREATE DATABASE IF NOT EXISTS teste ");
+            String sql = ("CREATE DATABASE IF NOT EXISTS clinica; ");
             stmt.executeUpdate(sql);
             
             stmt.close();

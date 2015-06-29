@@ -88,7 +88,7 @@ public class EstoqueDAO {
         else if(estoque.getQuantidadeProduto()==quantidade){
             //se o estoque for igual o produto ira acabar, logo sera removido
             try{
-                String sql ="DELE FROM Estoque WHERE NomeProduto = ?";
+                String sql ="DELETE FROM Estoque WHERE NomeProduto = ?";
                 PreparedStatement pstmt = conexao.prepareStatement(sql);
                 pstmt.setString(1,nomeProduto);
                 pstmt.execute();

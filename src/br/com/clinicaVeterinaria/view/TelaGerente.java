@@ -9,6 +9,8 @@ import Controle.ControleCliente;
 import Controle.ControleFuncionario;
 import Controle.ControleVeterinario;
 import DAO.ClienteDAO;
+import Modelo.ModeloAnimal;
+import Modelo.ModeloAnimalDomestico;
 import Modelo.ModeloCliente;
 import Modelo.ModeloFuncionario;
 import Modelo.ModeloVeterinario;
@@ -125,6 +127,11 @@ public class TelaGerente extends javax.swing.JFrame {
         });
 
         jbPesquisarAnimal.setText("Pesquisar Animal");
+        jbPesquisarAnimal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbPesquisarAnimalActionPerformed(evt);
+            }
+        });
 
         jbCadastrarFuncionario.setText("Cadastrar Funcionário");
         jbCadastrarFuncionario.addActionListener(new java.awt.event.ActionListener() {
@@ -390,9 +397,25 @@ public class TelaGerente extends javax.swing.JFrame {
     }//GEN-LAST:event_jbCadastrarClienteActionPerformed
 
     private void jbCadastrarAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarAnimalActionPerformed
-        // TODO add your handling code here:
-        TelaCadastroAnimal tca = new TelaCadastroAnimal();
-        tca.setVisible(true);
+        try {
+            // TODO add your handling code here:
+            ControleCliente control = new ControleCliente();
+            ModeloCliente cliente = new ModeloCliente();
+            //ModeloAnimalDomestico animal = new ModeloAnimalDomestico();
+            String cpf;
+            cpf = JOptionPane.showInputDialog(null, "Digite o CPF do cliente");
+            cliente = control.consultarCliente(cpf);
+            if (cliente != null) {
+                //animal.setIdDono(cliente.getIdCliente());
+                TelaCadastroAnimal tca = new TelaCadastroAnimal();
+                tca.inserirDados(cliente);
+                tca.setVisible(true);
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(TelaGerente.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(TelaGerente.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jbCadastrarAnimalActionPerformed
 
     private void jbMarcarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMarcarConsultaActionPerformed
@@ -489,30 +512,20 @@ public class TelaGerente extends javax.swing.JFrame {
 
     private void jmClienteCadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmClienteCadastrarMouseClicked
         // TODO add your handling code here:
-        TelaCadastroCliente tcc = new TelaCadastroCliente();
-        tcc.setVisible(true);
     }//GEN-LAST:event_jmClienteCadastrarMouseClicked
 
     private void jmClienteAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmClienteAlterarMouseClicked
         // TODO add your handling code here:
-        ModeloCliente cliente = new ModeloCliente();
-        Controle.ControleCliente control = new ControleCliente();
-        String cpf;
-        TelaAlteracaoCliente telaAlteracaoCliente = new TelaAlteracaoCliente();
-        
-        try {
-            cpf=JOptionPane.showInputDialog(null, "Digite o CPF do cliente");
-            cliente = control.consultarCliente(cpf);
-            telaAlteracaoCliente.insertDados(cliente);
-            telaAlteracaoCliente.setVisible(true);
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(TelaGerente.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }//GEN-LAST:event_jmClienteAlterarMouseClicked
 
     private void jmClienteExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmClienteExcluirMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jmClienteExcluirMouseClicked
+
+    private void jbPesquisarAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPesquisarAnimalActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jbPesquisarAnimalActionPerformed
 
     /**
      * @param args the command line arguments

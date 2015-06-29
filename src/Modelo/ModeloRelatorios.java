@@ -37,4 +37,41 @@ public class ModeloRelatorios {
             JOptionPane.showMessageDialog(null,"Erro ao exibir relatório"+ex);
         }
     }
+    
+    public void relatorioFuncionario() throws ClassNotFoundException, SQLException, JRException{
+        this.conexao = new Conexao().getConexao();
+        try{
+            PreparedStatement pstmt = conexao.prepareStatement("select * from Funcionario");
+            pstmt.execute();// result preenchido
+            JRResultSetDataSource relResult = new JRResultSetDataSource(pstmt.getResultSet());
+            JasperPrint jpPrint = JasperFillManager.fillReport("iReports/imgs/RelatorioDeFuncionarios.jasper",new HashMap(),relResult);
+            JasperViewer jv = new JasperViewer(jpPrint,false);
+            jv.setVisible(true);
+            jv.toFront();
+
+            pstmt.close();
+            conexao.close();
+        }
+        catch(SQLException | JRException ex){
+            JOptionPane.showMessageDialog(null,"Erro ao exibir relatório"+ex);
+        }
+    }
+     public void relatorioEstoque() throws ClassNotFoundException, SQLException, JRException{
+        this.conexao = new Conexao().getConexao();
+        try{
+            PreparedStatement pstmt = conexao.prepareStatement("select * from Estoque");
+            pstmt.execute();// result preenchido
+            JRResultSetDataSource relResult = new JRResultSetDataSource(pstmt.getResultSet());
+            JasperPrint jpPrint = JasperFillManager.fillReport("iReports/imgs/RelatorioDeEstoque.jasper",new HashMap(),relResult);
+            JasperViewer jv = new JasperViewer(jpPrint,false);
+            jv.setVisible(true);
+            jv.toFront();
+
+            pstmt.close();
+            conexao.close();
+        }
+        catch(SQLException | JRException ex){
+            JOptionPane.showMessageDialog(null,"Erro ao exibir relatório"+ex);
+        }
+    }
 }

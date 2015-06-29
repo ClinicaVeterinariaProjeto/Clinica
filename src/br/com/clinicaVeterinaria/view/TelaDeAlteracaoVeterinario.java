@@ -466,13 +466,22 @@ public class TelaDeAlteracaoVeterinario extends javax.swing.JFrame {
             //correto = false;
         }
        
-        if (jtEmail.getText().length() > 0) {
-            jlCampoObrigatorioEmail.setVisible(false);
-            correto++;
+        if ((jtEmail.getText().contains("@")) && (jtEmail.getText().contains(".")) && (!jtEmail.getText().contains(" "))) {
+            String usuario = new String(jtEmail.getText().substring(0, jtEmail.getText().lastIndexOf('@')));
+            String dominio = new String(jtEmail.getText().substring(jtEmail.getText().lastIndexOf('@') + 1, jtEmail.getText().length()));
+            if ((usuario.length() >= 1) && (!usuario.contains("@")) && (dominio.contains(".")) && (!dominio.contains("@")) && (dominio.indexOf(".") >= 1) && (dominio.lastIndexOf(".") < dominio.length() - 1)) {
+                //jtEmail.setText("");
+                jlCampoObrigatorioEmail.setVisible(false);
+                correto++;
+            } else {
+                jlCampoObrigatorioEmail.setVisible(true);
+                //jtEmail.requestFocus();
+            }
         } else {
             jlCampoObrigatorioEmail.setVisible(true);
-            //correto = false;
+            //jtEmail.requestFocus();
         }
+        
         if (jtLogin.getText().length() > 0) {
             jlCampoObrigatorioLogin.setVisible(false);
             correto++;

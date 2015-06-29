@@ -126,6 +126,12 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
         jLabel9.setText("/");
 
+        jtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtEmailFocusLost(evt);
+            }
+        });
+
         jbCadastrar.setText("Cadastrar");
         jbCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -458,13 +464,32 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             jlCampoObrigatorioSexo.setVisible(true);
         }
 
-        if (jtEmail.getText().length() > 0) {
+        /*if (jtEmail.getText().length() > 0) {
             jlCampoObrigatorioEmail.setVisible(false);
             correto++;
         } else {
             jlCampoObrigatorioEmail.setVisible(true);
             //correto = false;
+        }*/
+        
+        
+        
+        if ((jtEmail.getText().contains("@")) && (jtEmail.getText().contains(".")) && (!jtEmail.getText().contains(" "))) {
+            String usuario = new String(jtEmail.getText().substring(0, jtEmail.getText().lastIndexOf('@')));
+            String dominio = new String(jtEmail.getText().substring(jtEmail.getText().lastIndexOf('@') + 1, jtEmail.getText().length()));
+            if ((usuario.length() >= 1) && (!usuario.contains("@")) && (dominio.contains(".")) && (!dominio.contains("@")) && (dominio.indexOf(".") >= 1) && (dominio.lastIndexOf(".") < dominio.length() - 1)) {
+                //jtEmail.setText("");
+                jlCampoObrigatorioEmail.setVisible(false);
+                correto++;
+            } else {
+                jlCampoObrigatorioEmail.setVisible(true);
+                //jtEmail.requestFocus();
+            }
+        } else {
+            jlCampoObrigatorioEmail.setVisible(true);
+            //jtEmail.requestFocus();
         }
+        
 
         if (correto == 10) {
             try {
@@ -503,6 +528,25 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     private void jtCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtCidadeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtCidadeActionPerformed
+
+    private void jtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtEmailFocusLost
+        // TODO add your handling code here:
+        /*if ((jtEmail.getText().contains("@")) && (jtEmail.getText().contains(".")) && (!jtEmail.getText().contains(" "))) {
+            String usuario = new String(jtEmail.getText().substring(0, jtEmail.getText().lastIndexOf('@')));
+            String dominio = new String(jtEmail.getText().substring(jtEmail.getText().lastIndexOf('@') + 1, jtEmail.getText().length()));
+            if ((usuario.length() >= 1) && (!usuario.contains("@")) && (dominio.contains(".")) && (!dominio.contains("@")) && (dominio.indexOf(".") >= 1) && (dominio.lastIndexOf(".") < dominio.length() - 1)) {
+                //jtEmail.setText("");
+                jlCampoObrigatorioEmail.setVisible(false);
+            } else {
+                jlCampoObrigatorioEmail.setVisible(true);
+                jtEmail.requestFocus();
+            }
+        } else {
+            jlCampoObrigatorioEmail.setVisible(true);
+            jtEmail.requestFocus();
+        }*/
+
+    }//GEN-LAST:event_jtEmailFocusLost
 
     /**
      * @param args the command line arguments

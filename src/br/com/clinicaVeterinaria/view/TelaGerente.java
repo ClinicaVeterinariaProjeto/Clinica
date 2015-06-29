@@ -521,12 +521,36 @@ public class TelaGerente extends javax.swing.JFrame {
 
     private void jbMarcarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMarcarConsultaActionPerformed
         // TODO add your handling code here:
-        TelaConsulta tc = new TelaConsulta();
-        tc.setVisible(true);
+        try {
+            ModeloAnimal animal = new ModeloAnimal();
+            ModeloCliente cliente = new ModeloCliente();
+            Controle.ControleAnimal control = new ControleAnimal();
+            Controle.ControleCliente controlC = new ControleCliente();
+            String cpf, nomeAnimal;
+            cpf = JOptionPane.showInputDialog(null, "Digite o CPF do cliente");
+            if (controlC.verificarCPF(cpf)) {
+                nomeAnimal = JOptionPane.showInputDialog(null, "Digite o nome do Animal");
+                if (control.verificarNome(nomeAnimal)) {
+                    cliente = controlC.consultarCliente(cpf);
+                    animal = control.consultarAnimal(cliente.getCpf(), nomeAnimal);
+                    //TelaAlteracaoAnimal telaAlteracaoAnimal = new TelaAlteracaoAnimal();
+                    //telaAlteracaoAnimal.inserirDados(cliente, animal);
+                    //telaAlteracaoAnimal.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Animal não cadastrado");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Cliente não cadastrado");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(TelaGerente.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jbMarcarConsultaActionPerformed
 
     private void jbGerenciarEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGerenciarEstoqueActionPerformed
         // TODO add your handling code here:
+        TelaEstoque tela = new TelaEstoque();
+        tela.setVisible(true);
     }//GEN-LAST:event_jbGerenciarEstoqueActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -687,6 +711,7 @@ public class TelaGerente extends javax.swing.JFrame {
             cpf=JOptionPane.showInputDialog(null, "Digite o CPF do cliente");
             if(controlC.verificarCPF(cpf)){
             nomeAnimal=JOptionPane.showInputDialog(null, "Digite o nome do Animal");
+            nomeAnimal.toUpperCase();
             if(control.verificarNome(nomeAnimal)){
             cliente = controlC.consultarCliente(cpf);
             animal = control.consultarAnimal(cliente.getCpf(), nomeAnimal);

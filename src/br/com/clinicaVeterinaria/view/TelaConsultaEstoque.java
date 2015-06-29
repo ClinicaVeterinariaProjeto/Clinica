@@ -5,6 +5,15 @@
  */
 package br.com.clinicaVeterinaria.view;
 
+import Controle.ControleEstoque;
+import Controle.ControleTeclasPermitidasFloat;
+import Controle.ControleTeclasPermitidasLetras;
+import Controle.ControleTeclasPermitidasNumeros;
+import Modelo.ModeloEstoque;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Alessandro
@@ -12,10 +21,13 @@ package br.com.clinicaVeterinaria.view;
 public class TelaConsultaEstoque extends javax.swing.JFrame {
 
     /**
-     * Creates new form TelaConsultaEstoque
+     * Creates new form TelaConsultaEstoque1
      */
     public TelaConsultaEstoque() {
         initComponents();
+        jtNomeProduto.setDocument(new ControleTeclasPermitidasLetras(15));
+        jtQuantidadeProduto.setDocument(new ControleTeclasPermitidasNumeros(4));
+        jtValorProduto.setDocument(new ControleTeclasPermitidasFloat(5));
     }
 
     /**
@@ -28,77 +40,72 @@ public class TelaConsultaEstoque extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jtNomeProduto = new javax.swing.JTextField();
+        jtQuantidadeProduto = new javax.swing.JTextField();
+        jtValorProduto = new javax.swing.JTextField();
+        jbInserir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Produto", "Quantidade", "Valor"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Float.class
-            };
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
+        jLabel1.setText("Nome");
+
+        jLabel2.setText("Quantidade");
+
+        jLabel3.setText("Valor");
+
+        jbInserir.setText("Inserir");
+        jbInserir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbInserirActionPerformed(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setHeaderValue("Produto");
-            jTable1.getColumnModel().getColumn(1).setHeaderValue("Quantidade");
-            jTable1.getColumnModel().getColumn(2).setHeaderValue("Valor");
-        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jtNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jtValorProduto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
+                        .addComponent(jtQuantidadeProduto, javax.swing.GroupLayout.Alignment.LEADING)))
+                .addContainerGap(44, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jbInserir)
+                .addGap(27, 27, 27))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jtNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jtQuantidadeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3)
+                    .addComponent(jtValorProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addComponent(jbInserir)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -115,6 +122,43 @@ public class TelaConsultaEstoque extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInserirActionPerformed
+        // TODO add your handling code here:
+        int correto=0;
+        Modelo.ModeloEstoque estoque = new ModeloEstoque();
+        Controle.ControleEstoque control = new ControleEstoque();
+        
+        
+        if (jtNomeProduto.getText().length() > 0) {
+            correto++;
+        }
+        
+        if (jtQuantidadeProduto.getText().length() > 0) {
+            correto++;
+        }
+        
+        if (jtValorProduto.getText().length() > 0) {
+            correto++;
+        }
+        
+        if(correto ==3){
+            try {
+                estoque.setNomeProduto(jtNomeProduto.getText());
+                estoque.setQuantidadeProduto(Integer.parseInt(jtQuantidadeProduto.getText()));
+                estoque.setValorProduto(Float.parseFloat(jtValorProduto.getText()));
+                
+                if (control.inserirProduto(estoque)) {
+                    JOptionPane.showMessageDialog(this, "Produto inserido com sucesso!");
+                    dispose();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Produto não inserido!");
+                }
+            } catch (Exception ex) {
+                Logger.getLogger(TelaConsultaEstoque.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jbInserirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,6 +186,7 @@ public class TelaConsultaEstoque extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(TelaConsultaEstoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -152,8 +197,13 @@ public class TelaConsultaEstoque extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JButton jbInserir;
+    private javax.swing.JTextField jtNomeProduto;
+    private javax.swing.JTextField jtQuantidadeProduto;
+    private javax.swing.JTextField jtValorProduto;
     // End of variables declaration//GEN-END:variables
 }

@@ -18,7 +18,7 @@ import java.sql.Statement;
  *
  * @author William
  */
-
+//opa
 public class VeterinarioDAO {
     private Connection conexao;
     public boolean inserirVeterinarioNoBanco(ModeloVeterinario veterinario, int idGerente) throws ClassNotFoundException, SQLException{

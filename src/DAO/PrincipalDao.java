@@ -19,7 +19,7 @@ import java.sql.SQLException;
  * @author Alex
  */
 public class PrincipalDao {
-    private static int id;
+    //private static int id;
     public static void main (String Args []) throws SQLException, ClassNotFoundException, Exception{
     
      /*   ModeloGerente gerent = new ModeloGerente();
@@ -63,10 +63,10 @@ public class PrincipalDao {
         funcionario.setSenhaFuncionario("123");
       // String cpf = ("1542121545");
         //GerenteDAO gr = new GerenteDAO();
-        //id = gr.pesquisaGerenteNoBanco(cpf);
+        //id = gr.pesquisaGerenteNoBanco(cpf);*/
         //System.out.print(id);
-        //String cpf = ("1542121545");
-        FuncionarioDAO fun = new FuncionarioDAO();
+        //String cpf = ("12312312312");
+        /*FuncionarioDAO fun = new FuncionarioDAO();
         fun.inserirFuncionarioNoBanco(funcionario,gerent.getIdGerente()); //funcionando
        // ModeloFuncionario func = new ModeloFuncionario();
        // func=fun.pesquisarFuncionarioNoBanco(cpf);
@@ -134,7 +134,8 @@ public class PrincipalDao {
         AnimalExoticoDAO ex = new AnimalExoticoDAO();
         ex.inserirAnimalNoBanco(exotic);
 }*/
-        ModeloRelatorios rel = new ModeloRelatorios();
-        rel.relatorioCliente();
+       // ModeloRelatorios rel = new ModeloRelatorios();
+        //rel.relatorioCliente();
+       
 }
 }

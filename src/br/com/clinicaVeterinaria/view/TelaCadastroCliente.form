@@ -147,9 +147,7 @@
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="jbCadastrarAnimal" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="22" max="32767" attributes="0"/>
                   <Component id="jbCancelar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Component id="jbCadastrar" min="-2" max="-2" attributes="0"/>
@@ -234,7 +232,6 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jbCadastrar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jbCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jbCadastrarAnimal" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -316,11 +313,6 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbCancelarActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="jbCadastrarAnimal">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Cadastrar Animal"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jlCampoObrigatorioNome">
           <Properties>

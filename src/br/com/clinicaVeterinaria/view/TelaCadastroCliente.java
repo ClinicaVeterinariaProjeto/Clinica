@@ -78,7 +78,6 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         jtEmail = new javax.swing.JTextField();
         jbCadastrar = new javax.swing.JToggleButton();
         jbCancelar = new javax.swing.JButton();
-        jbCadastrarAnimal = new javax.swing.JButton();
         jlCampoObrigatorioNome = new javax.swing.JLabel();
         jtRua = new javax.swing.JTextField();
         jlRua = new javax.swing.JLabel();
@@ -140,8 +139,6 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                 jbCancelarActionPerformed(evt);
             }
         });
-
-        jbCadastrarAnimal.setText("Cadastrar Animal");
 
         jlCampoObrigatorioNome.setForeground(new java.awt.Color(255, 51, 51));
         jlCampoObrigatorioNome.setText("Campo Obrigatório *");
@@ -268,9 +265,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                                     .addComponent(jlCampoObrigatorioBairro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jbCadastrarAnimal)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jbCancelar)
                 .addGap(31, 31, 31)
                 .addComponent(jbCadastrar)
@@ -303,7 +298,6 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                         .addGap(10, 10, 10)
                         .addComponent(jlCampoObrigatorioBairro))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jlBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -341,8 +335,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbCadastrar)
-                    .addComponent(jbCancelar)
-                    .addComponent(jbCadastrarAnimal))
+                    .addComponent(jbCancelar))
                 .addContainerGap())
         );
 
@@ -554,7 +547,6 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JToggleButton jbCadastrar;
-    private javax.swing.JButton jbCadastrarAnimal;
     private javax.swing.JButton jbCancelar;
     private javax.swing.JLabel jlBairro;
     private javax.swing.JLabel jlCampoObrigatorioBairro;

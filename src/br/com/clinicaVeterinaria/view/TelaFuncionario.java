@@ -130,6 +130,11 @@ public class TelaFuncionario extends javax.swing.JFrame {
         jbPesquisarCliente.setBounds(410, 60, 190, 40);
 
         jbPesquisarAnimal.setText("Pesquisar Animal");
+        jbPesquisarAnimal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbPesquisarAnimalActionPerformed(evt);
+            }
+        });
         jDesktopPane1.add(jbPesquisarAnimal);
         jbPesquisarAnimal.setBounds(410, 120, 190, 40);
 
@@ -546,6 +551,36 @@ public class TelaFuncionario extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jbSairActionPerformed
+
+    private void jbPesquisarAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPesquisarAnimalActionPerformed
+        // TODO add your handling code here:
+        try {
+        ModeloAnimal animal = new ModeloAnimal();
+        ModeloCliente cliente = new ModeloCliente();
+        Controle.ControleAnimal control = new ControleAnimal();
+        Controle.ControleCliente controlC = new ControleCliente();
+        String cpf, nomeAnimal;
+            cpf=JOptionPane.showInputDialog(null, "Digite o CPF do cliente");
+            if(controlC.verificarCPF(cpf)){
+            nomeAnimal=JOptionPane.showInputDialog(null, "Digite o nome do Animal");
+            if(control.verificarNome(nomeAnimal)){
+            cliente = controlC.consultarCliente(cpf);
+            animal = control.consultarAnimal(cliente.getCpf(), nomeAnimal);
+            TelaAlteracaoAnimal telaAlteracaoAnimal = new TelaAlteracaoAnimal();
+            telaAlteracaoAnimal.inserirDados(cliente, animal);
+            telaAlteracaoAnimal.setVisible(true);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Animal não cadastrado");
+            }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Cliente não cadastrado");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(TelaGerente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jbPesquisarAnimalActionPerformed
 
     /**
      * @param args the command line arguments

@@ -45,9 +45,9 @@ public class AnimalDAO {
         }    
     }
     
-    public ModeloAnimalExotico pesquisarAnimal(String cpf,String nomeDoAnimal) throws ClassNotFoundException, SQLException{
+    public ModeloAnimal pesquisarAnimal(String cpf,String nomeDoAnimal) throws ClassNotFoundException, SQLException{
         this.conexao = new Conexao().getConexao();
-        ModeloAnimalExotico animalExotico = new ModeloAnimalExotico();
+        ModeloAnimal animal = new ModeloAnimal();
         ResultSet rs = null;
         ModeloCliente cliente = new ModeloCliente();
         ClienteDAO cl = new ClienteDAO();
@@ -61,7 +61,7 @@ public class AnimalDAO {
             pstmt.setString(2,nomeDoAnimal);
             rs = pstmt.executeQuery();
             while (rs.next()){ 
-                ModeloAnimalExotico temp = new ModeloAnimalExotico();
+                ModeloAnimal temp = new ModeloAnimal();
                 temp.setRaca(rs.getString("Raca"));
                 temp.setNome(rs.getString("Nome"));
                 temp.setTipo(rs.getString("TipoAnimal"));
@@ -70,12 +70,12 @@ public class AnimalDAO {
                 temp.setUltimaVascina(rs.getString("Data_vasc"));
                 temp.setIdAnimal(rs.getInt("idAnimal"));
                 temp.setIdDono(rs.getInt("idCliente"));
-                animalExotico=temp;
+                animal=temp;
             }
             rs.close();
             pstmt.close();
             conexao.close();         
-            return animalExotico;
+            return animal;
         }
         catch (SQLException e) { 
           JOptionPane.showMessageDialog(null,"Erro ao buscar Animal"+e);

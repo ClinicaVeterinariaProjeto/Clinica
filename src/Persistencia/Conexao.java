@@ -92,6 +92,7 @@ public class Conexao {
       stmt = (Statement) conexao.createStatement();
         return null;
     }
+    //criando o banco
     public void geraDb(){
         
         try{

@@ -24,7 +24,7 @@ public class AnimalDAO {
     public boolean inserirAnimal(ModeloAnimal animal) throws ClassNotFoundException, SQLException{
         this.conexao = new Conexao().getConexao();
         try{                        
-            String query_exotico = "INSERT INTO Exotico(TipoAnimal,Raca, Nome, AnoNascimento, Peso, Data_vasc,idAnimal,idCliente)VALUES(?,?,?,?,?,?,?,?)";
+            String query_exotico = "INSERT INTO Animal(TipoAnimal,Raca, Nome, AnoNascimento, Peso, Data_vasc,idAnimal,idCliente)VALUES(?,?,?,?,?,?,?,?)";
             PreparedStatement stmt2 = conexao.prepareStatement(query_exotico);
             stmt2.setString(1,animal.getTipo());
             stmt2.setString(2,animal.getRaca());
@@ -54,7 +54,7 @@ public class AnimalDAO {
         cliente=cl.pesquisaClienteNoBanco(cpf);
         try{            
             String sql ="SELECT Raca,Nome,TipoAnimal,AnoNascimento,Peso,Data_vasc,idAnimal,idCliente "
-                    + "FROM Exotico "
+                    + "FROM Animal "
                     + "WHERE idCliente = ? and Nome = ? ";                   
             PreparedStatement pstmt = conexao.prepareStatement(sql); 
             pstmt.setInt(1,cliente.getIdCliente());
@@ -86,7 +86,7 @@ public class AnimalDAO {
     public boolean alterarAnimal(ModeloAnimal animal,int idDoAnimal) throws ClassNotFoundException, SQLException{
         this.conexao = new Conexao().getConexao();
         try{            
-            String sql ="UPDATE Exotico SET Raca = ?, Nome = ?, Peso = ?,"
+            String sql ="UPDATE Animal SET Raca = ?, Nome = ?, Peso = ?,"
             + " Data_vasc = ? WHERE idAnimal = ?" ;
             PreparedStatement stmt = conexao.prepareStatement(sql);
             stmt.setString(1,animal.getRaca());
@@ -121,6 +121,7 @@ public class AnimalDAO {
         }
     }
     
+    /**/
     
 }
 /*

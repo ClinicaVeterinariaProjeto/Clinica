@@ -577,7 +577,7 @@ public class TelaCadastroVeterinario extends javax.swing.JFrame {
                 veterinario.setLoginVeterinario(jtLogin.getText());
                 veterinario.setSenhaVeterinario(jtSenha.getText());
 
-                if (control.inserirVeterinario(veterinario, 01) == true) {
+                if (control.inserirVeterinario(veterinario, 01)) {
                     JOptionPane.showMessageDialog(this, "Veterinário gravado com Sucesso");
                     dispose();
                 } else {

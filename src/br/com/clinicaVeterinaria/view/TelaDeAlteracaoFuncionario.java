@@ -502,8 +502,14 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
                 funcionario.setLoginFuncionario(jtLogin.getText());
                 funcionario.setSenhaFuncionario(jtSenha.getText());
 
-                control.alterarFuncionario(funcionario, jtCpf.getText());
-                JOptionPane.showMessageDialog(this, "Funcionário alerado com Sucesso");
+                //control.alterarFuncionario(funcionario, jtCpf.getText());
+                //JOptionPane.showMessageDialog(this, "Funcionário alerado com Sucesso");
+                if (control.alterarFuncionario(funcionario, jtCpf.getText())) {
+                    JOptionPane.showMessageDialog(this, "Funcionário gravado com Sucesso");
+                    dispose();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Funcionário gravado com Sucesso");
+                }
 
             } catch (Exception ex) {
                 Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);

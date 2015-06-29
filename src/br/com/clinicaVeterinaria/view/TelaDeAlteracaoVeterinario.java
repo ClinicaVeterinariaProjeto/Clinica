@@ -512,8 +512,15 @@ public class TelaDeAlteracaoVeterinario extends javax.swing.JFrame {
                 funcionario.setSenhaVeterinario(jtSenha.getText());
 
                 
-                control.alterarVeterinario(jtCpf.getText(), funcionario);
-                JOptionPane.showMessageDialog(this, "Veterinário alerado com Sucesso");
+                //control.alterarVeterinario(jtCpf.getText(), funcionario);
+                //JOptionPane.showMessageDialog(this, "Veterinário alerado com Sucesso");
+                
+                if (control.alterarVeterinario(jtCpf.getText(), funcionario)) {
+                    JOptionPane.showMessageDialog(this, "Veterinário gravado com Sucesso");
+                    dispose();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Veterinário gravado com Sucesso");
+                }
                 
             } catch (Exception ex) {
                 Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);

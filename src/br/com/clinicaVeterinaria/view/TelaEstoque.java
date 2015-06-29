@@ -37,7 +37,7 @@ public class TelaEstoque extends javax.swing.JFrame {
         jbSair = new javax.swing.JButton();
         jbProcurarItem = new javax.swing.JButton();
         jbInserirItem = new javax.swing.JButton();
-        jbExcluirItem = new javax.swing.JButton();
+        jbRetirarItem = new javax.swing.JButton();
         jbgerarRelatorio = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -66,10 +66,10 @@ public class TelaEstoque extends javax.swing.JFrame {
             }
         });
 
-        jbExcluirItem.setText("Retirar Item");
-        jbExcluirItem.addActionListener(new java.awt.event.ActionListener() {
+        jbRetirarItem.setText("Retirar Item");
+        jbRetirarItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbExcluirItemActionPerformed(evt);
+                jbRetirarItemActionPerformed(evt);
             }
         });
 
@@ -89,7 +89,7 @@ public class TelaEstoque extends javax.swing.JFrame {
                         .addComponent(jbProcurarItem, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jbInserirItem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbExcluirItem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbRetirarItem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jbgerarRelatorio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)))
                 .addGap(26, 78, Short.MAX_VALUE))
         );
@@ -101,7 +101,7 @@ public class TelaEstoque extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbInserirItem, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jbExcluirItem, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbRetirarItem, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jbgerarRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
@@ -144,7 +144,7 @@ public class TelaEstoque extends javax.swing.JFrame {
             nomeProduto=JOptionPane.showInputDialog(null, "O nome do produto");
             nomeProduto.toUpperCase();
             estoque = control.pesquisarProduto(nomeProduto);
-            if(estoque != null){
+            if(estoque.getNomeProduto() != null){
                 JOptionPane.showMessageDialog(this, "Nome Produto " + estoque.getNomeProduto()
                     +"\nQuantidade " + estoque.getQuantidadeProduto() + "\nValor "+ estoque.getValorProduto());
             }
@@ -156,10 +156,31 @@ public class TelaEstoque extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jbProcurarItemActionPerformed
 
-    private void jbExcluirItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExcluirItemActionPerformed
-        // TODO add your handling code here:
+    private void jbRetirarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRetirarItemActionPerformed
+        try {
+            // TODO add your handling code here:
+            String nomeProduto;
+            int quantidade;
+            ModeloEstoque estoque = new ModeloEstoque();
+            Controle.ControleEstoque control = new ControleEstoque();
+            nomeProduto=JOptionPane.showInputDialog(null, "O nome do produto");
+            nomeProduto.toUpperCase();
+            estoque = control.pesquisarProduto(nomeProduto);
+            if(estoque.getNomeProduto() != null){
+                quantidade=Integer.parseInt(JOptionPane.showInputDialog(null, "Digite a quantidade"));
+                if(control.retirarProduto(nomeProduto, quantidade)){
+                    JOptionPane.showMessageDialog(this, "Produto retirado com sucesso!");
+                }
+                else
+                    JOptionPane.showMessageDialog(this, "Não possue essa quantidade desse produto!!");
+            }
+            else
+                JOptionPane.showMessageDialog(this, "Produto não existe no estoque!");
+        } catch (Exception ex) {
+            Logger.getLogger(TelaEstoque.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-    }//GEN-LAST:event_jbExcluirItemActionPerformed
+    }//GEN-LAST:event_jbRetirarItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,9 +220,9 @@ public class TelaEstoque extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton jbExcluirItem;
     private javax.swing.JButton jbInserirItem;
     private javax.swing.JButton jbProcurarItem;
+    private javax.swing.JButton jbRetirarItem;
     private javax.swing.JButton jbSair;
     private javax.swing.JButton jbgerarRelatorio;
     // End of variables declaration//GEN-END:variables

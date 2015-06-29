@@ -98,7 +98,7 @@ public class Conexao {
         try{
             this.conexao = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/mysql", this.login, this.senha);
             this.stmt = (Statement) this.conexao.createStatement();
-            String sql = ("CREATE DATABASE IF NOT EXISTS teste ");
+            String sql = ("CREATE DATABASE IF NOT EXISTS clinica ");
             stmt.executeUpdate(sql);
             
             stmt.close();
@@ -115,7 +115,7 @@ public class Conexao {
             this.stmt = (Statement) this.conexao.createStatement();
             String sql = ("CREATE TABLE IF NOT EXISTS estoque("
                     + "NomeProduto varchar(30) not null,"
-                    + "Quantidade integer not null,"
+                    + "QuantidadeProduto integer not null,"
                     + "ValorProduto float not null"
                     + "); ");
             stmt.executeUpdate(sql);

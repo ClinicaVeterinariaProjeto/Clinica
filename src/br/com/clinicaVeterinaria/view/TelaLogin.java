@@ -5,7 +5,7 @@
  */
 package br.com.clinicaVeterinaria.view;
 
-import Controle.ControleBancoDados;
+
 import javax.swing.JOptionPane;
 
 /**

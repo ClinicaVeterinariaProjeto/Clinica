@@ -5,6 +5,7 @@
  */
 package br.com.clinicaVeterinaria.view;
 
+import DAO.ConsultaDAO;
 import Modelo.ModeloAnimal;
 import Modelo.ModeloCliente;
 
@@ -57,13 +58,6 @@ public class TelaConsulta extends javax.swing.JFrame {
         jtDia = new javax.swing.JTextField();
         jtMes = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jbBuscarHorarios = new javax.swing.JButton();
-        jtHorario1 = new javax.swing.JTextField();
-        jtHorario2 = new javax.swing.JTextField();
-        jtHorario3 = new javax.swing.JTextField();
-        jtHorario4 = new javax.swing.JTextField();
-        jtHorario5 = new javax.swing.JTextField();
-        jtHorario6 = new javax.swing.JTextField();
         jlDigiteHorarioEscolhido = new javax.swing.JLabel();
         jtHorarioEscolhido = new javax.swing.JTextField();
 
@@ -85,6 +79,11 @@ public class TelaConsulta extends javax.swing.JFrame {
         });
 
         jbConfirmarConsulta.setText("Confirmar");
+        jbConfirmarConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbConfirmarConsultaActionPerformed(evt);
+            }
+        });
 
         jbCancelarConsulta.setText("Cancelar");
         jbCancelarConsulta.addActionListener(new java.awt.event.ActionListener() {
@@ -113,14 +112,6 @@ public class TelaConsulta extends javax.swing.JFrame {
 
         jLabel4.setText("Horários Disponíveis:");
 
-        jbBuscarHorarios.setText("Buscar Horários");
-
-        jtHorario5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtHorario5ActionPerformed(evt);
-            }
-        });
-
         jlDigiteHorarioEscolhido.setText("Digite o Horário Escolhido");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -131,7 +122,7 @@ public class TelaConsulta extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jbCancelarConsulta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 223, Short.MAX_VALUE)
                 .addComponent(jbConfirmarConsulta)
                 .addGap(26, 26, 26))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -140,25 +131,6 @@ public class TelaConsulta extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jtHorario1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jtHorario2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jtHorario3, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jtHorario4, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jtHorario5, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jtHorario6, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jlDigiteHorarioEscolhido)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jtHorarioEscolhido, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,9 +151,12 @@ public class TelaConsulta extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtMes, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtMes, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jlDigiteHorarioEscolhido)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jbBuscarHorarios)))
+                        .addComponent(jtHorarioEscolhido, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -208,21 +183,12 @@ public class TelaConsulta extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jtDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(jtMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbBuscarHorarios))
+                    .addComponent(jtMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtHorario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtHorario2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtHorario3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtHorario4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtHorario5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtHorario6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlDigiteHorarioEscolhido)
                     .addComponent(jtHorarioEscolhido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbConfirmarConsulta)
                     .addComponent(jbCancelarConsulta))
@@ -261,9 +227,11 @@ public class TelaConsulta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtMesActionPerformed
 
-    private void jtHorario5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtHorario5ActionPerformed
+    private void jbConfirmarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarConsultaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtHorario5ActionPerformed
+        DAO.ConsultaDAO consul = new ConsultaDAO();
+        consul.
+    }//GEN-LAST:event_jbConfirmarConsultaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -307,7 +275,6 @@ public class TelaConsulta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JButton jbBuscarHorarios;
     private javax.swing.JButton jbCancelarConsulta;
     private javax.swing.JButton jbConfirmarConsulta;
     private javax.swing.JLabel jlCpfCliente;
@@ -316,12 +283,6 @@ public class TelaConsulta extends javax.swing.JFrame {
     private javax.swing.JLabel jlNomeCliente;
     private javax.swing.JTextField jtCpfCliente;
     private javax.swing.JTextField jtDia;
-    private javax.swing.JTextField jtHorario1;
-    private javax.swing.JTextField jtHorario2;
-    private javax.swing.JTextField jtHorario3;
-    private javax.swing.JTextField jtHorario4;
-    private javax.swing.JTextField jtHorario5;
-    private javax.swing.JTextField jtHorario6;
     private javax.swing.JTextField jtHorarioEscolhido;
     private javax.swing.JTextField jtMes;
     private javax.swing.JTextField jtNomeAnimal;

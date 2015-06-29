@@ -55,7 +55,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Component id="jbCancelarConsulta" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="223" max="32767" attributes="0"/>
                   <Component id="jbConfirmarConsulta" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               </Group>
@@ -66,29 +66,6 @@
               </Group>
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jtHorario1" min="-2" pref="52" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jtHorario2" min="-2" pref="53" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jtHorario3" min="-2" pref="53" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jtHorario4" min="-2" pref="55" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jtHorario5" min="-2" pref="53" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jtHorario6" min="-2" pref="53" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jlDigiteHorarioEscolhido" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jtHorarioEscolhido" min="-2" pref="61" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -114,11 +91,15 @@
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jtMes" min="-2" pref="41" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jlDigiteHorarioEscolhido" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jbBuscarHorarios" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtHorarioEscolhido" min="-2" pref="61" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="67" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -150,23 +131,13 @@
                       <Component id="jtDia" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jtMes" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jbBuscarHorarios" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jtHorario1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jtHorario2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jtHorario3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jtHorario4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jtHorario5" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jtHorario6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jlDigiteHorarioEscolhido" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jtHorarioEscolhido" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="71" max="32767" attributes="0"/>
+                  <EmptySpace pref="124" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jbConfirmarConsulta" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jbCancelarConsulta" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -200,6 +171,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Confirmar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbConfirmarConsultaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jbCancelarConsulta">
           <Properties>
@@ -240,26 +214,6 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Hor&#xe1;rios Dispon&#xed;veis:"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="jbBuscarHorarios">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Buscar Hor&#xe1;rios"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jtHorario1">
-        </Component>
-        <Component class="javax.swing.JTextField" name="jtHorario2">
-        </Component>
-        <Component class="javax.swing.JTextField" name="jtHorario3">
-        </Component>
-        <Component class="javax.swing.JTextField" name="jtHorario4">
-        </Component>
-        <Component class="javax.swing.JTextField" name="jtHorario5">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtHorario5ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jtHorario6">
         </Component>
         <Component class="javax.swing.JLabel" name="jlDigiteHorarioEscolhido">
           <Properties>

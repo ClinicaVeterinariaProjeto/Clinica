@@ -6,6 +6,7 @@
 package br.com.clinicaVeterinaria.view;
 
 import Controle.ControleCliente;
+import Controle.ControleFuncionario;
 import Controle.ControleTeclasPermitidasLetras;
 import Controle.ControleTeclasPermitidasNumeros;
 import Controle.ControleVeterinario;
@@ -413,6 +414,7 @@ public class TelaCadastroVeterinario extends javax.swing.JFrame {
         int correto = 0;
         int mes, ano, dia;
         Controle.ControleVeterinario control = new ControleVeterinario();
+        Controle.ControleFuncionario controlF = new ControleFuncionario();
         
         if (jtNome.getText().length() > 0) {
             jlCampoObrigatorioNome.setVisible(false);
@@ -470,7 +472,7 @@ public class TelaCadastroVeterinario extends javax.swing.JFrame {
             //correto = false;
         }
 
-        if (jtTelefone.getText().length() > 0) {
+        if (jtTelefone.getText().length() > 7) {
             jlCampoObrigatorioTelefone.setVisible(false);
             correto++;
         } else {
@@ -518,13 +520,32 @@ public class TelaCadastroVeterinario extends javax.swing.JFrame {
             jlCampoObrigatorioEmail.setVisible(true);
             //correto = false;
         }
+       
         if (jtLogin.getText().length() > 0) {
-            jlCampoObrigatorioLogin.setVisible(false);
-            correto++;
+            try {
+                if (!control.verificaVeterinario(jtLogin.getText())) {
+                    if (controlF.verificaFuncionario(jtLogin.getText())) {
+                        JOptionPane.showMessageDialog(this, "O Login já existe!");
+                        jlCampoObrigatorioLogin.setVisible(true);
+                        
+                    } else {
+                        jlCampoObrigatorioLogin.setVisible(false);
+                        correto++;
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(this, "O Login já existe!");
+                    jlCampoObrigatorioLogin.setVisible(true);
+                            }
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(TelaCadastroFuncionario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(TelaCadastroFuncionario.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             jlCampoObrigatorioLogin.setVisible(true);
             //correto = false;
         }
+        
         if (jtSenha.getText().length() > 0) {
             jlCampoObrigatorioSenha.setVisible(false);
             correto++;
@@ -557,10 +578,10 @@ public class TelaCadastroVeterinario extends javax.swing.JFrame {
                 veterinario.setSenhaVeterinario(jtSenha.getText());
 
                 if (control.inserirVeterinario(veterinario, 01) == true) {
-                    JOptionPane.showMessageDialog(this, "Cliente gravado com Sucesso");
+                    JOptionPane.showMessageDialog(this, "Veterinário gravado com Sucesso");
                     dispose();
                 } else {
-                    JOptionPane.showMessageDialog(this, "Cliente gravado com Sucesso");
+                    JOptionPane.showMessageDialog(this, "Veterinário gravado com Sucesso");
                 }
                 
             } catch (Exception ex) {

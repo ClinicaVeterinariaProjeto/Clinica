@@ -59,6 +59,7 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
         jtDataNasc.setEnabled(false);
         jtEmail.setText(funcionario.getEmail());
         jtLogin.setText(funcionario.getLoginFuncionario());
+        jtLogin.setEnabled(false);
         jtSenha.setText(funcionario.getSenhaFuncionario());
         jtNumeroDaCasa.setText(String.valueOf(funcionario.getNumeroCasa()));
         jtRua.setText(funcionario.getRua());
@@ -454,7 +455,7 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
             //correto = false;
         }
 
-        if (jtTelefone.getText().length() > 0) {
+        if (jtTelefone.getText().length() > 7) {
             jlCampoObrigatorioTelefone.setVisible(false);
             correto++;
         } else {
@@ -468,14 +469,7 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
         } else {
             jlCampoObrigatorioEmail.setVisible(true);
             //correto = false;
-        }
-        if (jtLogin.getText().length() > 0) {
-            jlCampoObrigatorioLogin.setVisible(false);
-            correto++;
-        } else {
-            jlCampoObrigatorioLogin.setVisible(true);
-            //correto = false;
-        }
+        }      
         if (jtSenha.getText().length() > 0) {
             jlCampoObrigatorioSenha.setVisible(false);
             correto++;
@@ -491,7 +485,7 @@ public class TelaDeAlteracaoFuncionario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "As senhas não correspondem!");
             //correto = false;
         }
-        if (correto == 10) {
+        if (correto == 9) {
             try {
                 Controle.ControleFuncionario control = new ControleFuncionario();
                 ModeloFuncionario funcionario = new ModeloFuncionario();

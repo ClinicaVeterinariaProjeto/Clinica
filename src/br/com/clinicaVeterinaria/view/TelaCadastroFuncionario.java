@@ -9,6 +9,9 @@ import Controle.ControleCliente;
 import Controle.ControleFuncionario;
 import Controle.ControleTeclasPermitidasLetras;
 import Controle.ControleTeclasPermitidasNumeros;
+import Controle.ControleVeterinario;
+import DAO.FuncionarioDAO;
+import DAO.VeterinarioDAO;
 import Modelo.ModeloFuncionario;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -412,6 +415,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         int correto = 0;
         int mes, ano, dia;
         Controle.ControleFuncionario control = new ControleFuncionario();
+        Controle.ControleVeterinario controlV = new ControleVeterinario();
         
         if (jtNome.getText().length() > 0) {
             jlCampoObrigatorioNome.setVisible(false);
@@ -467,7 +471,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
             //correto = false;
         }
 
-        if (jtTelefone.getText().length() > 0) {
+        if (jtTelefone.getText().length() > 7 ) {
             jlCampoObrigatorioTelefone.setVisible(false);
             correto++;
         } else {
@@ -516,12 +520,31 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
             //correto = false;
         }
         if (jtLogin.getText().length() > 0) {
-            jlCampoObrigatorioLogin.setVisible(false);
-            correto++;
+            try {
+                if (!control.verificaFuncionario(jtLogin.getText())) {
+                    if (controlV.verificaVeterinario(jtLogin.getText())) {
+                        JOptionPane.showMessageDialog(this, "O Login já existe!");
+                        jlCampoObrigatorioLogin.setVisible(true);
+                        
+                    } else {
+                        jlCampoObrigatorioLogin.setVisible(false);
+                        correto++;
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(this, "O Login já existe!");
+                    jlCampoObrigatorioLogin.setVisible(true);
+                            }
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(TelaCadastroFuncionario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(TelaCadastroFuncionario.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             jlCampoObrigatorioLogin.setVisible(true);
             //correto = false;
         }
+        
+        
         if (jtSenha.getText().length() > 0) {
             jlCampoObrigatorioSenha.setVisible(false);
             correto++;
@@ -553,20 +576,21 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
                 funcionario.setLoginFuncionario(jtLogin.getText());
                 funcionario.setSenhaFuncionario(jtSenha.getText());
                 
-                control.inserirFuncionario(funcionario,01);
-                JOptionPane.showMessageDialog(this, "Funcionario inserido com Sucesso");
+                //control.inserirFuncionario(funcionario,01);
+                //JOptionPane.showMessageDialog(this, "Funcionario inserido com Sucesso");
                 
-                /*if (control.inserirFuncionario(funcionario, 01) == true) {
-                    JOptionPane.showMessageDialog(this, "Cliente gravado com Sucesso");
+                if (control.inserirFuncionario(funcionario, 01)) {
+                    JOptionPane.showMessageDialog(this, "Funcionário gravado com Sucesso");
                     dispose();
                 } else {
-                    JOptionPane.showMessageDialog(this, "Cliente gravado com Sucesso");
-                }*/
+                    JOptionPane.showMessageDialog(this, "Funcionário gravado com Sucesso");
+                }
 
             } catch (Exception ex) {
                 Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
             }
             JOptionPane.showMessageDialog(this, "informaçoes corretas");
+            dispose();
         } else {
             JOptionPane.showMessageDialog(this, "informações invalidas");
         }

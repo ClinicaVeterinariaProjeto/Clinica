@@ -42,6 +42,7 @@ public class TelaVeterinario extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jButton5 = new javax.swing.JButton();
         jbPesquisarAnimal = new javax.swing.JButton();
+        jbSair = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jmRelatorio = new javax.swing.JMenu();
         jmRelatorioCriar = new javax.swing.JMenuItem();
@@ -104,6 +105,15 @@ public class TelaVeterinario extends javax.swing.JFrame {
         jDesktopPane1.add(jbPesquisarAnimal);
         jbPesquisarAnimal.setBounds(10, 50, 190, 40);
 
+        jbSair.setText("Sair");
+        jbSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSairActionPerformed(evt);
+            }
+        });
+        jDesktopPane1.add(jbSair);
+        jbSair.setBounds(30, 370, 70, 30);
+
         jmRelatorio.setText("Relatórios");
 
         jmRelatorioCriar.setText("Criar");
@@ -126,9 +136,19 @@ public class TelaVeterinario extends javax.swing.JFrame {
         jMenuBar1.add(jmVerConsulta);
 
         jmSobre.setText("Sobre");
+        jmSobre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmSobreMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jmSobre);
 
         jmAjuda.setText("Ajuda");
+        jmAjuda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmAjudaMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jmAjuda);
 
         setJMenuBar(jMenuBar1);
@@ -205,6 +225,27 @@ public class TelaVeterinario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jbPesquisarAnimalActionPerformed
 
+    private void jmSobreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmSobreMouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "SISTEMA DE GERENCIAMENTO DE UMA CLÍNICA VETERINÁRIA \n\n"
+                + "Sistema criado para gerenciamento de funcionário,veterinário, cliente e animal\n"
+                + "de uma clinica, tem como principais funções insersão, exclusão, alteração e pequisa\n"
+                + "sobre funcionário, cliente e animal. O Sistemas também possibilita marcar consulta\n"
+                + "e gerenciar o estoque da clínica.\n");
+    }//GEN-LAST:event_jmSobreMouseClicked
+
+    private void jmAjudaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmAjudaMouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this,"PESQUISAR ANIMAL - Pesquisa por um animal no sistema.\n"
+                + "VER CONSULTA - Mostra as consultas marcadas.\n"
+                + "VER RELATÓRIO - Mostra os relatórios.");
+    }//GEN-LAST:event_jmAjudaMouseClicked
+
+    private void jbSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSairActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jbSairActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -247,6 +288,7 @@ public class TelaVeterinario extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton jbAtenderAnimal;
     private javax.swing.JButton jbPesquisarAnimal;
+    private javax.swing.JButton jbSair;
     private javax.swing.JButton jbVerConsulta;
     private javax.swing.JButton jbVerRelatório;
     private javax.swing.JMenu jmAjuda;

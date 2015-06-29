@@ -425,7 +425,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             jlCampoObrigatorioCPF.setVisible(true);
             //correto = false;
         }
-        if (jtTelefone.getText().length() > 0) {
+        if (jtTelefone.getText().length() > 7) {
             jlCampoObrigatorioTelefone.setVisible(false);
             correto++;
         } else {

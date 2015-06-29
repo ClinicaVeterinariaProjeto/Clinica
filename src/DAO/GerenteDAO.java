@@ -134,6 +134,8 @@ public class GerenteDAO {
                   }
         return 0;
       }
+    
+    
     public boolean VerificaCpf (String cpf) throws ClassNotFoundException, SQLException{
         this.conexao = new Conexao().getConexao();
         ResultSet rs = null;
@@ -146,6 +148,37 @@ public class GerenteDAO {
             while(rs.next()){
                 compara=rs.getString("cpf");
                     if(cpf.equals(compara)){
+                        pstmt.close();
+                        conexao.close();
+                        return true;
+                        }
+                    else{
+                        pstmt.close();
+                        conexao.close();
+                        return false;
+                    }
+                }
+            }
+            catch (SQLException e) { 
+             return false;
+            }
+            return false;        
+    }
+    
+    
+    
+        public boolean VerificaLogin (String loginGerente) throws ClassNotFoundException, SQLException{
+        this.conexao = new Conexao().getConexao();
+        ResultSet rs = null;
+        try{
+            String sql = ("SELECT loginGerente FROM gerente where loginGerente = ?");
+            PreparedStatement pstmt = conexao.prepareStatement(sql);
+            pstmt.setString(1, loginGerente);
+            String compara;
+            rs = pstmt.executeQuery();
+            while(rs.next()){
+                compara=rs.getString("loginGerente");
+                    if(loginGerente.equals(compara)){
                         pstmt.close();
                         conexao.close();
                         return true;

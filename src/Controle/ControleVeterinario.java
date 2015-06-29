@@ -33,4 +33,8 @@ public class ControleVeterinario {
     public boolean verificarCPF(String cpf)throws ClassNotFoundException, SQLException{
         return vet.VerificaCpf(cpf); 
     }
+    
+    public boolean verificaVeterinario(String login)throws ClassNotFoundException, SQLException{
+        return vet.VerificaVeterinario(login);
+    }
 }

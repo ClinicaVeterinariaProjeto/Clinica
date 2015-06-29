@@ -166,4 +166,32 @@ public class VeterinarioDAO {
             }
             return false;        
     }
+    
+    
+     public boolean VerificaVeterinario(String loginVeterinario) throws ClassNotFoundException, SQLException {
+        this.conexao = new Conexao().getConexao();
+        ResultSet rs = null;
+        try {
+            String sql = ("SELECT loginVeterinario FROM veterinario where loginVeterinario = ?");
+            PreparedStatement pstmt = conexao.prepareStatement(sql);
+            pstmt.setString(1, loginVeterinario);
+            String compara;
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                compara = rs.getString("loginVeterinario");
+                if (loginVeterinario.equals(compara)) {
+                    pstmt.close();
+                    conexao.close();
+                    return true;
+                } else {
+                    pstmt.close();
+                    conexao.close();
+                    return false;
+                }
+            }
+        } catch (SQLException e) {
+            return false;
+        }
+        return false;
+    }
 }

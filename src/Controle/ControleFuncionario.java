@@ -35,4 +35,8 @@ public class ControleFuncionario {
         return func.VerificaCpf(cpf); 
     }
     
+    public boolean verificaFuncionario(String login)throws ClassNotFoundException, SQLException{
+        return func.VerificaFuncionario(login);
+    }
+    
 }

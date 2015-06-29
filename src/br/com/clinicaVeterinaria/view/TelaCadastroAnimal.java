@@ -7,8 +7,11 @@ package br.com.clinicaVeterinaria.view;
 
 import Controle.ControleAnimaisDomesticos;
 import Controle.ControleAnimaisExoticos;
+import Controle.ControleAnimal;
 import Controle.ControleTeclasPermitidasLetras;
 import Controle.ControleTeclasPermitidasNumeros;
+import DAO.AnimalDAO;
+import Modelo.ModeloAnimal;
 import Modelo.ModeloAnimalDomestico;
 import Modelo.ModeloAnimalExotico;
 import Modelo.ModeloCliente;
@@ -405,9 +408,9 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
 
         if (correto == 8) {
             try {
-                if (jtTipo.getText().equals("DOMESTICO")) {
-                    Controle.ControleAnimaisDomesticos control = new ControleAnimaisDomesticos();
-                    ModeloAnimalDomestico animalD = new ModeloAnimalDomestico();
+                    Controle.ControleAnimal control = new ControleAnimal();
+                    ModeloAnimal animalD = new ModeloAnimal();
+                    DAO.AnimalDAO a = new AnimalDAO();
                     animalD.setNome(jtNome.getText());
                     animalD.setPeso(Float.parseFloat(jtPeso.getText()));
                     animalD.setTipo(jtTipo.getText());
@@ -416,31 +419,12 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
                     animalD.setIdDono(Integer.parseInt(jtIdCliente.getText()));
                     animalD.setRaca(jtRaca.getText());
 
-                    if (control.inserirAnimalDomestico(animalD) == true) {
+                    if (control.inserirAnimal(animalD)) {
                         JOptionPane.showMessageDialog(this, "Animal gravado com Sucesso");
                         dispose();
                     } else {
-                        JOptionPane.showMessageDialog(this, "Animal gravado com Sucesso");
+                        JOptionPane.showMessageDialog(this, "Animal não foi gravado com Sucesso");
                     }
-                } else if (jtTipo.getText().equals("EXOTICO")) {
-                    Controle.ControleAnimaisExoticos control = new ControleAnimaisExoticos();
-                    ModeloAnimalExotico animalD = new ModeloAnimalExotico();
-                    animalD.setNome(jtNome.getText());
-                    animalD.setPeso(Float.parseFloat(jtPeso.getText()));
-                    animalD.setTipo(jtTipo.getText());
-                    animalD.setAnoNascimento(Integer.parseInt(jtDataAno.getText()));
-                    animalD.setUltimaVascina(jtAnoVacinacao.getText() + jtMesVacinacao.getText() + jtDiaVacinacao.getText());
-                    animalD.setIdDono(Integer.parseInt(jtIdCliente.getText()));
-                    animalD.setRaca(jtRaca.getText());
-
-                    if (control.inserirAnimalExotico(animalD) == true) {
-                        JOptionPane.showMessageDialog(this, "Animal gravado com Sucesso");
-                        dispose();
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Animal gravado com Sucesso");
-                    }
-
-                }
             } catch (Exception ex) {
                 Logger.getLogger(TelaCadastroAnimal.class.getName()).log(Level.SEVERE, null, ex);
             }

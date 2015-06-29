@@ -5,6 +5,7 @@
  */
 package br.com.clinicaVeterinaria.view;
 
+import Controle.ControleAnimal;
 import Controle.ControleCliente;
 import Controle.ControleFuncionario;
 import Controle.ControleVeterinario;
@@ -524,6 +525,22 @@ public class TelaGerente extends javax.swing.JFrame {
 
     private void jbPesquisarAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPesquisarAnimalActionPerformed
         // TODO add your handling code here:
+        ModeloAnimal animal = new ModeloAnimal();
+        ModeloCliente cliente = new ModeloCliente();
+        Controle.ControleAnimal control = new ControleAnimal();
+        Controle.ControleCliente controlC = new ControleCliente();
+        String cpf, nomeAnimal;
+        TelaAlteracaoAnimal telaAlteracaoAnimal = new TelaAlteracaoAnimal();
+            cpf=JOptionPane.showInputDialog(null, "Digite o CPF do cliente");
+            nomeAnimal=JOptionPane.showInputDialog(null, "Digite o nome do Animal");
+        try {
+            cliente = controlC.consultarCliente(cpf);
+            animal = control.consultarAnimal(cpf, nomeAnimal);
+            telaAlteracaoAnimal.inserirDados(cliente, animal);
+            telaAlteracaoAnimal.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(TelaGerente.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_jbPesquisarAnimalActionPerformed
 

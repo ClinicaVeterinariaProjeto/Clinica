@@ -11,7 +11,6 @@ package Controle;
  */
 import DAO.AnimalDAO;
 import Modelo.ModeloAnimal;
-import DAO.AnimalExoticoDAO;
 import java.sql.SQLException;
 public class ControleAnimal {
     AnimalDAO animalDAO = new AnimalDAO();

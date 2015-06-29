@@ -5,10 +5,15 @@
  */
 package br.com.clinicaVeterinaria.view;
 
+import Controle.ControleAnimal;
 import Controle.ControleTeclasPermitidasLetras;
 import Controle.ControleTeclasPermitidasNumeros;
+import DAO.AnimalDAO;
 import Modelo.ModeloAnimal;
 import Modelo.ModeloCliente;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -41,6 +46,7 @@ public class TelaAlteracaoAnimal extends javax.swing.JFrame {
         jtCpfCliente.setEnabled(false);
         jtIdCliente.setText(String.valueOf(cliente.getIdCliente()));
         jtIdCliente.setEnabled(false);
+        jtIdAnimal.setText(String.valueOf(animal.getIdAnimal()));
         jtIdAnimal.setEnabled(false);
         jtAnoNascimento.setText(String.valueOf(animal.getAnoNascimento()));
         jtNome.setText(animal.getNome());
@@ -364,6 +370,32 @@ public class TelaAlteracaoAnimal extends javax.swing.JFrame {
             jlCampoObrigatorioUltimaVacinacaoAnimal.setVisible(true);
             //correto = false;
         }
+        
+        if (correto == 8) {
+            try {
+                    Controle.ControleAnimal control = new ControleAnimal();
+                    ModeloAnimal animalD = new ModeloAnimal();
+                    DAO.AnimalDAO a = new AnimalDAO();
+                    animalD.setNome(jtNome.getText());
+                    animalD.setPeso(Float.parseFloat(jtPeso.getText()));
+                    animalD.setTipo(jtTipo.getText());
+                    animalD.setAnoNascimento(Integer.parseInt(jtAnoNascimento.getText()));
+                    animalD.setUltimaVascina(jtUltimaVacinacao.getText());
+                    animalD.setIdDono(Integer.parseInt(jtIdCliente.getText()));
+                    animalD.setRaca(jtRaca.getText());
+
+                    if (control.alterarAnimal(animalD, animalD.getIdAnimal())) {
+                        JOptionPane.showMessageDialog(this, "Animal alterado com Sucesso");
+                        dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Animal não foi alterado com Sucesso");
+                    }
+            } catch (Exception ex) {
+                Logger.getLogger(TelaCadastroAnimal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        
     }//GEN-LAST:event_jbAlterarClienteActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed

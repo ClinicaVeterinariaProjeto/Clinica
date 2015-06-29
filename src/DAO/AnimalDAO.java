@@ -40,7 +40,7 @@ public class AnimalDAO {
             return true;
         } 
         catch (SQLException e ) {
-            JOptionPane.showMessageDialog(null,"Erro ao inserir animal"+e);
+            JOptionPane.showMessageDialog(null,"Erro ao inserir animal "+e);
             return false;
         }    
     }

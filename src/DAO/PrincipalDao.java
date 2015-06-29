@@ -22,6 +22,15 @@ public class PrincipalDao {
     //private static int id;
     public static void main (String Args []) throws SQLException, ClassNotFoundException, Exception{
     
+        Conexao conexao = new Conexao();
+        conexao.geraDb();
+        conexao.criaTabelaEstoque();
+        conexao.criaTabelaGerente();
+        conexao.criaTabelaCliente();
+        conexao.criaTabelaFuncionario();
+        conexao.criaTabelaVeterinario();
+        conexao.criaTabelaAnimal();
+        
      /*   ModeloGerente gerent = new ModeloGerente();
        gerent.setNome("ale");
         gerent.setEmail("teste@test");

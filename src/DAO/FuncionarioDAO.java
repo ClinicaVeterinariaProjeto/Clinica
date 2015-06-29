@@ -207,4 +207,20 @@ public class FuncionarioDAO {
         }
         return false;
     }
+    public String retornaSenha(String loguin) throws ClassNotFoundException, SQLException {
+        this.conexao = new Conexao().getConexao();
+        ResultSet rs = null;
+        try{
+            String sql = "Select senhaFucionario from Funcionario where loguinFuncionario = ?";
+            PreparedStatement pstmt = conexao.prepareStatement(sql);
+            pstmt.setString(1, loguin);
+            rs = pstmt.executeQuery();            
+            String senha=rs.getString("senhaFuncionario");                                   
+            return senha;            
+        }
+        catch(SQLException e) {
+            return null;
+        
+        }
+    }
 }

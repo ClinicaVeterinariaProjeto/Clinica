@@ -20,27 +20,8 @@ public class ClienteDAO {
      private Connection conexao;
     
  public boolean inserirClienteNoBanco(ModeloCliente cliente) throws ClassNotFoundException, SQLException, Exception  {  
-      /* try {     
-        Conexao con = new Conexao();
-           com.mysql.jdbc.Statement stmt = con.getStmt();
-           
-           
-           stmt.execute("insert into cliente(Nome, Sobrenome, email, Telefone, CPF, DataNascimento, Sexo, idCliente, Rua, NumeroCasa, Bairro, Cidade)"+ 
-                   "values('"+cliente.getNome()+"', '"+cliente.getSobrenome()+"','"+cliente.getEmail()+"', '"+cliente.getTelefone()+"', '"+cliente.getCpf()+"', '"+cliente.getDataNascimento()+"', '"+cliente.getSexo()+"', '"+cliente.getIdCliente()+"','"+cliente.getRua()+"', '"+cliente.getNumeroCasa()+"', '"+cliente.getBairro()+"', '"+cliente.getCidade()+"');");
-            }
-           catch (Exception e) {
-            System.out.println("Problemas Ocorreram");
-            e.printStackTrace();
-            throw new Exception("Erro ao Salvar Dados!");
-        }
-           
- }*/
-        
-        
        this.conexao = new Conexao().getConexao();
-
-        
-        try{
+       try{
               
             String query = "INSERT INTO cliente(Nome, email, Telefone, CPF, DataNascimento, Sexo, idCliente, Rua, NumeroCasa, Bairro, Cidade) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
  

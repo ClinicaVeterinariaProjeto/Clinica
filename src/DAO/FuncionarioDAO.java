@@ -144,6 +144,34 @@ public class FuncionarioDAO {
         }
     }
     
+    public boolean VerificaCpf (String cpf) throws ClassNotFoundException, SQLException{
+        this.conexao = new Conexao().getConexao();
+        ResultSet rs = null;
+        try{
+            String sql = ("SELECT cpf FROM funcionario where cpf = ?");
+            PreparedStatement pstmt = conexao.prepareStatement(sql);
+            pstmt.setString(1, cpf);
+            String compara;
+            rs = pstmt.executeQuery();
+            while(rs.next()){
+                compara=rs.getString("cpf");
+                    if(cpf.equals(compara)){
+                        pstmt.close();
+                        conexao.close();
+                        return true;
+                        }
+                    else{
+                        pstmt.close();
+                        conexao.close();
+                        return false;
+                    }
+                }
+            }
+            catch (SQLException e) { 
+             return false;
+            }
+            return false;        
+    }
     
     public boolean agendarConsulta (){    
         return true;

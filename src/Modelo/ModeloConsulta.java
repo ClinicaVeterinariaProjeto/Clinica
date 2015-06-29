@@ -15,14 +15,34 @@ public class ModeloConsulta {
     private int mes;
     private int horario;
     private float valorConsulta;
+    private int idCliente;
+    private int idAnimal;
     
     public ModeloConsulta(){}
     
-    public ModeloConsulta(int dia, int mes, int horario, float valorConsulta) {
+    public ModeloConsulta(int dia, int mes, int horario, float valorConsulta, int idCliente, int idAnimal) {
         this.dia = dia;
         this.mes = mes;
         this.horario = horario;
         this.valorConsulta = valorConsulta;
+        this.idCliente = idCliente;
+        this.idAnimal = idAnimal;
+    }
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public int getIdAnimal() {
+        return idAnimal;
+    }
+
+    public void setIdAnimal(int idAnimal) {
+        this.idAnimal = idAnimal;
     }
 
     public int getDia() {

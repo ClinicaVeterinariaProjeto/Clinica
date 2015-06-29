@@ -5,9 +5,8 @@
  */
 package br.com.clinicaVeterinaria.view;
 
-import Controle.ControleAnimaisDomesticos;
-import Controle.ControleAnimaisExoticos;
 import Controle.ControleAnimal;
+import Controle.ControleTeclasPermitidasFloat;
 import Controle.ControleTeclasPermitidasLetras;
 import Controle.ControleTeclasPermitidasNumeros;
 import DAO.AnimalDAO;
@@ -42,7 +41,7 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
         jtMesVacinacao.setDocument(new ControleTeclasPermitidasNumeros(2));
         jtDiaVacinacao.setDocument(new ControleTeclasPermitidasNumeros(2));
         jtDataAno.setDocument(new ControleTeclasPermitidasNumeros(4));
-        jtPeso.setDocument(new ControleTeclasPermitidasNumeros(2));
+        jtPeso.setDocument(new ControleTeclasPermitidasFloat(5));
         jtRaca.setDocument(new ControleTeclasPermitidasLetras(20));
     }
 
@@ -369,14 +368,21 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
         }
 
         if (jtDataAno.getText().length() > 0) {
+            int ano;
+            ano = (Integer.parseInt(jtDataAno.getText()));
+            if(ano>1989 && ano<=2015){
             jlCampoObrigatorioDataNascimentoAnimal.setVisible(false);
             correto++;
+            }
+            else{
+                jlCampoObrigatorioDataNascimentoAnimal.setVisible(true);
+            }
         } else {
             jlCampoObrigatorioDataNascimentoAnimal.setVisible(true);
             //correto = false;
         }
 
-        if (jtTipo.getText().length() > 0) {
+        if (jtTipo.getText().length() > 0 && jtTipo.getText().equals("DOMESTICO") || jtTipo.getText().equals("EXOTICO")) {
             jlCampoObrigatorioTipoAnimal.setVisible(false);
             correto++;
         } else {
@@ -384,29 +390,30 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
             //correto = false;
         }
 
-        if (jtAnoVacinacao.getText().length() > 0) {
-            jlCampoObrigatorioUltimaVacinacaoAnimal.setVisible(false);
-            correto++;
+        if (jtAnoVacinacao.getText().length() > 0 && jtMesVacinacao.getText().length() > 0 && jtDiaVacinacao.getText().length() > 0) {
+            int ano,mes,dia;
+            ano = (Integer.parseInt(jtAnoVacinacao.getText()));
+            mes = (Integer.parseInt(jtMesVacinacao.getText()));
+            dia = (Integer.parseInt(jtDiaVacinacao.getText()));
+            if (ano <= 2015 && ano > 1990) {
+                if (mes > 0 && mes <= 12) {
+                    if (dia > 0 && dia <= 30) {
+                        jlCampoObrigatorioUltimaVacinacaoAnimal.setVisible(false);
+                        correto++;
+                    } else {
+                        jlCampoObrigatorioUltimaVacinacaoAnimal.setVisible(true);
+                    }
+                } else {
+                    jlCampoObrigatorioUltimaVacinacaoAnimal.setVisible(true);
+                }
+            } else {
+                jlCampoObrigatorioUltimaVacinacaoAnimal.setVisible(true);
+            }
         } else {
             jlCampoObrigatorioUltimaVacinacaoAnimal.setVisible(true);
-            //correto = false;
-        }
-        if (jtMesVacinacao.getText().length() > 0) {
-            jlCampoObrigatorioUltimaVacinacaoAnimal.setVisible(false);
-            correto++;
-        } else {
-            jlCampoObrigatorioUltimaVacinacaoAnimal.setVisible(true);
-            //correto = false;
-        }
-        if (jtDiaVacinacao.getText().length() > 0) {
-            jlCampoObrigatorioUltimaVacinacaoAnimal.setVisible(false);
-            correto++;
-        } else {
-            jlCampoObrigatorioUltimaVacinacaoAnimal.setVisible(true);
-            //correto = false;
         }
 
-        if (correto == 8) {
+        if (correto == 6) {
             try {
                     Controle.ControleAnimal control = new ControleAnimal();
                     ModeloAnimal animalD = new ModeloAnimal();

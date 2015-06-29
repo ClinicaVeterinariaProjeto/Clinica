@@ -29,4 +29,9 @@ public class ControleAnimal {
     public boolean excluirAnimal(int idDoAnimal)throws SQLException, Exception{
         return animalDAO.excluirAnimal(idDoAnimal);
     }
+    
+    public boolean verificarNome(String Nome)throws SQLException, Exception{
+        return animalDAO.VerificaNome(Nome);
+    
+    }
 }

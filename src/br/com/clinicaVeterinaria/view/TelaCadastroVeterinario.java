@@ -5,10 +5,12 @@
  */
 package br.com.clinicaVeterinaria.view;
 
+import Controle.ControleCliente;
 import Controle.ControleTeclasPermitidasLetras;
 import Controle.ControleTeclasPermitidasNumeros;
 import Controle.ControleVeterinario;
 import Modelo.ModeloVeterinario;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -306,7 +308,7 @@ public class TelaCadastroVeterinario extends javax.swing.JFrame {
                 .addComponent(jbCancelar)
                 .addGap(18, 18, 18)
                 .addComponent(jbCadastrar)
-                .addGap(256, 256, 256))
+                .addGap(117, 117, 117))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -410,6 +412,8 @@ public class TelaCadastroVeterinario extends javax.swing.JFrame {
         // TODO add your handling code here:
         int correto = 0;
         int mes, ano, dia;
+        Controle.ControleVeterinario control = new ControleVeterinario();
+        
         if (jtNome.getText().length() > 0) {
             jlCampoObrigatorioNome.setVisible(false);
             correto++;
@@ -438,14 +442,26 @@ public class TelaCadastroVeterinario extends javax.swing.JFrame {
             jlCampoObrigatorioBairro.setVisible(true);
             //correto = false;
         }
-        if (jtCpf.getText().length() > 0 && jtCpf.getText().length()== 11) {
-            jlCampoObrigatorioCPF.setVisible(false);
-            correto++;
+        
+        if (jtCpf.getText().length() > 0 && jtCpf.getText().length() == 11) {
+            try {
+                if(control.verificarCPF(jtCpf.getText())== false){
+                    jlCampoObrigatorioCPF.setVisible(false);
+                    correto++;
+                }
+                else{
+                    JOptionPane.showMessageDialog(this, "Veterinário já está cadastrado");
+                    jlCampoObrigatorioCPF.setVisible(true);
+                }
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             jlCampoObrigatorioCPF.setVisible(true);
             //correto = false;
         }
-
         if (jtNumeroDaCasa.getText().length() > 0) {
             jlCampoObrigatorioNumeroDaCasa.setVisible(false);
             correto++;
@@ -526,7 +542,6 @@ public class TelaCadastroVeterinario extends javax.swing.JFrame {
         }
         if (correto == 13) {
             try {
-                Controle.ControleVeterinario control = new ControleVeterinario();
                 ModeloVeterinario veterinario = new ModeloVeterinario();
                 veterinario.setNome(jtNome.getText());
                 veterinario.setBairro(jtBairro.getText());

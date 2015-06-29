@@ -31,4 +31,8 @@ public class ControleFuncionario {
         return func.excluirFuncionarioNoBanco(cpf);
     }
     
+    public boolean verificarCPF(String cpf)throws ClassNotFoundException, SQLException{
+        return func.VerificaCpf(cpf); 
+    }
+    
 }

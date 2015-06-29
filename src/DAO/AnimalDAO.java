@@ -121,6 +121,37 @@ public class AnimalDAO {
         }
     }
     
+    
+        public boolean VerificaNome (String nome) throws ClassNotFoundException, SQLException{
+        this.conexao = new Conexao().getConexao();
+        ResultSet rs = null;
+        try{
+            String sql = ("SELECT Nome FROM Animal where Nome = ?");
+            PreparedStatement pstmt = conexao.prepareStatement(sql);
+            pstmt.setString(1, nome);
+            String compara;
+            rs = pstmt.executeQuery();
+            while(rs.next()){
+                compara=rs.getString("nome");
+                    if(nome.equals(compara)){
+                        pstmt.close();
+                        conexao.close();
+                        return true;
+                        }
+                    else{
+                        pstmt.close();
+                        conexao.close();
+                        return false;
+                    }
+                }
+            }
+            catch (SQLException e) { 
+             return false;
+            }
+            return false;        
+    }
+    
+    
     /**/
     
 }

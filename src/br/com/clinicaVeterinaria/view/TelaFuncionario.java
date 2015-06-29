@@ -5,6 +5,15 @@
  */
 package br.com.clinicaVeterinaria.view;
 
+import Controle.ControleAnimal;
+import Controle.ControleCliente;
+import Modelo.ModeloAnimal;
+import Modelo.ModeloCliente;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Alessandro
@@ -142,9 +151,19 @@ public class TelaFuncionario extends javax.swing.JFrame {
         jmCliente.add(jmClienteAlterar);
 
         jmClienteExcluir.setText("Excluir");
+        jmClienteExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmClienteExcluirActionPerformed(evt);
+            }
+        });
         jmCliente.add(jmClienteExcluir);
 
         jmClientePesquisar.setText("Pesquisar");
+        jmClientePesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmClientePesquisarActionPerformed(evt);
+            }
+        });
         jmCliente.add(jmClientePesquisar);
 
         jMenuBar1.add(jmCliente);
@@ -160,9 +179,19 @@ public class TelaFuncionario extends javax.swing.JFrame {
         jmAnimal.add(jmAnimalCadastrar);
 
         jmAnimalAlterar.setText("Alterar");
+        jmAnimalAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmAnimalAlterarActionPerformed(evt);
+            }
+        });
         jmAnimal.add(jmAnimalAlterar);
 
         jmAnimalExcluir.setText("Excluir");
+        jmAnimalExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmAnimalExcluirActionPerformed(evt);
+            }
+        });
         jmAnimal.add(jmAnimalExcluir);
 
         jmAnimalPesquisar.setText("Pesquisar");
@@ -227,22 +256,66 @@ public class TelaFuncionario extends javax.swing.JFrame {
     private void jbCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarClienteActionPerformed
         // TODO add your handling code here:
         TelaCadastroCliente tcc = new TelaCadastroCliente();
-        tcc.setVisible(true);
+        tcc.setVisible(true);;
         
     }//GEN-LAST:event_jbCadastrarClienteActionPerformed
 
     private void jmClienteCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmClienteCadastrarActionPerformed
         // TODO add your handling code here:
+        TelaCadastroCliente tcc = new TelaCadastroCliente();
+        tcc.setVisible(true);
     }//GEN-LAST:event_jmClienteCadastrarActionPerformed
 
     private void jmAnimalCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmAnimalCadastrarActionPerformed
         // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            ControleCliente control = new ControleCliente();
+            ModeloCliente cliente = new ModeloCliente();
+            //ModeloAnimalDomestico animal = new ModeloAnimalDomestico();
+            String cpf;
+            cpf = JOptionPane.showInputDialog(null, "Digite o CPF do cliente");
+            cliente = control.consultarCliente(cpf);
+            if (control.verificarCPF(cpf)) {
+                //animal.setIdDono(cliente.getIdCliente());
+                TelaCadastroAnimal tca = new TelaCadastroAnimal();
+                tca.inserirDados(cliente);
+                tca.setVisible(true);
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Cliente não está cadastrado");
+            }    
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(TelaGerente.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(TelaGerente.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jmAnimalCadastrarActionPerformed
 
     private void jbCadastrarAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarAnimalActionPerformed
         // TODO add your handling code here:
-        TelaCadastroAnimal tca = new TelaCadastroAnimal();
-        tca.setVisible(true);
+        try {
+            // TODO add your handling code here:
+            ControleCliente control = new ControleCliente();
+            ModeloCliente cliente = new ModeloCliente();
+            //ModeloAnimalDomestico animal = new ModeloAnimalDomestico();
+            String cpf;
+            cpf = JOptionPane.showInputDialog(null, "Digite o CPF do cliente");
+            cliente = control.consultarCliente(cpf);
+            if (control.verificarCPF(cpf)) {
+                //animal.setIdDono(cliente.getIdCliente());
+                TelaCadastroAnimal tca = new TelaCadastroAnimal();
+                tca.inserirDados(cliente);
+                tca.setVisible(true);
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Cliente não está cadastrado");
+            }    
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(TelaGerente.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(TelaGerente.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jbCadastrarAnimalActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -254,16 +327,181 @@ public class TelaFuncionario extends javax.swing.JFrame {
 
     private void jmClienteAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmClienteAlterarActionPerformed
         // TODO add your handling code here:
+        ModeloCliente cliente = new ModeloCliente();
+        Controle.ControleCliente control = new ControleCliente();
+        String cpf;
+        TelaAlteracaoCliente telaAlteracaoCliente = new TelaAlteracaoCliente();
+        
+        try {
+            cpf=JOptionPane.showInputDialog(null, "Digite o CPF do cliente");
+            if(control.verificarCPF(cpf)){
+            cliente = control.consultarCliente(cpf);
+            telaAlteracaoCliente.insertDados(cliente);
+            telaAlteracaoCliente.setVisible(true);
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Cliente não cadastrado");
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(TelaGerente.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jmClienteAlterarActionPerformed
 
     private void jmAnimalPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmAnimalPesquisarActionPerformed
         // TODO add your handling code here:
+        try {
+        ModeloAnimal animal = new ModeloAnimal();
+        ModeloCliente cliente = new ModeloCliente();
+        Controle.ControleAnimal control = new ControleAnimal();
+        Controle.ControleCliente controlC = new ControleCliente();
+        String cpf, nomeAnimal;
+            cpf=JOptionPane.showInputDialog(null, "Digite o CPF do cliente");
+            if(controlC.verificarCPF(cpf)){
+            nomeAnimal=JOptionPane.showInputDialog(null, "Digite o nome do Animal");
+            if(control.verificarNome(nomeAnimal)){
+            cliente = controlC.consultarCliente(cpf);
+            animal = control.consultarAnimal(cliente.getCpf(), nomeAnimal);
+            TelaAlteracaoAnimal telaAlteracaoAnimal = new TelaAlteracaoAnimal();
+            telaAlteracaoAnimal.inserirDados(cliente, animal);
+            telaAlteracaoAnimal.setVisible(true);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Animal não cadastrado");
+            }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Cliente não cadastrado");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(TelaGerente.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jmAnimalPesquisarActionPerformed
 
     private void jbPesquisarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPesquisarClienteActionPerformed
         // TODO add your handling code here:
-        //pede o cpf verifica e procura o animal
+        ModeloCliente cliente = new ModeloCliente();
+        Controle.ControleCliente control = new ControleCliente();
+        String cpf;
+        TelaAlteracaoCliente telaAlteracaoCliente = new TelaAlteracaoCliente();
+        
+        try {
+            cpf=JOptionPane.showInputDialog(null, "Digite o CPF do cliente");
+            if(control.verificarCPF(cpf)){
+            cliente = control.consultarCliente(cpf);
+            telaAlteracaoCliente.insertDados(cliente);
+            telaAlteracaoCliente.setVisible(true);
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Cliente não cadastrado");
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(TelaGerente.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jbPesquisarClienteActionPerformed
+
+    private void jmClienteExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmClienteExcluirActionPerformed
+        // TODO add your handling code here:
+        ModeloCliente cliente = new ModeloCliente();
+        Controle.ControleCliente control = new ControleCliente();
+        String cpf;
+        TelaAlteracaoCliente telaAlteracaoCliente = new TelaAlteracaoCliente();
+        
+        try {
+            cpf=JOptionPane.showInputDialog(null, "Digite o CPF do cliente");
+            if(control.verificarCPF(cpf)){
+            cliente = control.consultarCliente(cpf);
+            telaAlteracaoCliente.insertDados(cliente);
+            telaAlteracaoCliente.setVisible(true);
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Cliente não cadastrado");
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(TelaGerente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jmClienteExcluirActionPerformed
+
+    private void jmClientePesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmClientePesquisarActionPerformed
+        // TODO add your handling code here:
+        ModeloCliente cliente = new ModeloCliente();
+        Controle.ControleCliente control = new ControleCliente();
+        String cpf;
+        TelaAlteracaoCliente telaAlteracaoCliente = new TelaAlteracaoCliente();
+        
+        try {
+            cpf=JOptionPane.showInputDialog(null, "Digite o CPF do cliente");
+            if(control.verificarCPF(cpf)){
+            cliente = control.consultarCliente(cpf);
+            telaAlteracaoCliente.insertDados(cliente);
+            telaAlteracaoCliente.setVisible(true);
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Cliente não cadastrado");
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(TelaGerente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jmClientePesquisarActionPerformed
+
+    private void jmAnimalAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmAnimalAlterarActionPerformed
+        // TODO add your handling code here:
+        try {
+        ModeloAnimal animal = new ModeloAnimal();
+        ModeloCliente cliente = new ModeloCliente();
+        Controle.ControleAnimal control = new ControleAnimal();
+        Controle.ControleCliente controlC = new ControleCliente();
+        String cpf, nomeAnimal;
+            cpf=JOptionPane.showInputDialog(null, "Digite o CPF do cliente");
+            if(controlC.verificarCPF(cpf)){
+            nomeAnimal=JOptionPane.showInputDialog(null, "Digite o nome do Animal");
+            if(control.verificarNome(nomeAnimal)){
+            cliente = controlC.consultarCliente(cpf);
+            animal = control.consultarAnimal(cliente.getCpf(), nomeAnimal);
+            TelaAlteracaoAnimal telaAlteracaoAnimal = new TelaAlteracaoAnimal();
+            telaAlteracaoAnimal.inserirDados(cliente, animal);
+            telaAlteracaoAnimal.setVisible(true);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Animal não cadastrado");
+            }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Cliente não cadastrado");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(TelaGerente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jmAnimalAlterarActionPerformed
+
+    private void jmAnimalExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmAnimalExcluirActionPerformed
+        // TODO add your handling code here:
+        try {
+        ModeloAnimal animal = new ModeloAnimal();
+        ModeloCliente cliente = new ModeloCliente();
+        Controle.ControleAnimal control = new ControleAnimal();
+        Controle.ControleCliente controlC = new ControleCliente();
+        String cpf, nomeAnimal;
+            cpf=JOptionPane.showInputDialog(null, "Digite o CPF do cliente");
+            if(controlC.verificarCPF(cpf)){
+            nomeAnimal=JOptionPane.showInputDialog(null, "Digite o nome do Animal");
+            if(control.verificarNome(nomeAnimal)){
+            cliente = controlC.consultarCliente(cpf);
+            animal = control.consultarAnimal(cliente.getCpf(), nomeAnimal);
+            TelaAlteracaoAnimal telaAlteracaoAnimal = new TelaAlteracaoAnimal();
+            telaAlteracaoAnimal.inserirDados(cliente, animal);
+            telaAlteracaoAnimal.setVisible(true);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Animal não cadastrado");
+            }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Cliente não cadastrado");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(TelaGerente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jmAnimalExcluirActionPerformed
 
     /**
      * @param args the command line arguments

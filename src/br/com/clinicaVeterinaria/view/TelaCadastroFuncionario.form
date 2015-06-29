@@ -170,7 +170,7 @@
                   <Component id="jbCancelar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jbCadastrar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="256" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

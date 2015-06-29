@@ -29,4 +29,8 @@ public class ControleVeterinario {
     public boolean excluirVeterinario(String cpf)throws SQLException, Exception{
         return vet.excluirVeterinarioNoBanco(cpf);
     }
+    
+    public boolean verificarCPF(String cpf)throws ClassNotFoundException, SQLException{
+        return vet.VerificaCpf(cpf); 
+    }
 }

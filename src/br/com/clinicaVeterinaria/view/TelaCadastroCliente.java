@@ -10,6 +10,7 @@ import Controle.ControleTeclasPermitidasLetras;
 import Controle.ControleTeclasPermitidasNumeros;
 import javax.swing.JOptionPane;
 import Modelo.ModeloCliente;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -367,6 +368,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
         int correto = 0;
         int dia, mes, ano;
+        Controle.ControleCliente control = new ControleCliente();
 
         if (jtNome.getText().length() > 0) {
             jlCampoObrigatorioNome.setVisible(false);
@@ -405,8 +407,20 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             //correto = false;
         }
         if (jtCpf.getText().length() > 0 && jtCpf.getText().length() == 11) {
-            jlCampoObrigatorioCPF.setVisible(false);
-            correto++;
+            try {
+                if(control.verificarCPF(jtCpf.getText())== false){
+                    jlCampoObrigatorioCPF.setVisible(false);
+                    correto++;
+                }
+                else{
+                    JOptionPane.showMessageDialog(this, "Cliente já está cadastrado");
+                    jlCampoObrigatorioCPF.setVisible(true);
+                }
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             jlCampoObrigatorioCPF.setVisible(true);
             //correto = false;
@@ -461,7 +475,6 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
         if (correto == 10) {
             try {
-                ControleCliente control = new ControleCliente();
                 ModeloCliente cliente = new ModeloCliente();
                 cliente.setNome(jtNome.getText());
                 cliente.setBairro(jtBairro.getText());

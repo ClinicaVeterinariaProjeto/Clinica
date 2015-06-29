@@ -10,6 +10,7 @@ import Controle.ControleFuncionario;
 import Controle.ControleTeclasPermitidasLetras;
 import Controle.ControleTeclasPermitidasNumeros;
 import Modelo.ModeloFuncionario;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -306,7 +307,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
                 .addComponent(jbCancelar)
                 .addGap(18, 18, 18)
                 .addComponent(jbCadastrar)
-                .addGap(256, 256, 256))
+                .addGap(116, 116, 116))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -410,6 +411,8 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         // TODO add your handling code here:
         int correto = 0;
         int mes, ano, dia;
+        Controle.ControleFuncionario control = new ControleFuncionario();
+        
         if (jtNome.getText().length() > 0) {
             jlCampoObrigatorioNome.setVisible(false);
             correto++;
@@ -438,9 +441,19 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
             jlCampoObrigatorioBairro.setVisible(true);
             //correto = false;
         }
-        if (jtCpf.getText().length() > 0 && jtCpf.getText().length()== 11) {
-            jlCampoObrigatorioCPF.setVisible(false);
-            correto++;
+        if (jtCpf.getText().length() > 0 && jtCpf.getText().length() == 11) {
+            try {
+                if(control.verificarCPF(jtCpf.getText())== false){
+                    jlCampoObrigatorioCPF.setVisible(false);
+                    correto++;
+                }
+                else{
+                    JOptionPane.showMessageDialog(this, "Funcionário já está cadastrado");
+                    jlCampoObrigatorioCPF.setVisible(true);
+                }
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             jlCampoObrigatorioCPF.setVisible(true);
             //correto = false;
@@ -526,7 +539,6 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         }
         if (correto == 13) {
             try {
-                ControleFuncionario control = new ControleFuncionario();
                 ModeloFuncionario funcionario = new ModeloFuncionario();
                 funcionario.setNome(jtNome.getText());
                 funcionario.setBairro(jtBairro.getText());

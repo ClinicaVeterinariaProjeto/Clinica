@@ -31,4 +31,8 @@ public class ControleCliente {
     public boolean excluirCliente(String cpf)throws ClassNotFoundException, SQLException{
         return cl.excluirClienteNoBanco(cpf);
     }
+    
+    public boolean verificarCPF(String cpf)throws ClassNotFoundException, SQLException{
+        return cl.VerificaCpf(cpf); 
+    }
 }

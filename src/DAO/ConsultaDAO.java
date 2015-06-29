@@ -68,6 +68,7 @@ public class ConsultaDAO {
         
         
     }
+//    
     
     public boolean verificarHorario (int dia,int mes,int horario) throws ClassNotFoundException, SQLException{
         this.conexao = new Conexao().getConexao();

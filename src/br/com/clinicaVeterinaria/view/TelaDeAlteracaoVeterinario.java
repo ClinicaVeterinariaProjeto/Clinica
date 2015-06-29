@@ -63,6 +63,7 @@ public class TelaDeAlteracaoVeterinario extends javax.swing.JFrame {
         jtDataNasc.setEnabled(false);
         jtEmail.setText(funcionario.getEmail());
         jtLogin.setText(funcionario.getLoginVeterinario());
+        jtLogin.setEnabled(false);
         jtSenha.setText(funcionario.getSenhaVeterinario());
         jtNumeroDaCasa.setText(String.valueOf(funcionario.getNumeroCasa()));
         jtRua.setText(funcionario.getRua());

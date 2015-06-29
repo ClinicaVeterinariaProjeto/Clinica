@@ -173,7 +173,7 @@ public class FuncionarioDAO {
             return false;        
     }
     
-    public boolean agendarConsulta (){    
+    public boolean marcarConsulta (){    
         return true;
     }
     public boolean alterarDataConsulta(){

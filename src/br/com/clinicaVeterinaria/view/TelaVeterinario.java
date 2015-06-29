@@ -5,6 +5,14 @@
  */
 package br.com.clinicaVeterinaria.view;
 
+import Controle.ControleAnimal;
+import Controle.ControleCliente;
+import Modelo.ModeloAnimal;
+import Modelo.ModeloCliente;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Alessandro
@@ -88,6 +96,11 @@ public class TelaVeterinario extends javax.swing.JFrame {
         jButton5.setBounds(539, 363, 70, 30);
 
         jbPesquisarAnimal.setText("Pesquisar Animal");
+        jbPesquisarAnimal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbPesquisarAnimalActionPerformed(evt);
+            }
+        });
         jDesktopPane1.add(jbPesquisarAnimal);
         jbPesquisarAnimal.setBounds(10, 50, 190, 40);
 
@@ -161,6 +174,36 @@ public class TelaVeterinario extends javax.swing.JFrame {
         tl.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jbPesquisarAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPesquisarAnimalActionPerformed
+        // TODO add your handling code here:
+        try {
+        ModeloAnimal animal = new ModeloAnimal();
+        ModeloCliente cliente = new ModeloCliente();
+        Controle.ControleAnimal control = new ControleAnimal();
+        Controle.ControleCliente controlC = new ControleCliente();
+        String cpf, nomeAnimal;
+            cpf=JOptionPane.showInputDialog(null, "Digite o CPF do cliente");
+            if(controlC.verificarCPF(cpf)){
+            nomeAnimal=JOptionPane.showInputDialog(null, "Digite o nome do Animal");
+            if(control.verificarNome(nomeAnimal)){
+            cliente = controlC.consultarCliente(cpf);
+            animal = control.consultarAnimal(cliente.getCpf(), nomeAnimal);
+            TelaAlteracaoAnimal telaAlteracaoAnimal = new TelaAlteracaoAnimal();
+            telaAlteracaoAnimal.inserirDados(cliente, animal);
+            telaAlteracaoAnimal.setVisible(true);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Animal não cadastrado");
+            }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Cliente não cadastrado");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(TelaGerente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jbPesquisarAnimalActionPerformed
 
     /**
      * @param args the command line arguments

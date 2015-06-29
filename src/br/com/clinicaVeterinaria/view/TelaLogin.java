@@ -150,7 +150,7 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jtLoginActionPerformed
 
     private void jbSairLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSairLoginActionPerformed
-        dispose();
+        System.exit(0);
     }//GEN-LAST:event_jbSairLoginActionPerformed
 
     private void jbEntrarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEntrarLoginActionPerformed

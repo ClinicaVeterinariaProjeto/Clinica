@@ -47,6 +47,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jbPesquisarCliente = new javax.swing.JButton();
         jbPesquisarAnimal = new javax.swing.JButton();
+        jbSair = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jmCliente = new javax.swing.JMenu();
         jmClienteCadastrar = new javax.swing.JMenuItem();
@@ -131,6 +132,15 @@ public class TelaFuncionario extends javax.swing.JFrame {
         jbPesquisarAnimal.setText("Pesquisar Animal");
         jDesktopPane1.add(jbPesquisarAnimal);
         jbPesquisarAnimal.setBounds(410, 120, 190, 40);
+
+        jbSair.setText("Sair");
+        jbSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSairActionPerformed(evt);
+            }
+        });
+        jDesktopPane1.add(jbSair);
+        jbSair.setBounds(30, 360, 73, 30);
 
         jmCliente.setText("Cliente");
 
@@ -221,9 +231,19 @@ public class TelaFuncionario extends javax.swing.JFrame {
         jMenuBar1.add(jmConsulta);
 
         jmSobre.setText("Sobre");
+        jmSobre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmSobreMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jmSobre);
 
         jmAjuda.setText("Ajuda");
+        jmAjuda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmAjudaMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jmAjuda);
 
         setJMenuBar(jMenuBar1);
@@ -503,6 +523,30 @@ public class TelaFuncionario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jmAnimalExcluirActionPerformed
 
+    private void jmSobreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmSobreMouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "SISTEMA DE GERENCIAMENTO DE UMA CLÍNICA VETERINÁRIA \n\n"
+                + "Sistema criado para gerenciamento de funcionário,veterinário, cliente e animal\n"
+                + "de uma clinica, tem como principais funções insersão, exclusão, alteração e pequisa\n"
+                + "sobre funcionário, cliente e animal. O Sistemas também possibilita marcar consulta\n"
+                + "e gerenciar o estoque da clínica.\n");
+    }//GEN-LAST:event_jmSobreMouseClicked
+
+    private void jmAjudaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmAjudaMouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this,"CADASTRAR CLIENTE - Cadastra um novo cliente no sistema.\n"
+                + "CADASTRAR ANIMAL - Cadastra um novo animal no sistema.\n"              
+                + "PESQUISAR CLIENTE - Pesquisa por um cliente no sistema.\n"
+                + "PESQUISAR ANIMAL - Pesquisa por um animal no sistema.\n"
+                + "GERENCIAR ESTOQUE - Pesquisa informações sobre o estoque.\n"
+                + "MARCAR CONSULTA - Gerencia as consultas no sistema.");
+    }//GEN-LAST:event_jmAjudaMouseClicked
+
+    private void jbSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSairActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jbSairActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -550,6 +594,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
     private javax.swing.JButton jbMarcarConsulta;
     private javax.swing.JButton jbPesquisarAnimal;
     private javax.swing.JButton jbPesquisarCliente;
+    private javax.swing.JButton jbSair;
     private javax.swing.JMenu jmAjuda;
     private javax.swing.JMenu jmAnimal;
     private javax.swing.JMenuItem jmAnimalAlterar;

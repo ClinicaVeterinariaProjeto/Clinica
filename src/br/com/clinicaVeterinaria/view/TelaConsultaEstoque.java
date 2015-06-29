@@ -80,6 +80,11 @@ public class TelaConsultaEstoque extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setHeaderValue("Produto");
+            jTable1.getColumnModel().getColumn(1).setHeaderValue("Quantidade");
+            jTable1.getColumnModel().getColumn(2).setHeaderValue("Valor");
+        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

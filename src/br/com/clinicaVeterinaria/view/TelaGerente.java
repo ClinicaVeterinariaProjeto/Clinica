@@ -55,6 +55,7 @@ public class TelaGerente extends javax.swing.JFrame {
         jbCadastrarVeterinario = new javax.swing.JButton();
         jbPesquisarFuncionario = new javax.swing.JButton();
         jbPesquisarVeterinario = new javax.swing.JButton();
+        jbSair = new javax.swing.JToggleButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jmCliente = new javax.swing.JMenu();
         jmClienteCadastrar = new javax.swing.JMenuItem();
@@ -162,6 +163,13 @@ public class TelaGerente extends javax.swing.JFrame {
             }
         });
 
+        jbSair.setText("Sair");
+        jbSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSairActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
@@ -189,9 +197,14 @@ public class TelaGerente extends javax.swing.JFrame {
                         .addComponent(jbPesquisarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(210, 210, 210)
                         .addComponent(jbMarcarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(50, 50, 50))
-            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jbSair)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47))
         );
@@ -221,7 +234,9 @@ public class TelaGerente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbSair))
                 .addContainerGap())
         );
         jDesktopPane1.setLayer(jbCadastrarCliente, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -236,6 +251,7 @@ public class TelaGerente extends javax.swing.JFrame {
         jDesktopPane1.setLayer(jbCadastrarVeterinario, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jbPesquisarFuncionario, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jbPesquisarVeterinario, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jbSair, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jmCliente.setText("Cliente");
         jmCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -382,9 +398,19 @@ public class TelaGerente extends javax.swing.JFrame {
         jMenuBar1.add(jmConsulta);
 
         jmSobre.setText("Sobre");
+        jmSobre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmSobreMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jmSobre);
 
         jmAjuda.setText("Ajuda");
+        jmAjuda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmAjudaMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jmAjuda);
 
         setJMenuBar(jMenuBar1);
@@ -795,6 +821,34 @@ public class TelaGerente extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_jmVeterinarioExcluirActionPerformed
 
+    private void jmSobreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmSobreMouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "SISTEMA DE GERENCIAMENTO DE UMA CLÍNICA VETERINÁRIA \n\n"
+                + "Sistema criado para gerenciamento de funcionário,veterinário, cliente e animal\n"
+                + "de uma clinica, tem como principais funções insersão, exclusão, alteração e pequisa\n"
+                + "sobre funcionário, cliente e animal. O Sistemas também possibilita marcar consulta\n"
+                + "e gerenciar o estoque da clínica.\n");
+    }//GEN-LAST:event_jmSobreMouseClicked
+
+    private void jmAjudaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmAjudaMouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this,"CADASTRAR CLIENTE - Cadastra um novo cliente no sistema.\n"
+                + "CADASTRAR ANIMAL - Cadastra um novo animal no sistema.\n"
+                + "CADASTRAR VETERINÁRIO - Cadastra um novo veterinário no sistema. \n"
+                + "CADASTRAR FUNCIONÁRIO - Cadastra um novo funcionário no sistema. \n"
+                + "PESQUISAR CLIENTE - Pesquisa por um cliente no sistema.\n"
+                + "PESQUISAR FUNCIONÁRIO - Pesquisa por um funcionário no sistema.\n"
+                + "PESQUISAR VETERINÁRIO - Pesquisa por um veterinário no sistema.\n"
+                + "PESQUISAR ANIMAL - Pesquisa por um animal no sistema.\n"
+                + "GERENCIAR ESTOQUE - Pesquisa informações sobre o estoque.\n"
+                + "MARCAR CONSULTA - Gerencia as consultas no sistema.");
+    }//GEN-LAST:event_jmAjudaMouseClicked
+
+    private void jbSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSairActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jbSairActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -845,6 +899,7 @@ public class TelaGerente extends javax.swing.JFrame {
     private javax.swing.JButton jbPesquisarCliente;
     private javax.swing.JButton jbPesquisarFuncionario;
     private javax.swing.JButton jbPesquisarVeterinario;
+    private javax.swing.JToggleButton jbSair;
     private javax.swing.JMenu jmAjuda;
     private javax.swing.JMenu jmCliente;
     private javax.swing.JMenuItem jmClienteAlterar;

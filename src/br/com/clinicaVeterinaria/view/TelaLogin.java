@@ -6,6 +6,11 @@
 package br.com.clinicaVeterinaria.view;
 
 
+import Controle.ControleFuncionario;
+import Controle.ControleVeterinario;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -155,16 +160,48 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jbSairLoginActionPerformed
 
     private void jbEntrarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEntrarLoginActionPerformed
+        Controle.ControleFuncionario func = new ControleFuncionario();
+        Controle.ControleVeterinario vet = new ControleVeterinario();
+        String senha;
+        
+        
         if(jtLogin.getText().equals("admin") && jtSenha.getText().equals("admin")){
             JOptionPane.showMessageDialog(this, "senha correta");
-            TelaFuncionario tf = new TelaFuncionario();
+            TelaGerente tf = new TelaGerente();
             tf.setVisible(true);
             dispose();
-        }else
-        JOptionPane.showMessageDialog(this, "acesso inválido");
-        jtLogin.setText("");
-        jtSenha.setText("");
-
+            
+        }else{
+            try {
+                senha=func.verificaLogin(jtLogin.getText());
+                if(senha.equals(jtSenha.getText())){
+                JOptionPane.showMessageDialog(this, "senha correta");
+                TelaFuncionario tf = new TelaFuncionario();
+                tf.setVisible(true);
+                dispose();
+            }
+            else{
+                senha=vet.verificaLogin(jtLogin.getText());
+                if(senha.equals(jtSenha.getText())){
+                JOptionPane.showMessageDialog(this, "senha correta");
+                TelaVeterinario telavet = new TelaVeterinario();
+                telavet.setVisible(true);
+                dispose();
+            }
+                }
+                /*else{
+                    JOptionPane.showMessageDialog(this, "acesso inválido");
+                    jtLogin.setText("");
+                    jtSenha.setText("");    
+       
+                        }*/
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
     }//GEN-LAST:event_jbEntrarLoginActionPerformed
 
     private void jtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtSenhaActionPerformed

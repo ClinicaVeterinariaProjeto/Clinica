@@ -7,9 +7,12 @@ package br.com.clinicaVeterinaria.view;
 
 import Controle.ControleEstoque;
 import Modelo.ModeloEstoque;
+import Modelo.ModeloRelatorios;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
 
 /**
  *
@@ -74,6 +77,11 @@ public class TelaEstoque extends javax.swing.JFrame {
         });
 
         jbgerarRelatorio.setText("Gerar Relatório");
+        jbgerarRelatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbgerarRelatorioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -181,6 +189,20 @@ public class TelaEstoque extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jbRetirarItemActionPerformed
+
+    private void jbgerarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbgerarRelatorioActionPerformed
+        try {
+            // TODO add your handling code here:
+            Modelo.ModeloRelatorios relatorio = new ModeloRelatorios();
+            relatorio.relatorioEstoque();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(TelaEstoque.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(TelaEstoque.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (JRException ex) {
+            Logger.getLogger(TelaEstoque.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jbgerarRelatorioActionPerformed
 
     /**
      * @param args the command line arguments

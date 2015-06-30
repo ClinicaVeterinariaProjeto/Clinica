@@ -37,4 +37,10 @@ public class ControleVeterinario {
     public boolean verificaVeterinario(String login)throws ClassNotFoundException, SQLException{
         return vet.VerificaVeterinario(login);
     }
+    
+    public String verificaLogin(String login)throws ClassNotFoundException, SQLException{
+        return vet.retornaSenha(login);
+}        
+
+
 }

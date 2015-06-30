@@ -39,4 +39,8 @@ public class ControleFuncionario {
         return func.VerificaFuncionario(login);
     }
     
+        public String verificaLogin(String login)throws ClassNotFoundException, SQLException{
+        return func.retornaSenha(login);
+}   
+    
 }

@@ -35,8 +35,7 @@ public class TelaConsulta extends javax.swing.JFrame {
         jtMes.setDocument(new ControleTeclasPermitidasNumeros(2));
     }
 
-    
-    public void inserirDados(ModeloCliente cliente, ModeloAnimal animal){
+    public void inserirDados(ModeloCliente cliente, ModeloAnimal animal) {
         jtNomeCliente.setText(cliente.getNome());
         jtNomeCliente.setEnabled(false);
         jtCpfCliente.setText(cliente.getCpf());
@@ -44,8 +43,7 @@ public class TelaConsulta extends javax.swing.JFrame {
         jtNomeAnimal.setText(animal.getNome());
         jtNomeAnimal.setEnabled(false);
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -248,45 +246,81 @@ public class TelaConsulta extends javax.swing.JFrame {
     }//GEN-LAST:event_jtMesActionPerformed
 
     private void jbConfirmarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarConsultaActionPerformed
-        try {
+
+            int correto=0, dia, mes, ano,hr;
             // TODO add your handling code here:
+            if(jtHorarioEscolhido.getText().length() > 0){
+            hr= Integer.parseInt(jtHorarioEscolhido.getText());
+                if(hr>13 && hr<=17)
+                    correto++;
+                else
+                JOptionPane.showMessageDialog(null, "Horário não é válido");
+            }
+            
+            if(jtDia.getText().length() > 0){
+                dia= Integer.parseInt(jtDia.getText());
+                if(dia>0 && dia<=30)
+                    correto++;
+                else
+                JOptionPane.showMessageDialog(null, "Dia não é válido");
+            }
+
+            
+            
+            if(jtMes.getText().length() > 0){
+                mes=Integer.parseInt(jtMes.getText());
+                if(mes>0 && mes<=12)
+                    correto++;
+                else
+                JOptionPane.showMessageDialog(null, "Mes não é válido");
+            }
+
+            
+            if(correto == 3){
+                String nome;
             DAO.ConsultaDAO consul = new ConsultaDAO();
             ModeloAnimal animal = new ModeloAnimal();
-        ModeloCliente cliente = new ModeloCliente();
-        Controle.ControleAnimal control = new ControleAnimal();
-        Controle.ControleCliente controlC = new ControleCliente();
-            if(controlC.verificarCPF(jtCpfCliente.getText())){
+            ModeloCliente cliente = new ModeloCliente();
+            Controle.ControleAnimal control = new ControleAnimal();
+            Controle.ControleCliente controlC = new ControleCliente();
                 try {
-                    if(control.verificarNome(jtNomeAnimal.getText())){
-                        cliente = controlC.consultarCliente(jtCpfCliente.getText());
-                        animal = control.consultarAnimal(cliente.getCpf(), jtNomeAnimal.getText());
-                        
-                        if(consul.verificarHorario(Integer.parseInt(jtDia.getText()),Integer.parseInt(jtMes.getText()),Integer.parseInt(jtHorarioEscolhido.getText()))){
-                            JOptionPane.showMessageDialog(null, "Já existe consulta para esse dia");
-                        }
-                        else{
-                            JOptionPane.showMessageDialog(null, "Consulta marcada");
-                            Modelo.ModeloConsulta mc = new ModeloConsulta();
-                            mc.setDia(Integer.parseInt(jtDia.getText()));
-                            mc.setMes(Integer.parseInt(jtMes.getText()));
-                            mc.setHorario(Integer.parseInt(jtHorarioEscolhido.getText()));
-                            mc.setValor(Float.parseFloat(jtValor.getText()));
-                            mc.setIdCliente(cliente.getIdCliente());
-                            mc.setIdAnimal(animal.getIdAnimal());
-                            if(consul.marcarConsulta(mc, mc.getIdCliente(), mc.getIdAnimal()))
-                                JOptionPane.showMessageDialog(null, "Consulta marcada");
-                                else
-                                    JOptionPane.showMessageDialog(null, "Consulta não marcada");
+                    if (controlC.verificarCPF(jtCpfCliente.getText())) {
+                        try {
+                            if (control.verificarNome(jtNomeAnimal.getText())) {
+                                cliente = controlC.consultarCliente(jtCpfCliente.getText());
+                                animal = control.consultarAnimal(cliente.getCpf(), jtNomeAnimal.getText());
+                                
+                                if (consul.verificarHorario(Integer.parseInt(jtDia.getText()), Integer.parseInt(jtMes.getText()), Integer.parseInt(jtHorarioEscolhido.getText()))) {
+                                    JOptionPane.showMessageDialog(null, "Já existe consulta para esse dia");
+                                } else {
+                                    //JOptionPane.showMessageDialog(null, "Consulta marcada");
+                                    Modelo.ModeloConsulta mc = new ModeloConsulta();
+                                    mc.setDia(Integer.parseInt(jtDia.getText()));
+                                    mc.setMes(Integer.parseInt(jtMes.getText()));
+                                    mc.setHorario(Integer.parseInt(jtHorarioEscolhido.getText()));
+                                    mc.setValor(Float.parseFloat(jtValor.getText()));
+                                    mc.setIdCliente(cliente.getIdCliente());
+                                    mc.setIdAnimal(animal.getIdAnimal());
+                                    if (consul.marcarConsulta(mc, mc.getIdCliente(), mc.getIdAnimal())) {
+                                        JOptionPane.showMessageDialog(null, "Consulta marcada");
+                                        dispose();
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "Consulta não marcada");
                                     }
-                    }   } catch (Exception ex) {
+                                }
+                            }
+                        } catch (Exception ex) {
+                            Logger.getLogger(TelaConsulta.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }   } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(TelaConsulta.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
                     Logger.getLogger(TelaConsulta.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(TelaConsulta.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(TelaConsulta.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } 
+            else
+                JOptionPane.showMessageDialog(null, "Dados inválidos");
+            
     }//GEN-LAST:event_jbConfirmarConsultaActionPerformed
 
     /**

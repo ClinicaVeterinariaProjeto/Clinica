@@ -127,14 +127,32 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jmConsulta">
+        <Menu class="javax.swing.JMenu" name="jmrelatorio">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Consulta"/>
+            <Property name="text" type="java.lang.String" value="Relatorios"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jmConsultaMarcar">
+            <MenuItem class="javax.swing.JMenuItem" name="jmrCliente">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Marcar"/>
+                <Property name="text" type="java.lang.String" value="Cliente"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmrClienteActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmrFuncionario">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Funcionario"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmrVeterinario">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Veterinario"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jrmAnimal">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Animal"/>
               </Properties>
             </MenuItem>
           </SubComponents>

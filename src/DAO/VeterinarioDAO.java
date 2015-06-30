@@ -195,13 +195,13 @@ public class VeterinarioDAO {
         return false;
     }
     
-     public String retornaSenha(String loguin) throws ClassNotFoundException, SQLException {
+     public String retornaSenha(String login) throws ClassNotFoundException, SQLException {
         this.conexao = new Conexao().getConexao();
         ResultSet rs = null;
         try{
-            String sql = "Select senhaVeterinario from Veterinario where loguinVeterinario = ?";
+            String sql = "Select senhaVeterinario from Veterinario where loginVeterinario = ?";
             PreparedStatement pstmt = conexao.prepareStatement(sql);
-            pstmt.setString(1, loguin);
+            pstmt.setString(1, login);
             rs = pstmt.executeQuery();            
             String senha=rs.getString("senhaVeterinario");                                   
             return senha;            

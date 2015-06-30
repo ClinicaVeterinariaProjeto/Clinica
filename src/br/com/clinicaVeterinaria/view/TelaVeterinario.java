@@ -9,9 +9,12 @@ import Controle.ControleAnimal;
 import Controle.ControleCliente;
 import Modelo.ModeloAnimal;
 import Modelo.ModeloCliente;
+import Modelo.ModeloRelatorios;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
 
 /**
  *
@@ -36,19 +39,12 @@ public class TelaVeterinario extends javax.swing.JFrame {
     private void initComponents() {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
-        jbVerConsulta = new javax.swing.JButton();
         jbVerRelatório = new javax.swing.JButton();
-        jbAtenderAnimal = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jButton5 = new javax.swing.JButton();
         jbPesquisarAnimal = new javax.swing.JButton();
         jbSair = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jmRelatorio = new javax.swing.JMenu();
-        jmRelatorioCriar = new javax.swing.JMenuItem();
-        jmRelatorioAlterar = new javax.swing.JMenuItem();
-        jmRelatorioVisualizar = new javax.swing.JMenuItem();
-        jmVerConsulta = new javax.swing.JMenu();
         jmSobre = new javax.swing.JMenu();
         jmAjuda = new javax.swing.JMenu();
 
@@ -58,32 +54,14 @@ public class TelaVeterinario extends javax.swing.JFrame {
 
         jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jbVerConsulta.setText("Ver Consultas");
-        jbVerConsulta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbVerConsultaActionPerformed(evt);
-            }
-        });
-        jDesktopPane1.add(jbVerConsulta);
-        jbVerConsulta.setBounds(10, 112, 190, 40);
-
-        jbVerRelatório.setText("Ver Relatório");
+        jbVerRelatório.setText("Ver Relatórios");
         jbVerRelatório.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbVerRelatórioActionPerformed(evt);
             }
         });
         jDesktopPane1.add(jbVerRelatório);
-        jbVerRelatório.setBounds(320, 110, 190, 40);
-
-        jbAtenderAnimal.setText("Atender Animal");
-        jbAtenderAnimal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbAtenderAnimalActionPerformed(evt);
-            }
-        });
-        jDesktopPane1.add(jbAtenderAnimal);
-        jbAtenderAnimal.setBounds(320, 50, 190, 40);
+        jbVerRelatório.setBounds(400, 50, 190, 40);
         jDesktopPane1.add(jSeparator1);
         jSeparator1.setBounds(0, 302, 650, 10);
 
@@ -113,27 +91,6 @@ public class TelaVeterinario extends javax.swing.JFrame {
         });
         jDesktopPane1.add(jbSair);
         jbSair.setBounds(30, 370, 70, 30);
-
-        jmRelatorio.setText("Relatórios");
-
-        jmRelatorioCriar.setText("Criar");
-        jmRelatorio.add(jmRelatorioCriar);
-
-        jmRelatorioAlterar.setText("Alterar");
-        jmRelatorioAlterar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmRelatorioAlterarActionPerformed(evt);
-            }
-        });
-        jmRelatorio.add(jmRelatorioAlterar);
-
-        jmRelatorioVisualizar.setText("Visualizar");
-        jmRelatorio.add(jmRelatorioVisualizar);
-
-        jMenuBar1.add(jmRelatorio);
-
-        jmVerConsulta.setText("Ver Consultas");
-        jMenuBar1.add(jmVerConsulta);
 
         jmSobre.setText("Sobre");
         jmSobre.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -168,25 +125,19 @@ public class TelaVeterinario extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jmRelatorioAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmRelatorioAlterarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jmRelatorioAlterarActionPerformed
-
-    private void jbVerConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVerConsultaActionPerformed
-        // TODO add your handling code here:
-        TelaCadastroAnimal tca = new TelaCadastroAnimal();
-        tca.setVisible(true);
-    }//GEN-LAST:event_jbVerConsultaActionPerformed
-
     private void jbVerRelatórioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVerRelatórioActionPerformed
-        // TODO add your handling code here:
-        TelaConsulta tc = new TelaConsulta();
-        tc.setVisible(true);
+        try {
+            // TODO add your handling code here:
+            Modelo.ModeloRelatorios relatorio = new ModeloRelatorios();
+            relatorio.relatorioAnimal();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(TelaVeterinario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(TelaVeterinario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (JRException ex) {
+            Logger.getLogger(TelaVeterinario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jbVerRelatórioActionPerformed
-
-    private void jbAtenderAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtenderAnimalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbAtenderAnimalActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
@@ -286,17 +237,10 @@ public class TelaVeterinario extends javax.swing.JFrame {
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JButton jbAtenderAnimal;
     private javax.swing.JButton jbPesquisarAnimal;
     private javax.swing.JButton jbSair;
-    private javax.swing.JButton jbVerConsulta;
     private javax.swing.JButton jbVerRelatório;
     private javax.swing.JMenu jmAjuda;
-    private javax.swing.JMenu jmRelatorio;
-    private javax.swing.JMenuItem jmRelatorioAlterar;
-    private javax.swing.JMenuItem jmRelatorioCriar;
-    private javax.swing.JMenuItem jmRelatorioVisualizar;
     private javax.swing.JMenu jmSobre;
-    private javax.swing.JMenu jmVerConsulta;
     // End of variables declaration//GEN-END:variables
 }

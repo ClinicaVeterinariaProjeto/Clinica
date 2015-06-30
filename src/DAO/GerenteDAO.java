@@ -196,13 +196,13 @@ public class GerenteDAO {
             return false;        
     }
         
-    public String retornaSenha(String loguin) throws ClassNotFoundException, SQLException {
+    public String retornaSenha(String login) throws ClassNotFoundException, SQLException {
         this.conexao = new Conexao().getConexao();
         ResultSet rs = null;
         try{
-            String sql = "Select senhaGerente from Gerente where loguinGerente = ?";
+            String sql = "Select senhaGerente from Gerente where loginGerente = ?";
             PreparedStatement pstmt = conexao.prepareStatement(sql);
-            pstmt.setString(1, loguin);
+            pstmt.setString(1, login);
             rs = pstmt.executeQuery();            
             String senha=rs.getString("senhaGerente");                                   
             return senha;            

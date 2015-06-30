@@ -72,8 +72,11 @@ public class TelaGerente extends javax.swing.JFrame {
         jmVeterinarioAlterar = new javax.swing.JMenuItem();
         jmVeterinarioExcluir = new javax.swing.JMenuItem();
         jmVeterinarioPesquisar = new javax.swing.JMenuItem();
-        jmConsulta = new javax.swing.JMenu();
-        jmConsultaMarcar = new javax.swing.JMenuItem();
+        jmrelatorio = new javax.swing.JMenu();
+        jmrCliente = new javax.swing.JMenuItem();
+        jmrFuncionario = new javax.swing.JMenuItem();
+        jmrVeterinario = new javax.swing.JMenuItem();
+        jrmAnimal = new javax.swing.JMenuItem();
         jmSobre = new javax.swing.JMenu();
         jmAjuda = new javax.swing.JMenu();
 
@@ -378,12 +381,26 @@ public class TelaGerente extends javax.swing.JFrame {
 
         jMenuBar1.add(jmVeterinario);
 
-        jmConsulta.setText("Consulta");
+        jmrelatorio.setText("Relatorios");
 
-        jmConsultaMarcar.setText("Marcar");
-        jmConsulta.add(jmConsultaMarcar);
+        jmrCliente.setText("Cliente");
+        jmrCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmrClienteActionPerformed(evt);
+            }
+        });
+        jmrelatorio.add(jmrCliente);
 
-        jMenuBar1.add(jmConsulta);
+        jmrFuncionario.setText("Funcionario");
+        jmrelatorio.add(jmrFuncionario);
+
+        jmrVeterinario.setText("Veterinario");
+        jmrelatorio.add(jmrVeterinario);
+
+        jrmAnimal.setText("Animal");
+        jmrelatorio.add(jrmAnimal);
+
+        jMenuBar1.add(jmrelatorio);
 
         jmSobre.setText("Sobre");
         jmSobre.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -518,10 +535,10 @@ public class TelaGerente extends javax.swing.JFrame {
             cpf = JOptionPane.showInputDialog(null, "Digite o CPF do cliente");
             if (controlC.verificarCPF(cpf)) {
                 nomeAnimal = JOptionPane.showInputDialog(null, "Digite o nome do Animal");
-                nomeAnimal.toUpperCase();
-                if (control.verificarNome(nomeAnimal)) {
+                String toUpperCase = nomeAnimal.toUpperCase();
+                if (control.verificarNome(toUpperCase)) {
                     cliente = controlC.consultarCliente(cpf);
-                    animal = control.consultarAnimal(cliente.getCpf(), nomeAnimal);
+                    animal = control.consultarAnimal(cliente.getCpf(), toUpperCase);
                     TelaConsulta telaconsul = new TelaConsulta();
                     telaconsul.inserirDados(cliente, animal);
                     telaconsul.setVisible(true);
@@ -700,10 +717,10 @@ public class TelaGerente extends javax.swing.JFrame {
             cpf=JOptionPane.showInputDialog(null, "Digite o CPF do cliente");
             if(controlC.verificarCPF(cpf)){
             nomeAnimal=JOptionPane.showInputDialog(null, "Digite o nome do Animal");
-            nomeAnimal.toUpperCase();
-            if(control.verificarNome(nomeAnimal)){
+            String toUpperCase = nomeAnimal.toUpperCase();
+            if(control.verificarNome(toUpperCase)){
             cliente = controlC.consultarCliente(cpf);
-            animal = control.consultarAnimal(cliente.getCpf(), nomeAnimal);
+            animal = control.consultarAnimal(cliente.getCpf(), toUpperCase);
             TelaAlteracaoAnimal telaAlteracaoAnimal = new TelaAlteracaoAnimal();
             telaAlteracaoAnimal.inserirDados(cliente, animal);
             telaAlteracaoAnimal.setVisible(true);
@@ -863,6 +880,10 @@ public class TelaGerente extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jbSairActionPerformed
 
+    private void jmrClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmrClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmrClienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -920,8 +941,6 @@ public class TelaGerente extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmClienteCadastrar;
     private javax.swing.JMenuItem jmClienteExcluir;
     private javax.swing.JMenuItem jmClientePesquisar;
-    private javax.swing.JMenu jmConsulta;
-    private javax.swing.JMenuItem jmConsultaMarcar;
     private javax.swing.JMenu jmFuncionario;
     private javax.swing.JMenuItem jmFuncionarioAlterar;
     private javax.swing.JMenuItem jmFuncionarioCadastrar;
@@ -933,5 +952,10 @@ public class TelaGerente extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmVeterinarioCadastrar;
     private javax.swing.JMenuItem jmVeterinarioExcluir;
     private javax.swing.JMenuItem jmVeterinarioPesquisar;
+    private javax.swing.JMenuItem jmrCliente;
+    private javax.swing.JMenuItem jmrFuncionario;
+    private javax.swing.JMenuItem jmrVeterinario;
+    private javax.swing.JMenu jmrelatorio;
+    private javax.swing.JMenuItem jrmAnimal;
     // End of variables declaration//GEN-END:variables
 }

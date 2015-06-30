@@ -14,6 +14,7 @@ import java.sql.DriverManager;
  *
  * @author Alex
  */
+// teste
 public class Conexao {
     private String url = "jdbc:mysql://localhost:3306/clinica";
     private String login = "root";

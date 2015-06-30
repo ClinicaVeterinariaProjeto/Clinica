@@ -14,7 +14,7 @@ public class ModeloConsulta {
     private int dia;
     private int mes;
     private int horario;
-    private float valorConsulta;
+    private float valor;
     private int idCliente;
     private int idAnimal;
     
@@ -24,7 +24,7 @@ public class ModeloConsulta {
         this.dia = dia;
         this.mes = mes;
         this.horario = horario;
-        this.valorConsulta = valorConsulta;
+        this.valor = valorConsulta;
         this.idCliente = idCliente;
         this.idAnimal = idAnimal;
     }
@@ -69,12 +69,12 @@ public class ModeloConsulta {
         this.horario = horario;
     }
 
-    public float getValorConsulta() {
-        return valorConsulta;
+    public float getValor() {
+        return valor;
     }
 
-    public void setValorConsulta(float valorConsulta) {
-        this.valorConsulta = valorConsulta;
+    public void setValor(float valor) {
+        this.valor = valor;
     }
     
 }

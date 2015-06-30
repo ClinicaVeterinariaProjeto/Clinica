@@ -5,9 +5,18 @@
  */
 package br.com.clinicaVeterinaria.view;
 
+import Controle.ControleAnimal;
+import Controle.ControleCliente;
+import Controle.ControleTeclasPermitidasFloat;
+import Controle.ControleTeclasPermitidasNumeros;
 import DAO.ConsultaDAO;
 import Modelo.ModeloAnimal;
 import Modelo.ModeloCliente;
+import Modelo.ModeloConsulta;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,6 +29,10 @@ public class TelaConsulta extends javax.swing.JFrame {
      */
     public TelaConsulta() {
         initComponents();
+        jtValor.setDocument(new ControleTeclasPermitidasFloat(5));
+        jtDia.setDocument(new ControleTeclasPermitidasNumeros(2));
+        jtHorarioEscolhido.setDocument(new ControleTeclasPermitidasNumeros(2));
+        jtMes.setDocument(new ControleTeclasPermitidasNumeros(2));
     }
 
     
@@ -57,9 +70,10 @@ public class TelaConsulta extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jtDia = new javax.swing.JTextField();
         jtMes = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         jlDigiteHorarioEscolhido = new javax.swing.JLabel();
         jtHorarioEscolhido = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jtValor = new javax.swing.JTextField();
 
         jLabel1.setText("jLabel1");
 
@@ -110,25 +124,15 @@ public class TelaConsulta extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("Horários Disponíveis:");
-
         jlDigiteHorarioEscolhido.setText("Digite o Horário Escolhido");
+
+        jLabel5.setText("Valor");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jbCancelarConsulta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 223, Short.MAX_VALUE)
-                .addComponent(jbConfirmarConsulta)
-                .addGap(26, 26, 26))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -138,11 +142,12 @@ public class TelaConsulta extends javax.swing.JFrame {
                                 .addComponent(jlNomeAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jlNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jlCpfCliente))
-                        .addGap(28, 28, 28)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jtNomeCliente)
-                            .addComponent(jtNomeAnimal, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
-                            .addComponent(jtCpfCliente)))
+                        .addGap(48, 48, 48)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jtCpfCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                                .addComponent(jtNomeAnimal, javax.swing.GroupLayout.Alignment.TRAILING))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -158,6 +163,19 @@ public class TelaConsulta extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jtHorarioEscolhido, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jbCancelarConsulta)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 223, Short.MAX_VALUE)
+                        .addComponent(jbConfirmarConsulta)
+                        .addGap(26, 26, 26))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,9 +194,7 @@ public class TelaConsulta extends javax.swing.JFrame {
                     .addComponent(jlNomeAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jtDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -188,7 +204,11 @@ public class TelaConsulta extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlDigiteHorarioEscolhido)
                     .addComponent(jtHorarioEscolhido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
+                .addGap(38, 38, 38)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jtValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbConfirmarConsulta)
                     .addComponent(jbCancelarConsulta))
@@ -228,9 +248,45 @@ public class TelaConsulta extends javax.swing.JFrame {
     }//GEN-LAST:event_jtMesActionPerformed
 
     private void jbConfirmarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarConsultaActionPerformed
-        // TODO add your handling code here:
-        DAO.ConsultaDAO consul = new ConsultaDAO();
-        consul.
+        try {
+            // TODO add your handling code here:
+            DAO.ConsultaDAO consul = new ConsultaDAO();
+            ModeloAnimal animal = new ModeloAnimal();
+        ModeloCliente cliente = new ModeloCliente();
+        Controle.ControleAnimal control = new ControleAnimal();
+        Controle.ControleCliente controlC = new ControleCliente();
+            if(controlC.verificarCPF(jtCpfCliente.getText())){
+                try {
+                    if(control.verificarNome(jtNomeAnimal.getText())){
+                        cliente = controlC.consultarCliente(jtCpfCliente.getText());
+                        animal = control.consultarAnimal(cliente.getCpf(), jtNomeAnimal.getText());
+                        
+                        if(consul.verificarHorario(Integer.parseInt(jtDia.getText()),Integer.parseInt(jtMes.getText()),Integer.parseInt(jtHorarioEscolhido.getText()))){
+                            JOptionPane.showMessageDialog(null, "Já existe consulta para esse dia");
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(null, "Consulta marcada");
+                            Modelo.ModeloConsulta mc = new ModeloConsulta();
+                            mc.setDia(Integer.parseInt(jtDia.getText()));
+                            mc.setMes(Integer.parseInt(jtMes.getText()));
+                            mc.setHorario(Integer.parseInt(jtHorarioEscolhido.getText()));
+                            mc.setValor(Float.parseFloat(jtValor.getText()));
+                            mc.setIdCliente(cliente.getIdCliente());
+                            mc.setIdAnimal(animal.getIdAnimal());
+                            if(consul.marcarConsulta(mc, mc.getIdCliente(), mc.getIdAnimal()))
+                                JOptionPane.showMessageDialog(null, "Consulta marcada");
+                                else
+                                    JOptionPane.showMessageDialog(null, "Consulta não marcada");
+                                    }
+                    }   } catch (Exception ex) {
+                    Logger.getLogger(TelaConsulta.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(TelaConsulta.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(TelaConsulta.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jbConfirmarConsultaActionPerformed
 
     /**
@@ -272,7 +328,7 @@ public class TelaConsulta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton jbCancelarConsulta;
@@ -287,5 +343,6 @@ public class TelaConsulta extends javax.swing.JFrame {
     private javax.swing.JTextField jtMes;
     private javax.swing.JTextField jtNomeAnimal;
     private javax.swing.JTextField jtNomeCliente;
+    private javax.swing.JTextField jtValor;
     // End of variables declaration//GEN-END:variables
 }

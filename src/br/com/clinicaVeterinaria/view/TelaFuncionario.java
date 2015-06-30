@@ -61,9 +61,6 @@ public class TelaFuncionario extends javax.swing.JFrame {
         jmAnimalPesquisar = new javax.swing.JMenuItem();
         jmConsulta = new javax.swing.JMenu();
         jmConsultaMarcar = new javax.swing.JMenuItem();
-        jmConsultaAlterar = new javax.swing.JMenuItem();
-        jmConsultaExcluir = new javax.swing.JMenuItem();
-        jmConsultaVisualizar = new javax.swing.JMenuItem();
         jmSobre = new javax.swing.JMenu();
         jmAjuda = new javax.swing.JMenu();
 
@@ -224,15 +221,6 @@ public class TelaFuncionario extends javax.swing.JFrame {
         jmConsultaMarcar.setText("Marcar");
         jmConsulta.add(jmConsultaMarcar);
 
-        jmConsultaAlterar.setText("Alterar");
-        jmConsulta.add(jmConsultaAlterar);
-
-        jmConsultaExcluir.setText("Excluir");
-        jmConsulta.add(jmConsultaExcluir);
-
-        jmConsultaVisualizar.setText("Visualizar");
-        jmConsulta.add(jmConsultaVisualizar);
-
         jMenuBar1.add(jmConsulta);
 
         jmSobre.setText("Sobre");
@@ -276,6 +264,8 @@ public class TelaFuncionario extends javax.swing.JFrame {
 
     private void jbGerenciarEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGerenciarEstoqueActionPerformed
         // TODO add your handling code here:
+        TelaEstoque tela = new TelaEstoque();
+        tela.setVisible(true);
     }//GEN-LAST:event_jbGerenciarEstoqueActionPerformed
 
     private void jbCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarClienteActionPerformed
@@ -642,10 +632,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmClienteExcluir;
     private javax.swing.JMenuItem jmClientePesquisar;
     private javax.swing.JMenu jmConsulta;
-    private javax.swing.JMenuItem jmConsultaAlterar;
-    private javax.swing.JMenuItem jmConsultaExcluir;
     private javax.swing.JMenuItem jmConsultaMarcar;
-    private javax.swing.JMenuItem jmConsultaVisualizar;
     private javax.swing.JMenu jmSobre;
     // End of variables declaration//GEN-END:variables
 }

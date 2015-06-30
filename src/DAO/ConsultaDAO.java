@@ -24,12 +24,12 @@ public class ConsultaDAO {
     public boolean marcarConsulta (ModeloConsulta consulta, int idCliente, int idAnimal) throws ClassNotFoundException{
         this.conexao = new Conexao().getConexao();
         try{
-            String query = ("INSERT INTO dia, mes, horarios, valor, idCliente, idAnimal  FROM consulta VALUES(?,?,?,?,?,?);");
+            String query = ("INSERT INTO consulta (dia, mes, horario, valor, idCliente, idAnimal) VALUES(?,?,?,?,?,?)");
             PreparedStatement pstmt = conexao.prepareStatement(query);
             pstmt.setInt(1,consulta.getDia());
             pstmt.setInt(2,consulta.getMes());
             pstmt.setInt(3,consulta.getHorario());
-            pstmt.setFloat(4,consulta.getValorConsulta());
+            pstmt.setFloat(4,consulta.getValor());
             pstmt.setInt(5, idCliente);
             pstmt.setInt(6, idAnimal);
             pstmt.executeUpdate();
@@ -53,7 +53,7 @@ public class ConsultaDAO {
             pstmt.setInt(1,consulta.getDia()); 
             pstmt.setInt(2,consulta.getMes());
             pstmt.setInt(3,consulta.getHorario());
-            pstmt.setFloat(4,consulta.getValorConsulta());
+            pstmt.setFloat(4,consulta.getValor());
             pstmt.setInt(5, idCliente);
                         
             pstmt.execute();

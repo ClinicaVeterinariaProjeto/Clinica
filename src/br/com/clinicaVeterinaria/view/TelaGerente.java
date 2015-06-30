@@ -74,9 +74,6 @@ public class TelaGerente extends javax.swing.JFrame {
         jmVeterinarioPesquisar = new javax.swing.JMenuItem();
         jmConsulta = new javax.swing.JMenu();
         jmConsultaMarcar = new javax.swing.JMenuItem();
-        jmConsultaAlterar = new javax.swing.JMenuItem();
-        jmConsultaExcluir = new javax.swing.JMenuItem();
-        jmConsultaVisualizar = new javax.swing.JMenuItem();
         jmSobre = new javax.swing.JMenu();
         jmAjuda = new javax.swing.JMenu();
 
@@ -386,15 +383,6 @@ public class TelaGerente extends javax.swing.JFrame {
         jmConsultaMarcar.setText("Marcar");
         jmConsulta.add(jmConsultaMarcar);
 
-        jmConsultaAlterar.setText("Alterar");
-        jmConsulta.add(jmConsultaAlterar);
-
-        jmConsultaExcluir.setText("Excluir");
-        jmConsulta.add(jmConsultaExcluir);
-
-        jmConsultaVisualizar.setText("Visualizar");
-        jmConsulta.add(jmConsultaVisualizar);
-
         jMenuBar1.add(jmConsulta);
 
         jmSobre.setText("Sobre");
@@ -530,12 +518,13 @@ public class TelaGerente extends javax.swing.JFrame {
             cpf = JOptionPane.showInputDialog(null, "Digite o CPF do cliente");
             if (controlC.verificarCPF(cpf)) {
                 nomeAnimal = JOptionPane.showInputDialog(null, "Digite o nome do Animal");
+                nomeAnimal.toUpperCase();
                 if (control.verificarNome(nomeAnimal)) {
                     cliente = controlC.consultarCliente(cpf);
                     animal = control.consultarAnimal(cliente.getCpf(), nomeAnimal);
-                    //TelaAlteracaoAnimal telaAlteracaoAnimal = new TelaAlteracaoAnimal();
-                    //telaAlteracaoAnimal.inserirDados(cliente, animal);
-                    //telaAlteracaoAnimal.setVisible(true);
+                    TelaConsulta telaconsul = new TelaConsulta();
+                    telaconsul.inserirDados(cliente, animal);
+                    telaconsul.setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(null, "Animal não cadastrado");
                 }
@@ -932,10 +921,7 @@ public class TelaGerente extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmClienteExcluir;
     private javax.swing.JMenuItem jmClientePesquisar;
     private javax.swing.JMenu jmConsulta;
-    private javax.swing.JMenuItem jmConsultaAlterar;
-    private javax.swing.JMenuItem jmConsultaExcluir;
     private javax.swing.JMenuItem jmConsultaMarcar;
-    private javax.swing.JMenuItem jmConsultaVisualizar;
     private javax.swing.JMenu jmFuncionario;
     private javax.swing.JMenuItem jmFuncionarioAlterar;
     private javax.swing.JMenuItem jmFuncionarioCadastrar;
